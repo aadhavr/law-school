@@ -1,0 +1,179 @@
+{
+  "seed": 20261024,
+  "B_kappa": 1000,
+  "B_r": 2000,
+  "bodies": {
+    "House": {
+      "body": "House",
+      "n_rows": 11479,
+      "n_members": 2222,
+      "t_min": 93,
+      "t_max": 118,
+      "mean_terms_per_member": 5.166066606660666,
+      "var_les_sample": 2.2344503594077127,
+      "sig2_alpha": 0.36005628215676533,
+      "sig2_eps": 1.0615642123167,
+      "var_xb": 0.7375595921189017,
+      "kappa": 0.2532717300830147,
+      "kappa_lo": 0.19986650058986571,
+      "kappa_hi": 0.3231842355369611,
+      "sig2_alpha_lo": 0.2635093196373351,
+      "sig2_alpha_hi": 0.4904987962416474,
+      "sig2_eps_lo": 0.8945807918227631,
+      "sig2_eps_hi": 1.2162934495081337,
+      "marginal_r2": 0.3415924390461211,
+      "marginal_r2_lo": 0.30186617575720925,
+      "marginal_r2_hi": 0.3796227426466705,
+      "share_x": 0.3415924390461211,
+      "share_alpha": 0.16675602206252682,
+      "share_eps": 0.491651538891352,
+      "sigma_alpha": 0.6000468999642989,
+      "oos_n_pairs": 9257,
+      "oos_n_members": 1832,
+      "oos_r": 0.4082472237116541,
+      "oos_r_lo": 0.3660728306110084,
+      "oos_r_hi": 0.45160063132897826,
+      "prereg_verdict": "supported as a measurable trait"
+    },
+    "Senate": {
+      "body": "Senate",
+      "n_rows": 2635,
+      "n_members": 420,
+      "t_min": 93,
+      "t_max": 118,
+      "mean_terms_per_member": 6.273809523809524,
+      "var_les_sample": 1.0220219877285497,
+      "sig2_alpha": 0.18212376747809295,
+      "sig2_eps": 0.5232875698422084,
+      "var_xb": 0.2871401825189419,
+      "kappa": 0.2581809475446484,
+      "kappa_lo": 0.18952601996185434,
+      "kappa_hi": 0.331677501709094,
+      "sig2_alpha_lo": 0.11199815106994332,
+      "sig2_alpha_hi": 0.2779416158103939,
+      "sig2_eps_lo": 0.42850424851823127,
+      "sig2_eps_hi": 0.6244287583071798,
+      "marginal_r2": 0.2892949905164097,
+      "marginal_r2_lo": 0.247866902574108,
+      "marginal_r2_hi": 0.34153691605582603,
+      "share_x": 0.2892949905164097,
+      "share_alpha": 0.18349049277320165,
+      "share_eps": 0.5272145167103887,
+      "sigma_alpha": 0.42675961322282235,
+      "oos_n_pairs": 2215,
+      "oos_n_members": 377,
+      "oos_r": 0.3944661937783997,
+      "oos_r_lo": 0.3350581680696425,
+      "oos_r_hi": 0.44947706461527154,
+      "prereg_verdict": "supported as a measurable trait"
+    },
+    "States": {
+      "body": "States",
+      "n_rows": 100627,
+      "n_members": 27384,
+      "t_min": 1989,
+      "t_max": 2024,
+      "mean_terms_per_member": 3.674664037394099,
+      "var_les_sample": 1.2451274799459497,
+      "sig2_alpha": 0.36514928278238723,
+      "sig2_eps": 0.6592542861198,
+      "var_xb": 0.15832122433947027,
+      "kappa": 0.35645061562378516,
+      "kappa_lo": 0.321319103286847,
+      "kappa_hi": 0.39184204013366164,
+      "sig2_alpha_lo": 0.31873771399758416,
+      "sig2_alpha_hi": 0.41899187257082715,
+      "sig2_eps_lo": 0.5839999915619118,
+      "sig2_eps_hi": 0.7441489512432788,
+      "marginal_r2": 0.1338614234217052,
+      "marginal_r2_lo": 0.12482920356177214,
+      "marginal_r2_hi": 0.14384979155668223,
+      "share_x": 0.1338614234217052,
+      "share_alpha": 0.30873562883684214,
+      "share_eps": 0.5574029477414526,
+      "sigma_alpha": 0.6042758333595571,
+      "oos_n_pairs": 73208,
+      "oos_n_members": 21329,
+      "oos_r": 0.5280261717146028,
+      "oos_r_lo": 0.4874115491006522,
+      "oos_r_hi": 0.574077595184529,
+      "prereg_verdict": "supported as a measurable trait"
+    }
+  },
+  "sensitivity": [
+    {
+      "body": "House",
+      "variant": "seniority + seniority\u00b2",
+      "kappa": 0.2584312124342737,
+      "marginal_r2": 0.339708481908656
+    },
+    {
+      "body": "House",
+      "variant": "outcome log(1 + LES)",
+      "kappa": 0.30232914643461883,
+      "marginal_r2": 0.3382781518166071
+    },
+    {
+      "body": "Senate",
+      "variant": "seniority + seniority\u00b2",
+      "kappa": 0.2715937828186063,
+      "marginal_r2": 0.3100065058503717
+    },
+    {
+      "body": "Senate",
+      "variant": "outcome log(1 + LES)",
+      "kappa": 0.284474775422077,
+      "marginal_r2": 0.3002420596672511
+    },
+    {
+      "body": "States",
+      "variant": "seniority + seniority\u00b2",
+      "kappa": 0.36043653264904646,
+      "marginal_r2": 0.1360542087023081
+    },
+    {
+      "body": "States",
+      "variant": "outcome log(1 + LES)",
+      "kappa": 0.4253662396044544,
+      "marginal_r2": 0.19093447141928502
+    },
+    {
+      "body": "States",
+      "variant": "no chamber term (PREREG X list)",
+      "kappa": 0.3572600913176667,
+      "marginal_r2": 0.1326117374091982
+    }
+  ],
+  "validation": [
+    {
+      "body": "House",
+      "sig2_alpha_fast": 0.36005628215676533,
+      "sig2_alpha_statsmodels": 0.36005648850595817,
+      "sig2_eps_fast": 1.0615642123167,
+      "sig2_eps_statsmodels": 1.0615641392731658,
+      "max_abs_beta_diff": 1.3999742140557991e-07,
+      "max_abs_blup_diff": 1.7176330313617427e-06,
+      "statsmodels_converged": true
+    },
+    {
+      "body": "Senate",
+      "sig2_alpha_fast": 0.18212376747809295,
+      "sig2_alpha_statsmodels": 0.18212586740049608,
+      "sig2_eps_fast": 0.5232875698422084,
+      "sig2_eps_statsmodels": 0.5232869245463814,
+      "max_abs_beta_diff": 5.458846357164759e-07,
+      "max_abs_blup_diff": 1.2634411723499994e-05,
+      "statsmodels_converged": true
+    },
+    {
+      "body": "States",
+      "sig2_alpha_fast": 0.36514928278238723,
+      "sig2_alpha_statsmodels": 0.36514907275999114,
+      "sig2_eps_fast": 0.6592542861198,
+      "sig2_eps_statsmodels": 0.6592543602708887,
+      "max_abs_beta_diff": 1.6233960398182035e-08,
+      "max_abs_blup_diff": 5.049358680508931e-06,
+      "statsmodels_converged": true
+    }
+  ]
+}

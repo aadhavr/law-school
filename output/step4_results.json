@@ -1,0 +1,142 @@
+{
+  "seed": 20261026,
+  "B": 1000,
+  "chambers": {
+    "House": {
+      "counts": {
+        "body": "House",
+        "class_members": 657,
+        "matched_to_LES": 653,
+        "unmatched": 4,
+        "law_degree": 255,
+        "doctorate_phd_ind": 35,
+        "econ_phd": 3,
+        "doctorate_field_blank": 10,
+        "female": 96,
+        "black": 52,
+        "hispanic": 24,
+        "sigma_alpha_full_panel": 0.6000468999622397,
+        "terms_dropped_lt_min_holders": "",
+        "unmatched_icpsr": "94879;99542;99767;928489"
+      },
+      "terms": [
+        "Intercept",
+        "law_deg",
+        "phd",
+        "female",
+        "black",
+        "hispanic"
+      ],
+      "econ_phd_estimated": false,
+      "coefficients": [
+        {
+          "body": "House",
+          "term": "Intercept",
+          "estimate_sigma_alpha_units": -0.1240295955588966,
+          "ci_lo": -0.18904701947541425,
+          "ci_hi": -0.052188015244199956,
+          "n": 653
+        },
+        {
+          "body": "House",
+          "term": "law_deg",
+          "estimate_sigma_alpha_units": 0.10198414768783942,
+          "ci_lo": -0.01912645817170024,
+          "ci_hi": 0.21697381568342722,
+          "n": 653
+        },
+        {
+          "body": "House",
+          "term": "phd",
+          "estimate_sigma_alpha_units": 0.13667683590145033,
+          "ci_lo": -0.024250066583410976,
+          "ci_hi": 0.29696203979719504,
+          "n": 653
+        },
+        {
+          "body": "House",
+          "term": "female",
+          "estimate_sigma_alpha_units": 0.03134212071839039,
+          "ci_lo": -0.09216728135497006,
+          "ci_hi": 0.15226690662045,
+          "n": 653
+        },
+        {
+          "body": "House",
+          "term": "black",
+          "estimate_sigma_alpha_units": -0.12486136712923744,
+          "ci_lo": -0.2561866850038581,
+          "ci_hi": -0.0017213908754996517,
+          "n": 653
+        },
+        {
+          "body": "House",
+          "term": "hispanic",
+          "estimate_sigma_alpha_units": 0.01703477888887699,
+          "ci_lo": -0.22990032197149288,
+          "ci_hi": 0.2888552385031539,
+          "n": 653
+        }
+      ],
+      "prereg_jd_verdict": "no evidence for a JD skill premium"
+    },
+    "Senate": {
+      "counts": {
+        "body": "Senate",
+        "class_members": 147,
+        "matched_to_LES": 146,
+        "unmatched": 1,
+        "law_degree": 85,
+        "doctorate_phd_ind": 3,
+        "econ_phd": 0,
+        "doctorate_field_blank": 3,
+        "female": 16,
+        "black": 1,
+        "hispanic": 2,
+        "sigma_alpha_full_panel": 0.4267596008462843,
+        "terms_dropped_lt_min_holders": "phd;black;hispanic",
+        "unmatched_icpsr": "928490"
+      },
+      "terms": [
+        "Intercept",
+        "law_deg",
+        "female"
+      ],
+      "econ_phd_estimated": false,
+      "coefficients": [
+        {
+          "body": "Senate",
+          "term": "Intercept",
+          "estimate_sigma_alpha_units": -0.07697366589387292,
+          "ci_lo": -0.24364863365425482,
+          "ci_hi": 0.12434604113535487,
+          "n": 146
+        },
+        {
+          "body": "Senate",
+          "term": "law_deg",
+          "estimate_sigma_alpha_units": 0.11057342783116324,
+          "ci_lo": -0.16992305150463816,
+          "ci_hi": 0.37262269948154175,
+          "n": 146
+        },
+        {
+          "body": "Senate",
+          "term": "female",
+          "estimate_sigma_alpha_units": 0.21379330649041442,
+          "ci_lo": -0.2741575857099711,
+          "ci_hi": 0.6936205522773484,
+          "n": 146
+        }
+      ],
+      "prereg_jd_verdict": "no evidence for a JD skill premium"
+    }
+  },
+  "class_unique_members_both_chambers": {
+    "members": 788,
+    "law_deg": 335,
+    "phd": 38,
+    "econ_phd": 3,
+    "phd_field_blank": 13
+  }
+}

@@ -1,0 +1,74 @@
+House {'n_rows': 5808, 'n_members': 699, 'law_deg': 279, 'lawyer_occ': 267, 'both': 257, 'degree_not_occ': 22, 'occ_not_degree': 10}
+Senate {'n_rows': 1522, 'n_members': 166, 'law_deg': 97, 'lawyer_occ': 93, 'both': 89, 'degree_not_occ': 8, 'occ_not_degree': 4}
+      body                       analysis        term                                                    unit  estimate     ci_lo     ci_hi   boot_se  mde_80pct_power  power_at_prereg_threshold  threshold_in_this_unit
+0    House     PREREG step4 (OLS on BLUP)     law_deg                                              LES points  0.061195 -0.011667  0.128575  0.035826         0.100370                        NaN                     NaN
+1    House     PREREG step4 (OLS on BLUP)     law_deg  full-panel sigma_alpha (PREREG; re-estimated per draw)  0.101984 -0.019126  0.216974  0.060446         0.169344                   0.911298                     0.2
+2    House     PREREG step4 (OLS on BLUP)     law_deg                           sample sigma_alpha (0.456774)  0.133973 -0.024590  0.282858  0.079056         0.221483                        NaN                     NaN
+3   Senate     PREREG step4 (OLS on BLUP)     law_deg                                              LES points  0.047188 -0.071369  0.156616  0.056845         0.159257                        NaN                     NaN
+4   Senate     PREREG step4 (OLS on BLUP)     law_deg  full-panel sigma_alpha (PREREG; re-estimated per draw)  0.110573 -0.169923  0.372623  0.135721         0.380235                   0.313655                     0.2
+5   Senate     PREREG step4 (OLS on BLUP)     law_deg                           sample sigma_alpha (0.411236)  0.114748 -0.168441  0.384604  0.139265         0.390162                        NaN                     NaN
+6    House      E1/E2 mixed model: degree     law_deg                                              LES points  0.089565 -0.005291  0.186313  0.048994         0.137261                        NaN                     NaN
+7    House      E1/E2 mixed model: degree     law_deg              full-panel sigma_alpha (fixed at 0.600047)  0.149263 -0.008817  0.310497  0.081651         0.228751                   0.687761                     0.2
+8    House      E1/E2 mixed model: degree     law_deg                           sample sigma_alpha (0.461853)  0.193925 -0.012699  0.398081  0.106083         0.297202                        NaN                     NaN
+9    House  E1/E2 mixed model: occupation  lawyer_occ                                              LES points  0.074179 -0.021628  0.168900  0.049902         0.139805                        NaN                     NaN
+10   House  E1/E2 mixed model: occupation  lawyer_occ              full-panel sigma_alpha (fixed at 0.600047)  0.123622 -0.036044  0.281477  0.083163         0.232989                   0.671825                     0.2
+11   House  E1/E2 mixed model: occupation  lawyer_occ                           sample sigma_alpha (0.461853)  0.160611 -0.050051  0.371043  0.108457         0.303852                        NaN                     NaN
+12   House        E1/E2 mixed model: both     law_deg                                              LES points  0.132868 -0.057926  0.326873  0.099741         0.279433                        NaN                     NaN
+13   House        E1/E2 mixed model: both     law_deg              full-panel sigma_alpha (fixed at 0.600047)  0.221429 -0.096536  0.544746  0.166222         0.465686                   0.225379                     0.2
+14   House        E1/E2 mixed model: both     law_deg                           sample sigma_alpha (0.461853)  0.287685 -0.127978  0.714131  0.219022         0.613609                        NaN                     NaN
+15   House        E1/E2 mixed model: both  lawyer_occ                                              LES points -0.047925 -0.251500  0.141082  0.102086         0.286004                        NaN                     NaN
+16   House        E1/E2 mixed model: both  lawyer_occ              full-panel sigma_alpha (fixed at 0.600047) -0.079869 -0.419134  0.235117  0.170131         0.476636                   0.217261                     0.2
+17   House        E1/E2 mixed model: both  lawyer_occ                           sample sigma_alpha (0.461853) -0.103767 -0.553287  0.320785  0.225090         0.630610                        NaN                     NaN
+18  Senate      E1/E2 mixed model: degree     law_deg                                              LES points  0.070736 -0.084449  0.217254  0.077010         0.215751                        NaN                     NaN
+19  Senate      E1/E2 mixed model: degree     law_deg              full-panel sigma_alpha (fixed at 0.426760)  0.165751 -0.197883  0.509078  0.180454         0.505557                   0.198281                     0.2
+20  Senate      E1/E2 mixed model: degree     law_deg                           sample sigma_alpha (0.396037)  0.178609 -0.215194  0.587326  0.197902         0.554438                        NaN                     NaN
+21  Senate  E1/E2 mixed model: occupation  lawyer_occ                                              LES points -0.010341 -0.165119  0.131843  0.076870         0.215359                        NaN                     NaN
+22  Senate  E1/E2 mixed model: occupation  lawyer_occ              full-panel sigma_alpha (fixed at 0.426760) -0.024231 -0.386913  0.308939  0.180126         0.504637                   0.198835                     0.2
+23  Senate  E1/E2 mixed model: occupation  lawyer_occ                           sample sigma_alpha (0.396037) -0.026111 -0.412027  0.349732  0.196489         0.550480                        NaN                     NaN
+24  Senate        E1/E2 mixed model: both     law_deg                                              LES points  0.282345 -0.051705  0.644014  0.182032         0.509977                        NaN                     NaN
+25  Senate        E1/E2 mixed model: both     law_deg              full-panel sigma_alpha (fixed at 0.426760)  0.661601 -0.121157  1.509078  0.426543         1.194998                   0.075544                     0.2
+26  Senate        E1/E2 mixed model: both     law_deg                           sample sigma_alpha (0.396037)  0.712925 -0.127146  1.630239  0.463158         1.297578                        NaN                     NaN
+27  Senate        E1/E2 mixed model: both  lawyer_occ                                              LES points -0.245848 -0.609631  0.100128  0.179455         0.502760                        NaN                     NaN
+28  Senate        E1/E2 mixed model: both  lawyer_occ              full-panel sigma_alpha (fixed at 0.426760) -0.576082 -1.428512  0.234624  0.420507         1.178086                   0.076292                     0.2
+29  Senate        E1/E2 mixed model: both  lawyer_occ                           sample sigma_alpha (0.396037) -0.620771 -1.505700  0.265016  0.455273         1.275485                        NaN                     NaN
+      body                                 quantity  estimate     ci_lo     ci_hi   boot_se
+0    House                       sigma_alpha_prereg  0.461853  0.388118  0.538656  0.038425
+1    House                 degree:law_deg:gamma_les  0.089565 -0.005291  0.186313  0.048994
+2    House         degree:law_deg:gamma_sigma_alpha  0.193925 -0.012699  0.398081  0.106083
+3    House          occupation:lawyer_occ:gamma_les  0.074179 -0.021628  0.168900  0.049902
+4    House  occupation:lawyer_occ:gamma_sigma_alpha  0.160611 -0.050051  0.371043  0.108457
+5    House                   both:law_deg:gamma_les  0.132868 -0.057926  0.326873  0.099741
+6    House                both:lawyer_occ:gamma_les -0.047925 -0.251500  0.141082  0.102086
+7    House           both:law_deg:gamma_sigma_alpha  0.287685 -0.127978  0.714131  0.219022
+8    House        both:lawyer_occ:gamma_sigma_alpha -0.103767 -0.553287  0.320785  0.225090
+9   Senate                       sigma_alpha_prereg  0.396037  0.318880  0.460181  0.037404
+10  Senate                 degree:law_deg:gamma_les  0.070736 -0.084449  0.217254  0.077010
+11  Senate         degree:law_deg:gamma_sigma_alpha  0.178609 -0.215194  0.587326  0.197902
+12  Senate          occupation:lawyer_occ:gamma_les -0.010341 -0.165119  0.131843  0.076870
+13  Senate  occupation:lawyer_occ:gamma_sigma_alpha -0.026111 -0.412027  0.349732  0.196489
+14  Senate                   both:law_deg:gamma_les  0.282345 -0.051705  0.644014  0.182032
+15  Senate                both:lawyer_occ:gamma_les -0.245848 -0.609631  0.100128  0.179455
+16  Senate           both:law_deg:gamma_sigma_alpha  0.712925 -0.127146  1.630239  0.463158
+17  Senate        both:lawyer_occ:gamma_sigma_alpha -0.620771 -1.505700  0.265016  0.455273
+[
+ {
+  "k": 3,
+  "n": 788,
+  "denominator": "all CLASS people",
+  "share": 0.0038071065989847717,
+  "ci": [
+   0.001295586453567383,
+   0.011132985845932083
+  ]
+ },
+ {
+  "k": 3,
+  "n": 783,
+  "denominator": "CLASS people matched to LES 1.0",
+  "share": 0.0038314176245210726,
+  "ci": [
+   0.0013038649945517396,
+   0.011203684919562284
+  ]
+ }
+]

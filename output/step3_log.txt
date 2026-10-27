@@ -1,0 +1,8 @@
+     body  sig2_alpha_fast  sig2_alpha_statsmodels  sig2_eps_fast  sig2_eps_statsmodels  max_abs_beta_diff  max_abs_blup_diff  statsmodels_converged
+0   House         0.360056                0.360056       1.061564              1.061564       1.399974e-07           0.000002                   True
+1  Senate         0.182124                0.182126       0.523288              0.523287       5.458846e-07           0.000013                   True
+2  States         0.367146                0.367146       0.660526              0.660526       1.309336e-08           0.000004                   True
+House done 59s
+Senate done 66s
+States done 292s
+total 293s

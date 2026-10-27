@@ -1,0 +1,46 @@
+     body  sig2_alpha_fast  sig2_alpha_statsmodels  sig2_eps_fast  sig2_eps_statsmodels  max_abs_beta_diff  max_abs_blup_diff  statsmodels_converged
+0   House         0.360056                0.360056       1.061564              1.061564       1.399974e-07           0.000002                   True
+1  Senate         0.182124                0.182126       0.523288              0.523287       5.458846e-07           0.000013                   True
+2  States         0.365149                0.365149       0.659254              0.659254       1.623396e-08           0.000005                   True
+House done 58s
+Senate done 64s
+States done 323s
+                              0         1         2
+body                      House    Senate    States
+n_rows                    11479      2635    100627
+n_members                  2222       420     27384
+t_min                        93        93      1989
+t_max                       118       118      2024
+mean_terms_per_member  5.166067   6.27381  3.674664
+var_les_sample          2.23445  1.022022  1.245127
+sig2_alpha             0.360056  0.182124  0.365149
+sig2_eps               1.061564  0.523288  0.659254
+var_xb                  0.73756   0.28714  0.158321
+kappa                  0.253272  0.258181  0.356451
+kappa_lo               0.199867  0.189526  0.321319
+kappa_hi               0.323184  0.331678  0.391842
+sig2_alpha_lo          0.263509  0.111998  0.318738
+sig2_alpha_hi          0.490499  0.277942  0.418992
+sig2_eps_lo            0.894581  0.428504     0.584
+sig2_eps_hi            1.216293  0.624429  0.744149
+marginal_r2            0.341592  0.289295  0.133861
+marginal_r2_lo         0.301866  0.247867  0.124829
+marginal_r2_hi         0.379623  0.341537   0.14385
+share_x                0.341592  0.289295  0.133861
+share_alpha            0.166756   0.18349  0.308736
+share_eps              0.491652  0.527215  0.557403
+sigma_alpha            0.600047   0.42676  0.604276
+     body  n_pairs  n_members         r      r_lo      r_hi
+0   House     9257       1832  0.408247  0.366073  0.451601
+1  Senate     2215        377  0.394466  0.335058  0.449477
+2  States    73208      21329  0.528026  0.487412  0.574078
+     body                          variant     kappa  marginal_r2
+0   House           seniority + seniority²  0.258431     0.339708
+1   House             outcome log(1 + LES)  0.302329     0.338278
+2  Senate           seniority + seniority²  0.271594     0.310007
+3  Senate             outcome log(1 + LES)  0.284475     0.300242
+4  States           seniority + seniority²  0.360437     0.136054
+5  States             outcome log(1 + LES)  0.425366     0.190934
+6  States  no chamber term (PREREG X list)  0.357260     0.132612
+{'House': 'supported as a measurable trait', 'Senate': 'supported as a measurable trait', 'States': 'supported as a measurable trait'}
+total 324s

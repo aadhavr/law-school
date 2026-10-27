@@ -1,0 +1,8 @@
+{
+  "house_rows_raw": 11606,
+  "house_rows_no_icpsr": 127,
+  "class_rows": 2715,
+  "class_rows_law_ind_1": 1153,
+  "class_rows_degree_not_lawyer_occ": 96,
+  "class_rows_lawyer_occ_not_degree": 34
+}

@@ -1,0 +1,29 @@
+{
+  "label": "EXPLORATORY",
+  "seed": 20261028,
+  "body": "House",
+  "outcome": "inverse-normal rank of LES 1.0 within Congress",
+  "n_rows": 11479,
+  "n_members": 2222,
+  "sig2_alpha": 0.2395461732733126,
+  "sig2_eps": 0.5063737415827633,
+  "kappa": 0.3211419463435732,
+  "kappa_ci": [
+    0.2931169251152573,
+    0.3484911169910812
+  ],
+  "marginal_r2": 0.2564989947542567,
+  "marginal_r2_ci": [
+    0.23569522423106487,
+    0.2776668945620543
+  ],
+  "share_x": 0.2564989947542567,
+  "oos_r": 0.41612590180629433,
+  "oos_r_ci": [
+    0.38788723975692097,
+    0.44239478580605013
+  ],
+  "oos_n_pairs": 9257,
+  "oos_n_members": 1832,
+  "prereg_rule_applied_for_comparison": "supported as a measurable trait"
+}

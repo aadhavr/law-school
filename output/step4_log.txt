@@ -1,0 +1,4 @@
+{'members': 788, 'law_deg': 335, 'phd': 38, 'econ_phd': 3, 'phd_field_blank': 13}
+House {'body': 'House', 'class_members': 657, 'matched_to_LES': 653, 'unmatched': 4, 'law_degree': 255, 'doctorate_phd_ind': 35, 'econ_phd': 3, 'doctorate_field_blank': 10, 'female': 96, 'black': 52, 'hispanic': 24, 'sigma_alpha_full_panel': 0.6000468999622397, 'terms_dropped_lt_min_holders': '', 'unmatched_icpsr': '94879;99542;99767;928489'}
+Senate {'body': 'Senate', 'class_members': 147, 'matched_to_LES': 146, 'unmatched': 1, 'law_degree': 85, 'doctorate_phd_ind': 3, 'econ_phd': 0, 'doctorate_field_blank': 3, 'female': 16, 'black': 1, 'hispanic': 2, 'sigma_alpha_full_panel': 0.4267596008462843, 'terms_dropped_lt_min_holders': 'phd;black;hispanic', 'unmatched_icpsr': '928490'}
+done

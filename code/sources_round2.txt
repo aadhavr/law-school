@@ -1,0 +1,8 @@
+01_les_codebook https://thelawmakers.org/wp-content/uploads/2026/10/sles_all_state_codebook.pdf
+02_voteview https://voteview.com/static/data/out/members/HSall_members.csv
+03_nsf_sed https://www.ncses.nsf.gov/pubs/nsf24300/assets/data-tables/tables/nsf24300-tab001-003.xlsx
+03_nsf_sed https://www.ncses.nsf.gov/pubs/nsf24300/assets/data-tables/tables/nsf24300-tab003-001.xlsx
+03_nsf_sed https://www.ncses.nsf.gov/pubs/nsf20301/assets/data-tables/tables/nsf20301-tab012.xlsx
+03_nsf_sed https://www.ncses.nsf.gov/pubs/nsf20301/assets/data-tables/tables/nsf20301-tab013.xlsx
+05_igm https://www.igmchicago.org/
+11_hallerberg_wehner https://dataverse.harvard.edu/api/datasets/:persistentId/?persistentId=doi:10.7910/DVN/NVPJK0

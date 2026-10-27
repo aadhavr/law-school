@@ -1,0 +1,3 @@
+body,class_members,matched_to_LES,unmatched,law_degree,doctorate_phd_ind,econ_phd,doctorate_field_blank,female,black,hispanic,sigma_alpha_full_panel,terms_dropped_lt_min_holders,unmatched_icpsr
+House,657,653,4,255,35,3,10,96,52,24,0.6000468999622397,,94879;99542;99767;928489
+Senate,147,146,1,85,3,0,3,16,1,2,0.4267596008462843,phd;black;hispanic,928490
