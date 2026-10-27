@@ -81,3 +81,19 @@ Rule (each predictor):
 Descriptive only (no rule):
 - Share of σ̂²_α explained = 1 − σ̂²_α(with) / σ̂²_α(without), with both models fit on the same rows.
 - The total share for all available predictors together, on the rows where all of them are available.
+
+## Amendment 1a: Test D sources, samples and power (2026-10-27)
+Written on 2026-10-27, after a source check and before any bill data was downloaded, and before any Test D model was fit. Tests A, B and C are unchanged. Everything in Amendment 1 stays the same except what is stated here.
+
+- **Source for (b) and (c):** govinfo BILLSTATUS bulk data, Congresses 108–117, bill types hr and hjres (one ZIP per Congress and type). The reason is data availability only: GovTrack blocks automated access. (b) and (c) therefore cover t = 109–118.
+- **(a):** run on its full sample (all t where t−1 is in the panel). The verdict for (a) uses the full sample. Also run (a) on t = 109–118, for comparison only.
+- **(d):**
+  - Source: CLASS 1.9, variables `pol_stateleg1_s`, `pol_stateleg1_e`, `pol_stateleg2_s`, `pol_stateleg2_e`. A missing spell means 0 years.
+  - Years = the sum over spells of the years served before the start year of the member's first House term. For each spell: max(0, min(end, Y) − start), where Y = 1789 + 2 × (c − 1) and c is the member's first Congress in the House in Voteview `HSall_members.csv`.
+  - (d) does not need service in t−1, and first terms stay in the (d) model.
+  - The (d) sample is the House members of Congresses 106–110 (CLASS), with all their House terms in the Step 3 panel.
+- **Total share:** uses (a), (b) and (c) only, on the rows where all three are available. (d) is reported alone and is not part of the total.
+- **Power, computed before any γ is estimated:**
+  - For each predictor, compute the standard error of γ̂ from that predictor's design matrix (X_it plus z/s_z, on the rows of its model) and the Step 3 House variance components (σ̂²_α and σ̂²_ε in `output/step3_kappa.csv`), held fixed. The formula is the GLS variance (X′V⁻¹X)⁻¹, where V is block-diagonal by member with σ̂²_ε·I + σ̂²_α·J. The outcome is not used.
+  - Report the power at |γ| = 0.060 LES points for the 99% CI to exclude 0: Φ(0.060/SE − z₀.₉₉₅) + Φ(−0.060/SE − z₀.₉₉₅).
+  - Write the results to `output/` before any γ is estimated.
