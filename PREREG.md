@@ -55,3 +55,29 @@ If any fails, the data gives no recommendation for law school. The decision then
 ## Commitments
 - All analyses are listed above. Anything else is labeled exploratory in the post.
 - I will not change a threshold after seeing a result.
+
+## Amendment 1: Test D (2026-10-27)
+Written on 2026-10-27, after the results of Test A and the skill-source test were seen, and before any Test D data was downloaded or loaded. Tests A, B and C, their rules and the combining rule are unchanged. Test D does not enter the combining rule.
+
+### Test D: What does the House mixed-model skill (α_i) contain?
+Sample: the Step 3 House panel (LES 1.0, PREREG X_it). Every predictor is measured in the previous Congress (t−1). So a member-term enters only if the member also served in the House in t−1 and the predictor is available.
+
+Predictors (each divided by its sample standard deviation s_z, computed over the rows used in that fit):
+- (a) **Distance from the House median on DW-NOMINATE dimension 1** in t−1: |nominate_dim1_i − median of nominate_dim1 over House members in t−1|. The source is `HSall_members.csv` (Voteview), already downloaded.
+- (b) **Cosponsorship network position in t−1**: PageRank (damping 0.85) of the member. The network is directed and weighted: one edge from each cosponsor to the sponsor of each House bill or joint resolution (types hr and hjres) introduced in t−1. Edge weight is the number of such cosponsorships, and withdrawn cosponsorships are excluded. The source is GovTrack bulk bill data, linked to ICPSR through bioguide IDs in `HSall_members.csv`.
+- (c) **Share of the member's sponsored bills (hr and hjres) in t−1 with at least one cosponsor from the other party.** A cosponsor counts if not withdrawn, and their Voteview party_code in t−1 differs from the sponsor's. Members who sponsored no bills in t−1 are missing. Same source as (b).
+- (d) **Years of prior state legislative service** before first entering the House, if a source is found. Its source and coverage are reported before any model is fit. If no source exists, (d) is dropped and logged, and no other predictor replaces it.
+
+If GovTrack bulk data cannot be obtained for some Congresses under the download rules, (b) and (c) are run on the Congresses covered, and the coverage is reported. If it cannot be obtained at all, (b) and (c) are dropped and logged.
+
+Method:
+- Add one predictor at a time to the Step 3 mixed model: LES_it = X_it·β + γ·z_i,t−1/s_z + α_i + ε_it. Do not regress α̂.
+- Report for each predictor: γ in LES points per s_z, its 99% CI (percentile, bootstrap over members, B = 2000, refitting the model in every draw), and γ / 0.600 (the full-panel σ̂_α from Step 3).
+
+Rule (each predictor):
+- Supported: the 99% CI of γ excludes 0, AND |γ| ≥ 0.060 LES points (0.10 × the full-panel σ̂_α of 0.600).
+- Otherwise: "no evidence".
+
+Descriptive only (no rule):
+- Share of σ̂²_α explained = 1 − σ̂²_α(with) / σ̂²_α(without), with both models fit on the same rows.
+- The total share for all available predictors together, on the rows where all of them are available.

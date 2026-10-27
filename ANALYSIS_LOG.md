@@ -14,6 +14,7 @@ PREREG results (Step 3 Test A; Step 4 JD rule) are primary. Nothing labeled EXPL
 | D6 | Economics PhD | Defined as `phd_ind` = 1 and the doctorate field contains "econom". `phd_ind` also counts Ed.D. and Ed.S.; 13 doctorates have a blank field. | Before counting |
 | D7 | Claim A rule uses κ | Applied to the point estimate of κ, as PREREG says. The House κ 95% CI lower bound is 0.19987, below 0.20. | Rule as written |
 | D9 | Effects "in units of σ_α", without saying which σ_α | Every law effect is now reported three ways (`output/exploratory/expl_law_units.csv`, post tables): (1) LES points; (2) units of the full-panel σ̂_α from Step 3 (House 0.600, Senate 0.427); (3) units of the σ̂_α of the PREREG model fit on the analysis sample's own terms. **The PREREG threshold (0.20σ_α) and the power at it use (2).** For Step 4, (2) is the PREREG result itself (σ̂_α re-estimated in each bootstrap draw). For E1/E2, (2) divides by the fixed full-panel estimate, because E1/E2 resample only CLASS members; its CI ignores uncertainty in σ̂_α. The earlier E1 numbers in sample units (e.g. House +0.194) are unchanged but are no longer the headline unit. | 2026-10-27, after the results were seen |
+| D10 | (not in the original PREREG) | **New test, not a change to any test.** Test D (what α_i contains) was added as PREREG.md "Amendment 1: Test D" on 2026-10-27. It was written after the Test A and skill-source results were seen and before any Test D data was downloaded or loaded. Tests A, B, C and the combining rule are unchanged, and Test D does not enter the combining rule. Its own rule (99% CI of γ excludes 0 and \|γ\| ≥ 0.060 LES points) is fixed in the amendment. Committed to git before any data download (see section E). | 2026-10-27, after A and skill-source results; before Test D data |
 | D8 | Tests B, C and the lockdown replication | Not run yet. ABA and IGM data need manual download (`MANUAL_DOWNLOADS.md`). The combining rule cannot be evaluated until they are done. | — |
 
 ### Implementation choices PREREG.md does not specify (not deviations, listed for completeness)
@@ -47,3 +48,14 @@ Outputs in `output/exploratory/`. Code: `code/explore_law_mixed.py` (E1, E2, E4,
 - Compared with a copy taken just before the re-run, every output file is byte-identical, as are `_variables.yml`, `post.html`, `DATA_SOURCES.md` and `TABLE_COLUMNS.md`. The only difference is the run-time lines in `step3_log.txt`. New files: `step5_data_counts.json` (raw-data counts the post cites, now saved to output/), `step6_verify.md`, `exploratory/expl_law_log.txt`.
 - `output/step6_verify.md`: 70 distinct variables, 9 tables and 5 figures all resolve. All 209 distinct numbers in the rendered post trace to output/, PREREG.md, a code constant or CLASS itself. 88 key values, including every PREREG verdict, were recomputed by separate code and all matched.
 - Before the fix, 7 numbers had no source in output/. Three were counts computed from raw data but not saved (127, 1,153, 34): now saved. Two were derived thresholds in LES points (0.120, 0.085): now derived explicitly in the verifier. One was the post date, and one was a "deviation 6" cross-reference, now checked against the list.
+
+## E. Amendment 1: Test D (D10)
+- Commit "state before Test D" holds every code, output, note and post file as they were before Test D.
+- A second commit holds PREREG.md (with Amendment 1) and this log, made before any Test D data was downloaded.
+- The amendment pins down choices the request left open:
+  - the network measure (PageRank, damping 0.85; cosponsor → sponsor edges; hr and hjres; withdrawn cosponsorships excluded);
+  - the party definition (Voteview party_code in t−1);
+  - lagged predictors require House service in t−1;
+  - the 99% CI uses a member bootstrap with B = 2000;
+  - s_z is computed on each fit's own rows;
+  - what happens if GovTrack data is only partly available.
