@@ -59,3 +59,9 @@ All counts below come from Python (pandas 2.3.3) reads of the raw files, run 202
 4. State `comm_chair = "."` needs a rule (set to missing or to 0). The codebook should say.
 5. State members who served in both chambers: is α_i one effect per person, or one per person-chamber?
 6. LES is scaled to mean 1 within each Congress or state-chamber-term. So the levels are relative within a session, and pooled variance mixes chambers with different σ².
+
+## ABA "Enrollment and Degrees Awarded 1963 - 2010" (`data/raw/stats_1.authcheckdam.pdf`)
+- Placed by the user on 2026-10-29. The macOS download attribute says it came from https://claude.ai/ (Brave), so it is not confirmed as the americanbar.org original. PDF metadata: Author "aba", made with Acrobat PDFMaker 8.1 for Excel on 2011-08-26. It has a text layer and is not a scan; both pages are rotated 90°.
+- `code/aba_extract.py` writes `data/derived/aba_jd_awarded.csv`: 47 academic years, from "1963 - 1964" to "2009 - 2010", with labels kept as printed. Parsing checks: male + female = total for first-year and J.D. enrollment in every row; no gaps; no duplicates.
+- PDF note: J.D./LL.B. degrees are "those awarded by approved schools for the academic year ending in the first year stated". So the row "2009 - 2010" counts degrees for the year ending in 2009. No year has been shifted.
+- Column header: "J.D. or LL.B Awarded". The early years may include LL.B. degrees.
