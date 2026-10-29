@@ -97,3 +97,11 @@ Written on 2026-10-27, after a source check and before any bill data was downloa
   - For each predictor, compute the standard error of γ̂ from that predictor's design matrix (X_it plus z/s_z, on the rows of its model) and the Step 3 House variance components (σ̂²_α and σ̂²_ε in `output/step3_kappa.csv`), held fixed. The formula is the GLS variance (X′V⁻¹X)⁻¹, where V is block-diagonal by member with σ̂²_ε·I + σ̂²_α·J. The outcome is not used.
   - Report the power at |γ| = 0.060 LES points for the 99% CI to exclude 0: Φ(0.060/SE − z₀.₉₉₅) + Φ(−0.060/SE − z₀.₉₉₅).
   - Write the results to `output/` before any γ is estimated.
+
+## Amendment 1b: Test D power report (2026-10-29)
+Written on 2026-10-29, before any Test D estimate exists: no γ has been estimated and no model using the LES outcome has been fit for Test D. Tests A, B and C are unchanged. The Test D threshold and rule are unchanged. This amendment only adds numbers to the power report of Amendment 1a.
+
+- For each predictor (a), (b), (c) and (d), report two numbers at each of two true effects, γ = 0.060 and γ = 0.120 LES points per s_z:
+  - (i) power for the 99% CI to exclude 0: Φ(γ/σ̂_γ̂ − z₀.₉₉₅) + Φ(−γ/σ̂_γ̂ − z₀.₉₉₅);
+  - (ii) P(supported) = P(99% CI excludes 0 and |γ̂| ≥ 0.060) = 1 − Φ((a − γ)/σ̂_γ̂) + Φ((−a − γ)/σ̂_γ̂), where a = max(0.060, z₀.₉₉₅ · σ̂_γ̂).
+- σ̂_γ̂ is the GLS standard error of γ̂ from Amendment 1a, (X′V⁻¹X)⁻¹ with the Step 3 House variance components held fixed. It is a planning figure only. The test itself uses the percentile CI from the member bootstrap with B = 2000, as in Amendment 1.
