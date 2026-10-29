@@ -63,3 +63,18 @@ Outputs in `output/exploratory/`. Code: `code/explore_law_mixed.py` (E1, E2, E4,
   - what happens if GovTrack data is only partly available.
 - Amendment 1a (D11) was committed and pushed before the BILLSTATUS files were downloaded.
 - Amendment 1b (D12) was committed and pushed before any BILLSTATUS ZIP was opened.
+
+### Test D design numbers (2026-10-29; no LES outcome used, no γ estimated)
+Code: `code/testD_billstatus.py` (parses BILLSTATUS), `code/testD_design.py` (builds predictors, GLS σ̂_γ̂, power). Outputs: `output/testD/`. Both are in `run_all.sh` after Step 4. `testD_design.py` drops the LES column right after loading the House panel.
+
+Implementation choices that Amendments 1–1b do not specify (not deviations):
+- **Parsing.** 72,206 of 72,206 XML files parsed. 13 files use the older tag names `billType`/`billNumber`. The first parser run skipped them; this was fixed before any predictor was built. 16 bills have an empty sponsor list in the source (11 are reserved numbers H.R. 2, 9–17, 20 in the 117th Congress) and have no sponsor. Any XML with a DOCTYPE or ENTITY declaration would be refused; there were none.
+- **Matching.** A BILLSTATUS bioguide ID is matched to the Voteview House roster of the same Congress. All unmatched IDs are delegates or resident commissioners, whom Voteview lists only in some Congresses. Their cosponsorships are dropped from the network, and their bills are dropped from (c).
+- **Service in t−1 is by person (bioguide), not ICPSR.** The LES panel gives party switchers a new ICPSR (e.g. Hall: 14828 to the 108th, 94828 from the 109th). 14 rows have a different ICPSR in t−1. α_i stays per ICPSR, as in Step 3.
+- **Party for (c).** One party_code per person and Congress. A within-Congress switcher (Hall 108, Griffith 111, Amash, Mitchell and Van Drew 116) takes the party of the row whose ICPSR is in the LES panel in that Congress, otherwise the row with more votes. A cosponsor with no Voteview party_code in t−1 does not count as cross-party.
+- **PageRank.** Nodes are the Voteview House roster of t−1, so members with no edges still get a value. Dangling mass is spread uniformly (networkx convention). Self-edges are dropped. The fixed point is checked in code.
+- **(a).** The median is over all Voteview House rows of t−1 with a dim-1 score. The member's own score comes from their t−1 ICPSR row.
+- **(d).** A spell that starts in or after the first-term year counts 0 years. A member with no first House Congress in Voteview (ICPSR 928489, who has no LES row) is missing, not 0. 18 members have a spell cut at Y.
+- **s_z** uses ddof = 1.
+- **σ̂_γ̂** is computed by quasi-demeaning and checked against explicit block inversion of V for every predictor (equal to 1e−9 relative).
+

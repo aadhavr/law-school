@@ -1,0 +1,23 @@
+Step 3 House: sig2_alpha=0.3600562821567653 sig2_eps=1.0615642123167
+House panel rows=11479 members=2222 t=93-118
+panel rows without a Voteview bioguide ID: 0
+rows with House service in t-1: 9216 (of which 14 have a different ICPSR in t-1)
+network {'congress': 108, 'nodes': 439, 'edges': 58204, 'edge_weight': 101326, 'cosponsorships_dropped_unmatched': 2148, 'cosponsorships_cosponsor_no_party': 1691, 'members_no_bills': 4}
+network {'congress': 109, 'nodes': 440, 'edges': 58423, 'edge_weight': 102609, 'cosponsorships_dropped_unmatched': 1740, 'cosponsorships_cosponsor_no_party': 1214, 'members_no_bills': 4}
+network {'congress': 110, 'nodes': 453, 'edges': 65620, 'edge_weight': 123803, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 3}
+network {'congress': 111, 'nodes': 451, 'edges': 59576, 'edge_weight': 108460, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 6}
+network {'congress': 112, 'nodes': 445, 'edges': 54766, 'edge_weight': 92528, 'cosponsorships_dropped_unmatched': 2321, 'cosponsorships_cosponsor_no_party': 1576, 'members_no_bills': 6}
+network {'congress': 113, 'nodes': 444, 'edges': 57624, 'edge_weight': 101296, 'cosponsorships_dropped_unmatched': 2021, 'cosponsorships_cosponsor_no_party': 1482, 'members_no_bills': 7}
+network {'congress': 114, 'nodes': 441, 'edges': 60286, 'edge_weight': 108453, 'cosponsorships_dropped_unmatched': 2111, 'cosponsorships_cosponsor_no_party': 1519, 'members_no_bills': 4}
+network {'congress': 115, 'nodes': 450, 'edges': 61994, 'edge_weight': 114213, 'cosponsorships_dropped_unmatched': 2585, 'cosponsorships_cosponsor_no_party': 1984, 'members_no_bills': 8}
+network {'congress': 116, 'nodes': 448, 'edges': 69137, 'edge_weight': 150787, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 3}
+network {'congress': 117, 'nodes': 455, 'edges': 66860, 'edge_weight': 147007, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 4}
+rows t=109-118 with service in t-1: 3671 ; with (b): 3671 ; with (c): 3650
+(d) CLASS House members 106-110: 657; without a Voteview first House Congress: 1; with any spell: 351; years > 0: 349; spells cut at Y: 18
+(d) CLASS members with no row in the House panel: 4
+a_full {'sample': 'a_full', 'predictor': 'a_dist_median', 'n_member_terms': 9214, 'n_members': 1835, 't_min': 94, 't_max': 118, 's_z': 0.22655, 'se_gamma_gls': 0.01473, 'se_gamma_gls_direct_check': 0.01473, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.93286, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 1.0, 'p_supported_g120': 0.99998, 'a_cutoff': 0.06}
+a_t109_118 {'sample': 'a_t109_118', 'predictor': 'a_dist_median', 'n_member_terms': 3670, 'n_members': 950, 't_min': 109, 't_max': 118, 's_z': 0.25425, 'se_gamma_gls': 0.01992, 'se_gamma_gls_direct_check': 0.01992, 'role': 'comparison only', 'power_ci_excludes_0_g060': 0.66848, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99972, 'p_supported_g120': 0.9987, 'a_cutoff': 0.06}
+b {'sample': 'b', 'predictor': 'b_pagerank', 'n_member_terms': 3671, 'n_members': 950, 't_min': 109, 't_max': 118, 's_z': 0.00203, 'se_gamma_gls': 0.021, 'se_gamma_gls_direct_check': 0.021, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.61081, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99915, 'p_supported_g120': 0.99786, 'a_cutoff': 0.06}
+c {'sample': 'c', 'predictor': 'c_cross_share', 'n_member_terms': 3650, 'n_members': 949, 't_min': 109, 't_max': 118, 's_z': 0.23387, 'se_gamma_gls': 0.02033, 'se_gamma_gls_direct_check': 0.02033, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.64644, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99956, 'p_supported_g120': 0.99842, 'a_cutoff': 0.06}
+d {'sample': 'd', 'predictor': 'd_state_leg_years', 'n_member_terms': 5616, 'n_members': 653, 't_min': 93, 't_max': 118, 's_z': 5.63203, 'se_gamma_gls': 0.02765, 'se_gamma_gls_direct_check': 0.02765, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.34229, 'p_supported_g060': 0.34229, 'power_ci_excludes_0_g120': 0.96108, 'p_supported_g120': 0.96108, 'a_cutoff': 0.07123}
+rows with (a), (b), (c) all available (total-share sample): 3649 member-terms, 949 members
