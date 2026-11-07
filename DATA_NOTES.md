@@ -65,6 +65,7 @@ All counts below come from Python (pandas 2.3.3) reads of the raw files, run 202
 - `code/aba_extract.py` writes `data/derived/aba_jd_awarded.csv`: 47 academic years, from "1963 - 1964" to "2009 - 2010", with labels kept as printed. Parsing checks: male + female = total for first-year and J.D. enrollment in every row; no gaps; no duplicates.
 - PDF note: J.D./LL.B. degrees are "those awarded by approved schools for the academic year ending in the first year stated". So the row "2009 - 2010" counts degrees for the year ending in 2009. No year has been shifted.
 - Column header: "J.D. or LL.B Awarded". The early years may include LL.B. degrees.
+- **Label rule (D18, 2026-11-07):** the row "2009 - 2010" = degrees awarded for the academic year ending in 2009, as the PDF note says. The other reading (ending in 2010) is a check only.
 
 ## IGM Forum votes, econpanel copy (`data/raw/16_econpanel/data/igm.rda`)
 - Cloned on 2026-11-07 from https://github.com/corybrunson/econpanel, commit `228daee92072a95f65e963e8e96800c5da24fa36` (2017-12-26). sha256 of `igm.rda`: `5098e826b539c55a9d550ccea23a4434386ac7be4ecbad7179fe36dc2b4da55e`.
