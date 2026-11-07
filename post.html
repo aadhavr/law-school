@@ -67,6 +67,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#skill-source-does-a-law-degree-predict-skill" id="toc-skill-source-does-a-law-degree-predict-skill" class="nav-link" data-scroll-target="#skill-source-does-a-law-degree-predict-skill">Skill source: Does a law degree predict skill?</a></li>
   <li><a href="#what-the-pre-registered-rule-says" id="toc-what-the-pre-registered-rule-says" class="nav-link" data-scroll-target="#what-the-pre-registered-rule-says">What the pre-registered rule says</a></li>
   <li><a href="#test-d-what-does-skill-α_i-contain" id="toc-test-d-what-does-skill-α_i-contain" class="nav-link" data-scroll-target="#test-d-what-does-skill-α_i-contain">Test D: What does skill (α_i) contain?</a></li>
+  <li><a href="#lockdown-data-do-law-trained-leaders-lock-down-sooner" id="toc-lockdown-data-do-law-trained-leaders-lock-down-sooner" class="nav-link" data-scroll-target="#lockdown-data-do-law-trained-leaders-lock-down-sooner">Lockdown data: Do law-trained leaders lock down sooner?</a></li>
   </ul></li>
   <li><a href="#deviations-from-the-pre-registration" id="toc-deviations-from-the-pre-registration" class="nav-link" data-scroll-target="#deviations-from-the-pre-registration">Deviations from the pre-registration</a></li>
   <li><a href="#exploratory-analyses" id="toc-exploratory-analyses" class="nav-link" data-scroll-target="#exploratory-analyses">Exploratory analyses</a></li>
@@ -720,12 +721,13 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Post-result note: planned versus realized precision.</strong> This note was added after the results were seen. It changes no verdict and no rule. The planning figure σ̂_γ̂ held the full-panel variance components fixed (σ̂²_α = 0.360, σ̂²_ε = 1.062). The bootstrap standard errors that were realized differ from it:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -735,6 +737,7 @@ ul.task-list li input[type="checkbox"] {
 <th>Realized bootstrap standard error</th>
 <th>Realized / planned</th>
 <th>GLS with this sample’s own variance components</th>
+<th>Cluster-robust (CR1, clusters = members)</th>
 </tr>
 </thead>
 <tbody>
@@ -745,6 +748,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0.015</td>
 <td>0.99</td>
 <td>0.016</td>
+<td>not computed</td>
 </tr>
 <tr class="even">
 <td>(a) Distance from House median, t−1</td>
@@ -753,6 +757,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0.017</td>
 <td>0.87</td>
 <td>0.019</td>
+<td>not computed</td>
 </tr>
 <tr class="odd">
 <td>(b) Cosponsorship PageRank, t−1</td>
@@ -761,6 +766,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0.028</td>
 <td>1.32</td>
 <td>0.020</td>
+<td>0.024</td>
 </tr>
 <tr class="even">
 <td>(c) Share of bills with a cross-party cosponsor, t−1</td>
@@ -769,6 +775,7 @@ ul.task-list li input[type="checkbox"] {
 <td>0.018</td>
 <td>0.87</td>
 <td>0.019</td>
+<td>not computed</td>
 </tr>
 <tr class="odd">
 <td>(d) Years in state legislature before the House</td>
@@ -777,10 +784,12 @@ ul.task-list li input[type="checkbox"] {
 <td>0.020</td>
 <td>0.72</td>
 <td>0.024</td>
+<td>0.020</td>
 </tr>
 </tbody>
 </table>
 <p>For (d), the realized standard error (0.020) is well below the planned one (0.028). Part of the reason is that the (d) rows have a smaller σ̂²_α (0.209; σ̂²_ε = 1.187). With those components, the GLS figure is 0.024. That accounts for about 51% of the gap, not all of it. For (b), the realized standard error is 1.32 times the planned one, so (b) was less precise than planned.</p>
+<p>A likely reason for the rest of the gap is that the variance is unequal across members. The GLS figures assume every member has the same σ²_α and σ²_ε, and the bootstrap does not. To check this, the cluster-robust standard error (CR1, clusters = members) was computed on the same fits. This check was also added after the results were seen. Before it was run, the rule was set that it supports the reason for a predictor if the cluster-robust value moves from the model-based GLS value toward the bootstrap value by at least half the gap. For (d), the cluster-robust value is 0.020 (model-based 0.024, bootstrap 0.020), which closes 101% of the gap. For (b), it is 0.024 (model-based 0.019), which closes 60%. So the check supports unequal variance across members as a reason for both. For (b), the cluster-robust value is still below the bootstrap value, so part of the (b) gap is not explained by this check.</p>
 <p><strong>Other limits.</strong></p>
 <ul>
 <li><strong>(b) and (c) cover only t = 109–118.</strong> Bill data comes from govinfo BILLSTATUS, which this project used for Congresses 108–117 (GovTrack blocks automated access). (a) is judged on its full sample; the (a) row for t = 109–118 is for comparison only.</li>
@@ -803,6 +812,97 @@ ul.task-list li input[type="checkbox"] {
 <li>s_z uses the sample standard deviation and is recomputed in every bootstrap draw.</li>
 </ul>
 </section>
+<section id="lockdown-data-do-law-trained-leaders-lock-down-sooner" class="level2">
+<h2 class="anchored" data-anchor-id="lockdown-data-do-law-trained-leaders-lock-down-sooner">Lockdown data: Do law-trained leaders lock down sooner?</h2>
+<blockquote class="blockquote">
+<p><strong>not an exact replication.</strong> The replication below misses the pre-set tolerance on one term, so the law-trained result is reported next to the gap and should be read with it.</p>
+</blockquote>
+<p>Wehner and Hallerberg (<em>Journal of Politics</em>) study how fast 168 countries ordered a nationwide stay-at-home measure during the COVID pandemic. Their replication files have a daily country panel (61,488 rows, 59 columns) and a leaders file (188 rows) that records each leader’s degree subject. PREREG asks for two things: first replicate their Table A5, column (1), then add a law-trained leader indicator.</p>
+<p><strong>Model.</strong> This is the specification in their Stata file, fit in Python (statsmodels PHReg). It is a Cox model of the days until the first stay-at-home order, with the time-varying COVID-death indicator and their regime, leader, health-minister, economic, political, religion and region controls. Ties use the Breslow method (Stata’s default), with model-based standard errors, no strata and no clustering. The sample has 19,974 country-days, 168 countries and 152 stay-at-home orders. No covariate is missing in the risk set, so 0 records are dropped.</p>
+<p>The five religion dummies sum to one in every country, so together they duplicate the baseline hazard, and Stata drops one of them automatically. I drop the last one listed (Buddhist). Dropping a different one (Christian) gives the same log likelihood and the same non-religion hazard ratios (match: yes).</p>
+<p><strong>Replication check.</strong> The tolerance was set before the fit: each HR within 0.01 and each CI end within 0.02.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Published HR [95% CI]</th>
+<th>This replication</th>
+<th>Gap: HR</th>
+<th>Gap: CI low</th>
+<th>Gap: CI high</th>
+<th>Within tolerance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scientist leader</td>
+<td>1.092 [0.532, 2.241]</td>
+<td>1.082 [0.523, 2.238]</td>
+<td>−0.0100</td>
+<td>−0.0090</td>
+<td>−0.0026</td>
+<td>yes</td>
+</tr>
+<tr class="even">
+<td>Doctor health minister</td>
+<td>0.577 [0.383, 0.869]</td>
+<td>0.559 [0.371, 0.844]</td>
+<td>−0.0178</td>
+<td>−0.0125</td>
+<td>−0.0249</td>
+<td><strong>no</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The scientist-leader term matches. The doctor-health-minister term doesn’t: the HR is −0.0178 off and the upper CI end is −0.0249 off. So the replication <strong>fails</strong> the check. I didn’t change the model to close the gap. The cause is unknown, and the paper’s sample counts weren’t checked against this one.</p>
+<p><strong>Law-trained leader.</strong> The indicator is the leaders file’s <code>law</code> (“Leader degree subject - Law”), joined by country code. The leader and health-minister names agree in both files. It is added to column (1), with nothing else changed.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term (added to column (1))</th>
+<th>HR</th>
+<th>95% CI</th>
+<th>Law-trained leaders</th>
+<th>Events among them</th>
+<th>Countries</th>
+<th>Events</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Law-trained leader</td>
+<td>1.077</td>
+<td>[0.661, 1.755]</td>
+<td>32</td>
+<td>28</td>
+<td>168</td>
+<td>152</td>
+<td>not an exact replication</td>
+</tr>
+</tbody>
+</table>
+<p>The hazard ratio is 1.077 (95% CI 0.661 to 1.755). The interval is wide and includes 1. PREREG sets no threshold here, so this is an estimate, not a test. 1 law-trained leader is also coded as a scientist. 3 leaders in the leaders file have no <code>law</code> code, and none of them are in the 168-country sample.</p>
+</section>
 </section>
 <section id="deviations-from-the-pre-registration" class="level1">
 <h1>Deviations from the pre-registration</h1>
@@ -814,8 +914,9 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Sample.</strong> The law-degree test can use only Congresses 106–110, because that is all CLASS covers.</li>
 <li><strong>What counts as the degree.</strong> <code>law_ind</code> counts any law degree, not only the JD. CLASS’s doctorate flag also counts Ed.D. and Ed.S. degrees.</li>
 <li><strong>Which σ_α.</strong> PREREG says effects are “in units of σ_α” but doesn’t say which σ_α. I added this after seeing the results. Every law effect is now reported in LES points, in units of the full-panel σ̂_α (0.600 in the House) and in units of the sample’s own σ̂_α. The PREREG threshold, and the power at it, use the full-panel σ̂_α.</li>
-<li><strong>Not yet run.</strong> Test B (are expert consensus answers used?), Test C (which degree leads to policy roles?) and the lockdown replication aren’t done. Test B’s definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.</li>
+<li><strong>Not yet run.</strong> Test B (are expert consensus answers used?) and Test C (which degree leads to policy roles?) aren’t done. Test B’s definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.</li>
 <li><strong>Linking people, not ID numbers.</strong> The LES panel and CLASS use ICPSR numbers, and a party switcher can have two. The skill-source test above matched them by ICPSR, so three CLASS members were dropped and a few entered twice. The result above is unchanged as the pre-registered one. A re-run that links by person (bioguide ID) gives a House law-degree effect of +0.102σ_α (95% CI −0.014 to +0.218): no evidence for a JD skill premium. The Senate gives +0.116σ_α (−0.147 to +0.367): no evidence for a JD skill premium. Leaving out the one member whose CLASS records disagree on the law degree (Ralph Hall) gives +0.105σ_α in the House: no evidence for a JD skill premium. Test A run with one ID per person (19 House members have more than one ICPSR, covering 112 member-terms) gives a House κ of 0.253 (95% CI 0.201 to 0.328) and r = 0.408: supported as a measurable trait. Exploratory analyses E1, E2 and E4 below now link by person.</li>
+<li><strong>Lockdown replication.</strong> The Table A5 replication misses the pre-set tolerance on the doctor-health-minister term. Under a fallback rule set after the first fit missed the tolerance, but before the final refit and before any law-trained model was fit, the law-trained leader estimate is still reported, labeled “not an exact replication”, next to the gap. One religion dummy is dropped for collinearity, as Stata does.</li>
 </ol>
 </section>
 <section id="exploratory-analyses" class="level1">

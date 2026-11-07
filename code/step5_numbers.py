@@ -281,6 +281,41 @@ def main():
                   f"pa_{k}_multi_rows": n(m_["member_terms"].sum())})
     V["testd"] = T
     V["link"] = L
+
+    # ---- Lockdown data (PREREG "Lockdown data"; D20) ----
+    LDO = OUT / "lockdown"
+    lj = json.loads((LDO / "lockdown_results.json").read_text())
+    lc = pd.read_csv(LDO / "lockdown_A5_compare.csv").set_index("term")
+    rp, lw = lj["replication"], lj["law"]
+    def sgn4(x): return f"{x:+.4f}".replace("-", "−")
+    K = {"records": n(rp["n_records"]), "countries": n(rp["n_countries"]), "events": n(rp["n_events"]),
+         "main_rows": n(lj["main_rows"]), "main_cols": n(lj["main_cols"]),
+         "leaders_rows": n(lj["leaders_rows"]), "dropped_missing": n(rp["n_dropped_missing"]),
+         "tol_hr": f2(lj["tol_hr"]), "tol_ci": f2(lj["tol_ci"]), "label": lj["law_label"],
+         "pass": "passes" if lj["replication_pass"] else "fails",
+         "rel_ll_match": "yes" if lj["invariance"]["loglik_match_6dp"] and lj["invariance"]["hr_all_match_6sig"] else "no",
+         "law_hr": f3(lw["hr"]), "law_lo": f3(lw["ci_lo"]), "law_hi": f3(lw["ci_hi"]),
+         "law_n": n(lw["n_law_leaders"]), "law_events": n(lw["n_events_law_leaders"]),
+         "law_sci_overlap": n(lw["sciencesmedicine_law_overlap"]),
+         "law_missing_file": n(lw["n_law_missing_leaders_file"])}
+    rows = []
+    for term, key, lab in [("sciencesmedicine", "sci", "Scientist leader"), ("medicine_hm2", "doc", "Doctor health minister")]:
+        r = lc.loc[term]
+        K.update({f"{key}_pub": f3(r.pub_hr), f"{key}_pub_lo": f3(r.pub_lo), f"{key}_pub_hi": f3(r.pub_hi),
+                  f"{key}_rep": f3(r.rep_hr), f"{key}_rep_lo": f3(r.rep_lo), f"{key}_rep_hi": f3(r.rep_hi),
+                  f"{key}_d_hr": sgn4(r.d_hr), f"{key}_d_lo": sgn4(r.d_lo), f"{key}_d_hi": sgn4(r.d_hi),
+                  f"{key}_ok": "yes" if r["pass"] else "no"})
+        rows.append([lab, f"{f3(r.pub_hr)} {ci3(r.pub_lo, r.pub_hi)}", f"{f3(r.rep_hr)} {ci3(r.rep_lo, r.rep_hi)}",
+                     sgn4(r.d_hr), sgn4(r.d_lo), sgn4(r.d_hi), "yes" if r["pass"] else "**no**"])
+    (TAB / "t_lockdown_replication.md").write_text(md_table(
+        ["Term", "Published HR [95% CI]", "This replication", "Gap: HR", "Gap: CI low", "Gap: CI high",
+         "Within tolerance"], rows))
+    (TAB / "t_lockdown_law.md").write_text(md_table(
+        ["Term (added to column (1))", "HR", "95% CI", "Law-trained leaders", "Events among them",
+         "Countries", "Events", "Status"],
+        [["Law-trained leader", f3(lw["hr"]), ci3(lw["ci_lo"], lw["ci_hi"]), n(lw["n_law_leaders"]),
+          n(lw["n_events_law_leaders"]), n(lw["n_countries"]), n(lw["n_events"]), lj["law_label"]]]))
+    V["lockdown"] = K
     write_yaml(V, ROOT / "_variables.yml")
     print(sum(len(v) for v in V.values()), "variables;", sorted(p.name for p in TAB.glob("*.md")))
 

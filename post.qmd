@@ -196,6 +196,28 @@ A likely reason for the rest of the gap is that the variance is unequal across m
 - (d) is missing, not 0, for a member with no first House Congress in Voteview.
 - s_z uses the sample standard deviation and is recomputed in every bootstrap draw.
 
+## Lockdown data: Do law-trained leaders lock down sooner?
+
+> **{{< var lockdown.label >}}.** The replication below misses the pre-set tolerance on one term, so the law-trained result is reported next to the gap and should be read with it.
+
+Wehner and Hallerberg (*Journal of Politics*) study how fast {{< var lockdown.countries >}} countries ordered a nationwide stay-at-home measure during the COVID pandemic. Their replication files have a daily country panel ({{< var lockdown.main_rows >}} rows, {{< var lockdown.main_cols >}} columns) and a leaders file ({{< var lockdown.leaders_rows >}} rows) that records each leader's degree subject. PREREG asks for two things: first replicate their Table A5, column (1), then add a law-trained leader indicator.
+
+**Model.** This is the specification in their Stata file, fit in Python (statsmodels PHReg). It is a Cox model of the days until the first stay-at-home order, with the time-varying COVID-death indicator and their regime, leader, health-minister, economic, political, religion and region controls. Ties use the Breslow method (Stata's default), with model-based standard errors, no strata and no clustering. The sample has {{< var lockdown.records >}} country-days, {{< var lockdown.countries >}} countries and {{< var lockdown.events >}} stay-at-home orders. No covariate is missing in the risk set, so {{< var lockdown.dropped_missing >}} records are dropped.
+
+The five religion dummies sum to one in every country, so together they duplicate the baseline hazard, and Stata drops one of them automatically. I drop the last one listed (Buddhist). Dropping a different one (Christian) gives the same log likelihood and the same non-religion hazard ratios (match: {{< var lockdown.rel_ll_match >}}).
+
+**Replication check.** The tolerance was set before the fit: each HR within {{< var lockdown.tol_hr >}} and each CI end within {{< var lockdown.tol_ci >}}.
+
+{{< include output/tables/t_lockdown_replication.md >}}
+
+The scientist-leader term matches. The doctor-health-minister term doesn't: the HR is {{< var lockdown.doc_d_hr >}} off and the upper CI end is {{< var lockdown.doc_d_hi >}} off. So the replication **{{< var lockdown.pass >}}** the check. I didn't change the model to close the gap. The cause is unknown, and the paper's sample counts weren't checked against this one.
+
+**Law-trained leader.** The indicator is the leaders file's `law` ("Leader degree subject - Law"), joined by country code. The leader and health-minister names agree in both files. It is added to column (1), with nothing else changed.
+
+{{< include output/tables/t_lockdown_law.md >}}
+
+The hazard ratio is {{< var lockdown.law_hr >}} (95% CI {{< var lockdown.law_lo >}} to {{< var lockdown.law_hi >}}). The interval is wide and includes 1. PREREG sets no threshold here, so this is an estimate, not a test. {{< var lockdown.law_sci_overlap >}} law-trained leader is also coded as a scientist. {{< var lockdown.law_missing_file >}} leaders in the leaders file have no `law` code, and none of them are in the {{< var lockdown.countries >}}-country sample.
+
 # Deviations from the pre-registration
 
 Each item is listed in full in [`ANALYSIS_LOG.md`](ANALYSIS_LOG.md).
@@ -206,8 +228,9 @@ Each item is listed in full in [`ANALYSIS_LOG.md`](ANALYSIS_LOG.md).
 4. **Sample.** The law-degree test can use only Congresses 106–110, because that is all CLASS covers.
 5. **What counts as the degree.** `law_ind` counts any law degree, not only the JD. CLASS's doctorate flag also counts Ed.D. and Ed.S. degrees.
 6. **Which σ_α.** PREREG says effects are "in units of σ_α" but doesn't say which σ_α. I added this after seeing the results. Every law effect is now reported in LES points, in units of the full-panel σ̂_α ({{< var house.sigma_alpha >}} in the House) and in units of the sample's own σ̂_α. The PREREG threshold, and the power at it, use the full-panel σ̂_α.
-7. **Not yet run.** Test B (are expert consensus answers used?), Test C (which degree leads to policy roles?) and the lockdown replication aren't done. Test B's definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.
+7. **Not yet run.** Test B (are expert consensus answers used?) and Test C (which degree leads to policy roles?) aren't done. Test B's definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.
 8. **Linking people, not ID numbers.** The LES panel and CLASS use ICPSR numbers, and a party switcher can have two. The skill-source test above matched them by ICPSR, so three CLASS members were dropped and a few entered twice. The result above is unchanged as the pre-registered one. A re-run that links by person (bioguide ID) gives a House law-degree effect of {{< var link.s4lc_house >}}σ_α (95% CI {{< var link.s4lc_house_lo >}} to {{< var link.s4lc_house_hi >}}): {{< var link.s4lc_house_verdict >}}. The Senate gives {{< var link.s4lc_senate >}}σ_α ({{< var link.s4lc_senate_lo >}} to {{< var link.s4lc_senate_hi >}}): {{< var link.s4lc_senate_verdict >}}. Leaving out the one member whose CLASS records disagree on the law degree (Ralph Hall) gives {{< var link.s4nh_house >}}σ_α in the House: {{< var link.s4nh_house_verdict >}}. Test A run with one ID per person ({{< var link.pa_house_multi >}} House members have more than one ICPSR, covering {{< var link.pa_house_multi_rows >}} member-terms) gives a House κ of {{< var link.pa_house_kappa >}} (95% CI {{< var link.pa_house_lo >}} to {{< var link.pa_house_hi >}}) and r = {{< var link.pa_house_r >}}: {{< var link.pa_house_verdict >}}. Exploratory analyses E1, E2 and E4 below now link by person.
+9. **Lockdown replication.** The Table A5 replication misses the pre-set tolerance on the doctor-health-minister term. Under a fallback rule set after the first fit missed the tolerance, but before the final refit and before any law-trained model was fit, the law-trained leader estimate is still reported, labeled "{{< var lockdown.label >}}", next to the gap. One religion dummy is dropped for collinearity, as Stata does.
 
 # Exploratory analyses
 

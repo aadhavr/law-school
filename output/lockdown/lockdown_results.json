@@ -1,0 +1,47 @@
+{
+  "replication": {
+    "n_records": 19974,
+    "n_countries": 168,
+    "n_events": 152,
+    "loglik": -728.2434410080903,
+    "n_dropped_missing": 0,
+    "countries_with_dropped": 0,
+    "events_dropped_missing": 0,
+    "rel_drop": "rel_buddhist"
+  },
+  "replication_pass": false,
+  "invariance": {
+    "rel_drop_check": "rel_christian",
+    "loglik_check": -728.2434410080903,
+    "loglik_match_6dp": true,
+    "hr_all_match_6sig": true,
+    "hr_max_abs_diff": 1.4366285938649526e-13
+  },
+  "tol_hr": 0.01,
+  "tol_ci": 0.02,
+  "main_rows": 61488,
+  "main_cols": 59,
+  "leaders_rows": 188,
+  "leaders_cols": 35,
+  "law_label": "not an exact replication",
+  "law": {
+    "n_records": 19974,
+    "n_countries": 168,
+    "n_events": 152,
+    "loglik": -728.198970834017,
+    "n_dropped_missing": 0,
+    "countries_with_dropped": 0,
+    "events_dropped_missing": 0,
+    "rel_drop": "rel_buddhist",
+    "hr": 1.0773998922001542,
+    "ci_lo": 0.661364555206143,
+    "ci_hi": 1.7551447512198368,
+    "p": 0.7646205699236187,
+    "n_law_leaders": 32,
+    "n_law_missing_countries": 0,
+    "n_law_missing_leaders_file": 3,
+    "law_missing_countries": [],
+    "n_events_law_leaders": 28,
+    "sciencesmedicine_law_overlap": 1
+  }
+}

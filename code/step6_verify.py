@@ -293,6 +293,36 @@ def section_c(V):
         lo, hi = np.percentile(ld[f"{b}_linked_les"].to_numpy(), [2.5, 97.5])
         chk(f"link.s4lc_{b.lower()}", s3(r["estimate"] / sig))
         chk(f"link.s4lc_{b.lower()}_verdict", rule_jd(r["estimate"] / sig, lo / sig, hi / sig))
+    # Lockdown (D20): tolerance rule, law HR/CI from coef and SE, and counts from the raw .dta files.
+    from scipy.stats import norm
+    lcmp = pd.read_csv(OUT / "lockdown" / "lockdown_A5_compare.csv").set_index("term")
+    pub = {"sciencesmedicine": (1.092, 0.532, 2.241), "medicine_hm2": (0.577, 0.383, 0.869)}  # Table A5 col. (1)
+    ok_all = True
+    for term, key in [("sciencesmedicine", "sci"), ("medicine_hm2", "doc")]:
+        r = lcmp.loc[term]
+        ok = abs(r.rep_hr - pub[term][0]) <= 0.01 and abs(r.rep_lo - pub[term][1]) <= 0.02 \
+            and abs(r.rep_hi - pub[term][2]) <= 0.02
+        ok_all &= ok
+        chk(f"lockdown.{key}_ok", "yes" if ok else "no")
+        chk(f"lockdown.{key}_pub", f"{pub[term][0]:.3f}")
+    chk("lockdown.pass", "passes" if ok_all else "fails")
+    chk("lockdown.label", "replication" if ok_all else "not an exact replication")
+    lt = pd.read_csv(OUT / "lockdown" / "lockdown_law.csv").set_index("term").loc["law"]
+    z = norm.ppf(0.975)
+    chk("lockdown.law_hr", f"{np.exp(lt.coef):.3f}")
+    chk("lockdown.law_lo", f"{np.exp(lt.coef - z * lt.se):.3f}")
+    chk("lockdown.law_hi", f"{np.exp(lt.coef + z * lt.se):.3f}")
+    mn = pd.read_stata(ROOT / "lockdowns" / "JOP_lockdown_main.dta", convert_categoricals=False,
+                       columns=["country", "cntrycode", "stayathome", "date"])
+    mn = mn[mn["date"] <= 20201231]
+    cty = mn.groupby("cntrycode")["stayathome"].max().rename("ever").reset_index()
+    lf = pd.read_stata(ROOT / "lockdowns" / "JOP_lockdown_leaders.dta", convert_categoricals=False,
+                       columns=["cntrycode", "law"])
+    cty = cty.merge(lf, on="cntrycode", how="left")
+    chk("lockdown.countries", f"{len(cty):,}")
+    chk("lockdown.events", f"{int((cty.ever == 1).sum()):,}")
+    chk("lockdown.law_n", f"{int((cty.law == 1).sum()):,}")
+    chk("lockdown.law_events", f"{int(((cty.law == 1) & (cty.ever == 1)).sum()):,}")
     return checks
 
 
