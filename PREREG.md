@@ -118,3 +118,11 @@ Written on 2026-11-07, after the econpanel copy of the IGM votes was downloaded 
 - **Coders:** coder 1 is Claude Code; coder 2 is Aadhav. Coder 2 codes at least 10 policies, chosen with seed 20261029 and blind to coder 1's codes. κ_C and the cause-coding rule follow the PREREG text above.
 - **Fewer than 20 policies:** descriptive only, as the PREREG text above says.
 - **The pool is fixed by these rules, not by results.**
+
+## Amendment 2a: Test B counting rule (2026-11-07)
+Written on 2026-11-07, after coder 1's policy filter (`code/testB_policy_filter.py`: 19 statements, 14 policies after merging) and before any statement was coded for adoption by either coder. Tests A, C and D and the combining rule are unchanged. Amendment 2 stays the same except as stated here.
+
+- **Primary count:** a policy counts if coder 1 coded it policy = yes. Where coder 2 also coded the statement, it counts only if both coders say yes.
+- **Sensitivity count:** a policy counts if either coder says yes. This includes the 10 statements coder 1 marked as close calls (1, 13, 27, 28, 34, 42, 55, 69, 77, 88).
+- **Primary count below 20:** descriptive only, as PREREG says. A Wilson 95% CI for the sensitivity set is reported only if that set has 20 or more policies, and it is labeled exploratory.
+- **Still in force:** for each adopted policy, whether it is still in force on 2026-11-07 is also coded and reported as a sensitivity result.
