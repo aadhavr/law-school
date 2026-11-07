@@ -327,6 +327,13 @@ testd:
   d_se_boot: "0.020"
   d_gap_explained: "51%"
   b_ratio_se: "1.32"
+  b_se_cr: "0.024"
+  b_se_mb: "0.019"
+  b_cr_gap: "60%"
+  d_se_cr: "0.020"
+  d_se_mb: "0.024"
+  d_cr_gap: "101%"
+  cr_supports: "yes"
 link:
   s4lc_house: "+0.102"
   s4lc_house_lo: "−0.014"

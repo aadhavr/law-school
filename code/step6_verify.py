@@ -261,6 +261,16 @@ def section_c(V):
         checks.append((f"claim: {kk}", "stated", "true" if ok else "false", ok))
     tt = json.loads((OUT / "testD" / "testD_results.json").read_text())["total_share_abc"]
     chk("testd.unexplained", f"{100 * (1 - tt['total_share_sig2_alpha_explained']):.0f}%")
+    # Cluster-robust SE post-result note: recompute the "supports" rule from the stored SEs.
+    cs = pd.read_csv(OUT / "testD" / "testD_cluster_se.csv").set_index("sample")
+    for kk in ["b", "d"]:
+        q = cs.loc[kk]
+        chk(f"testd.{kk}_se_cr", f"{q['se_cluster_cr1']:.3f}")
+        share = (q["se_cluster_cr1"] - q["se_model_based"]) / (q["se_bootstrap_realized"] - q["se_model_based"])
+        chk(f"testd.{kk}_cr_gap", f"{100 * share:.0f}%")
+    sup = all((q["se_cluster_cr1"] - q["se_model_based"]) / (q["se_bootstrap_realized"] - q["se_model_based"]) >= 0.5
+              for _, q in cs.iterrows())
+    chk("testd.cr_supports", "yes" if sup else "no")
     # Test B coder-2 sheets carry no coder-1 label, and coder 1's codes are not tracked by git.
     import subprocess
     s1 = pd.read_csv(OUT / "coder2" / "sheet1_filter.csv", dtype=str)

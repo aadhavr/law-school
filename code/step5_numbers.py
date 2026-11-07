@@ -252,11 +252,17 @@ def main():
               "d_se_boot": f3(pc.loc["d", "se_bootstrap_realized"]),
               "d_gap_explained": f"{100 * (pc.loc['d', 'se_planned_gls_full_panel'] - pc.loc['d', 'se_gls_own_rows']) / (pc.loc['d', 'se_planned_gls_full_panel'] - pc.loc['d', 'se_bootstrap_realized']):.0f}%",
               "b_ratio_se": f2(pc.loc["b", "ratio_realized_to_planned"])})
+    cs = pd.read_csv(TD / "testD_cluster_se.csv").set_index("sample")
+    for k in ["b", "d"]:
+        T.update({f"{k}_se_cr": f3(cs.loc[k, "se_cluster_cr1"]), f"{k}_se_mb": f3(cs.loc[k, "se_model_based"]),
+                  f"{k}_cr_gap": f"{100 * cs.loc[k, 'share_of_gap_closed_by_cr1']:.0f}%"})
+    T["cr_supports"] = "yes" if cs["supports_unequal_variance"].all() else "no"
     (TAB / "t_testD_planning.md").write_text(md_table(
         ["Predictor", "Sample", "Planned σ̂_γ̂ (GLS, full-panel variance components)", "Realized bootstrap standard error",
-         "Realized / planned", "GLS with this sample's own variance components"],
+         "Realized / planned", "GLS with this sample's own variance components", "Cluster-robust (CR1, clusters = members)"],
         [[labels[smp][0], labels[smp][1], f3(pc.loc[smp, "se_planned_gls_full_panel"]), f3(pc.loc[smp, "se_bootstrap_realized"]),
-          f2(pc.loc[smp, "ratio_realized_to_planned"]), f3(pc.loc[smp, "se_gls_own_rows"])] for smp in keys]))
+          f2(pc.loc[smp, "ratio_realized_to_planned"]), f3(pc.loc[smp, "se_gls_own_rows"]),
+          f3(cs.loc[smp, "se_cluster_cr1"]) if smp in cs.index else "not computed"] for smp in keys]))
     (TAB / "t_testD_power.md").write_text(md_table(
         ["Predictor", "Sample", "σ̂_γ̂ (GLS)", "(i) γ = 0.060", "(ii) γ = 0.060", "(i) γ = 0.120", "(ii) γ = 0.120"],
         pow_rows))

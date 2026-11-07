@@ -1,0 +1,14 @@
+                                     0                  1
+sample                               b                  d
+predictor                   b_pagerank  d_state_leg_years
+gamma_les                      0.16736           -0.00283
+n_members                          950                657
+n_member_terms                    3671               5637
+se_model_based                 0.01937            0.02355
+se_cluster_cr0                 0.02429            0.01965
+se_cluster_cr1                 0.02432            0.01967
+se_planned_gls_full_panel        0.021            0.02756
+se_gls_own_rows                0.01964            0.02354
+se_bootstrap_realized          0.02763            0.01972
+share_of_gap_closed_by_cr1     0.59908            1.01336
+supports_unequal_variance         True               True

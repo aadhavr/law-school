@@ -15,6 +15,7 @@ $PY -I code/testD_billstatus.py > output/testD/billstatus_log.txt 2>&1
 $PY -I code/testD_design.py > /dev/null
 $PY -I code/testD_models.py > output/testD/testD_models_log.txt 2>&1
 $PY -I code/testD_planning_check.py > output/testD/testD_planning_check_log.txt 2>&1
+$PY -I code/testD_cluster_se.py > output/testD/testD_cluster_se_log.txt 2>&1
 mkdir -p output/sensitivity
 $PY -I code/step3_person_sensitivity.py > output/sensitivity/step3_person_log.txt 2>&1
 $PY -I code/step4_linked.py > output/step4_linked_log.txt 2>&1

@@ -119,3 +119,8 @@ No deviation from Amendments 1, 1a and 1b. Implementation choices they do not sp
 - `code/testD_planning_check.py` writes `output/testD/testD_planning_check.csv`: planned σ̂_γ̂ (GLS, full-panel variance components) against the realized bootstrap standard error, and the GLS figure with each sample's own variance components.
 - (d): on the (d) rows, σ̂²_α = 0.209 and σ̂²_ε = 1.187 (full panel: 0.360 and 1.062). With these, the GLS figure is 0.0235 against 0.0276 planned and 0.0197 realized. The smaller σ̂²_α explains about half of the gap, not all of it. (b) was less precise than planned (realized / planned = 1.32).
 - The post's sentence on the low power of (d) was replaced by what the 99% CIs show. This note is marked in the post as added after the results.
+
+### Test D post-result note: cluster-robust standard errors (2026-11-07; no verdict or rule changed)
+- `code/testD_cluster_se.py` writes `output/testD/testD_cluster_se.csv`: for (b) and (d), the Test D fit at REML λ̂, quasi-demeaned, with a cluster-robust sandwich SE of γ̂ (clusters = LES-panel ICPSR, as in the bootstrap; CR1 scaling G/(G−1)·(N−1)/(N−p); CR0 also saved) and the model-based SE on the same fit.
+- Rule set in the script before it was run, used only for the post's wording: the check supports "variance unequal across members" as a reason if CR1 moves from the model-based SE toward the bootstrap SE by at least half of the gap.
+- (d): model-based 0.0236, CR1 0.0197, bootstrap 0.0197 (gap closed: 101%). Not above 0.0235. (b): model-based 0.0194, CR1 0.0243, bootstrap 0.0276 (gap closed: 60%). Both meet the rule, so the post states the reason as supported by the check, and says that part of the (b) gap remains.
