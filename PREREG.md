@@ -126,3 +126,9 @@ Written on 2026-11-07, after coder 1's policy filter (`code/testB_policy_filter.
 - **Sensitivity count:** a policy counts if either coder says yes. This includes the 10 statements coder 1 marked as close calls (1, 13, 27, 28, 34, 42, 55, 69, 77, 88).
 - **Primary count below 20:** descriptive only, as PREREG says. A Wilson 95% CI for the sensitivity set is reported only if that set has 20 or more policies, and it is labeled exploratory.
 - **Still in force:** for each adopted policy, whether it is still in force on 2026-11-07 is also coded and reported as a sensitivity result.
+
+## Amendment 2b: Test B adoption disagreement and policy type (2026-11-07)
+Written on 2026-11-07 at about 16:20 EST. By then coder 1 had coded adoption (2026-11-07, about 02:45; `output/coder1_private/`, not opened in the session writing this amendment), and coder 2 had a returned adoption sheet (`returned/sheet2_adoption.csv` in coder 2's folder, modified 16:04, not opened). No adoption code from either coder has been opened, compared or used to compute π. Tests A, C and D, the combining rule and Amendments 2 and 2a are unchanged, except as stated here.
+
+- **Disagreement rule (adoption).** The main π uses coder 1's adoption codes. Two sensitivity results: (i) a policy counts as adopted only if both coders say yes; (ii) a policy counts as adopted if either coder says yes. They apply to the policies both coders coded for adoption; for the other policies, coder 1's code is used.
+- **Policy type.** Two policies are preserve-type: "do not restrict LNG exports" (pool 53) and "maintain BLS funding" (pool 85, with 86 merged into it). All other policies are change-type. The main result keeps all policies. π is also reported for change-type policies only.
