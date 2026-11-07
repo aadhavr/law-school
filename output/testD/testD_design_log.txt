@@ -14,11 +14,13 @@ network {'congress': 115, 'nodes': 450, 'edges': 61994, 'edge_weight': 114213, '
 network {'congress': 116, 'nodes': 448, 'edges': 69137, 'edge_weight': 150787, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 3}
 network {'congress': 117, 'nodes': 455, 'edges': 66860, 'edge_weight': 147007, 'cosponsorships_dropped_unmatched': 0, 'cosponsorships_cosponsor_no_party': 0, 'members_no_bills': 4}
 rows t=109-118 with service in t-1: 3671 ; with (b): 3671 ; with (c): 3650
-(d) CLASS House members 106-110: 657; without a Voteview first House Congress: 1; with any spell: 351; years > 0: 349; spells cut at Y: 18
-(d) CLASS members with no row in the House panel: 4
+(d) CLASS House idnos: 657; without a Voteview bioguide ID: 1 [928489]
+(d) persons: 650; with more than one CLASS idno: 5 (spells identical)
+(d) CLASS House persons 106-110 (with bioguide): 650; without a Voteview first House Congress: 0; with any spell: 346; years > 0: 344; spells cut at Y: 19
+(d) CLASS persons with no row in the House panel: 0
 a_full {'sample': 'a_full', 'predictor': 'a_dist_median', 'n_member_terms': 9215, 'n_members': 1835, 't_min': 94, 't_max': 118, 's_z': 0.22655, 'se_gamma_gls': 0.01473, 'se_gamma_gls_direct_check': 0.01473, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.93296, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 1.0, 'p_supported_g120': 0.99998, 'a_cutoff': 0.06}
 a_t109_118 {'sample': 'a_t109_118', 'predictor': 'a_dist_median', 'n_member_terms': 3671, 'n_members': 950, 't_min': 109, 't_max': 118, 's_z': 0.25422, 'se_gamma_gls': 0.01992, 'se_gamma_gls_direct_check': 0.01992, 'role': 'comparison only', 'power_ci_excludes_0_g060': 0.66881, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99972, 'p_supported_g120': 0.9987, 'a_cutoff': 0.06}
 b {'sample': 'b', 'predictor': 'b_pagerank', 'n_member_terms': 3671, 'n_members': 950, 't_min': 109, 't_max': 118, 's_z': 0.00203, 'se_gamma_gls': 0.021, 'se_gamma_gls_direct_check': 0.021, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.61081, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99915, 'p_supported_g120': 0.99786, 'a_cutoff': 0.06}
 c {'sample': 'c', 'predictor': 'c_cross_share', 'n_member_terms': 3650, 'n_members': 949, 't_min': 109, 't_max': 118, 's_z': 0.23387, 'se_gamma_gls': 0.02033, 'se_gamma_gls_direct_check': 0.02033, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.64644, 'p_supported_g060': 0.5, 'power_ci_excludes_0_g120': 0.99956, 'p_supported_g120': 0.99842, 'a_cutoff': 0.06}
-d {'sample': 'd', 'predictor': 'd_state_leg_years', 'n_member_terms': 5616, 'n_members': 653, 't_min': 93, 't_max': 118, 's_z': 5.63203, 'se_gamma_gls': 0.02765, 'se_gamma_gls_direct_check': 0.02765, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.34229, 'p_supported_g060': 0.34229, 'power_ci_excludes_0_g120': 0.96108, 'p_supported_g120': 0.96108, 'a_cutoff': 0.07123}
+d {'sample': 'd', 'predictor': 'd_state_leg_years', 'n_member_terms': 5637, 'n_members': 657, 't_min': 93, 't_max': 118, 's_z': 5.6324, 'se_gamma_gls': 0.02756, 'se_gamma_gls_direct_check': 0.02756, 'role': 'verdict', 'power_ci_excludes_0_g060': 0.34508, 'p_supported_g060': 0.34508, 'power_ci_excludes_0_g120': 0.96234, 'p_supported_g120': 0.96234, 'a_cutoff': 0.07099}
 rows with (a), (b), (c) all available (total-share sample): 3650 member-terms, 949 members

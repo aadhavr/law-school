@@ -82,19 +82,19 @@
     {
       "sample": "d",
       "predictor": "d_state_leg_years",
-      "n_member_terms": 5616,
-      "n_members": 653,
+      "n_member_terms": 5637,
+      "n_members": 657,
       "t_min": 93,
       "t_max": 118,
-      "s_z": 5.632030773504928,
-      "se_gamma_gls": 0.027654734425176745,
-      "se_gamma_gls_direct_check": 0.027654734425176786,
+      "s_z": 5.632399938432796,
+      "se_gamma_gls": 0.027558479432070657,
+      "se_gamma_gls_direct_check": 0.027558479432070692,
       "role": "verdict",
-      "power_ci_excludes_0_g060": 0.34229193083231263,
-      "p_supported_g060": 0.3422919308323128,
-      "power_ci_excludes_0_g120": 0.9610827620413552,
-      "p_supported_g120": 0.9610827620413553,
-      "a_cutoff": 0.07123387531423281
+      "power_ci_excludes_0_g060": 0.3450798876848143,
+      "p_supported_g060": 0.34507988768481435,
+      "power_ci_excludes_0_g120": 0.9623430004140451,
+      "p_supported_g120": 0.9623430004140451,
+      "a_cutoff": 0.07098593888237725
     }
   ]
 }

@@ -11,7 +11,7 @@ Predictors (member-term (i, t); lagged ones use Congress t−1):
   (c) share of the member's bills (hr, hjres) in t−1 with ≥ 1 non-withdrawn cosponsor whose
       Voteview party_code in t−1 differs from the sponsor's; missing if no bills
   (d) years in the state legislature before the first House term (CLASS 1.9 spells), for
-      House members of Congresses 106–110, all their House panel terms
+      House members of Congresses 106–110, all their House panel terms; linked by bioguide (D14)
 (a)–(c) need House service in t−1. (b), (c) cover t = 109–118.
 
 Power (Amendments 1a, 1b): σ̂_γ̂ = sqrt of the γ entry of σ̂²_ε (X̃′X̃)⁻¹ after quasi-demeaning,
@@ -125,17 +125,32 @@ def network_predictors(vv, panel_ids_by_t):
 
 
 def class_years(vv):
+    """(d) per person. CLASS is linked by bioguide ID through Voteview (D14): CLASS stores some
+    party switchers under only one of their ICPSRs, and the LES panel can use another."""
     c = pd.read_stata(CLASS, convert_categoricals=False,
                       columns=["cong", "idno", "chamber", "pol_stateleg1_s", "pol_stateleg1_e",
                                "pol_stateleg2_s", "pol_stateleg2_e"])
     c = c[c["chamber"] == "H"].copy()
     c["idno"] = c["idno"].astype(int)
     spells = ["pol_stateleg1_s", "pol_stateleg1_e", "pol_stateleg2_s", "pol_stateleg2_e"]
-    # Spells are constant within member (checked here).
+    # Spells are constant within idno (checked here).
     assert (c.groupby("idno")[spells].nunique(dropna=False) <= 1).all().all()
-    m = c.groupby("idno", as_index=False)[spells].first()
-    first = vv.groupby("icpsr")["congress"].min()
-    m["first_house_congress"] = m["idno"].map(first)
+    allvv = pd.read_csv(VOTEVIEW, usecols=["icpsr", "bioguide_id"]).dropna()
+    assert (allvv.groupby("icpsr")["bioguide_id"].nunique() <= 1).all()
+    c["bioguide"] = c["idno"].map(allvv.drop_duplicates("icpsr").set_index("icpsr")["bioguide_id"])
+    no_bio = sorted(int(i) for i in c.loc[c["bioguide"].isna(), "idno"].unique())
+    log(f"(d) CLASS House idnos: {c['idno'].nunique()}; without a Voteview bioguide ID: {len(no_bio)} {no_bio}")
+    c = c.dropna(subset=["bioguide"])
+    # One person, several idnos: their spells must agree (checked here); keep one row.
+    per = c.groupby("idno", as_index=False).agg({**{k: "first" for k in spells}, "bioguide": "first"})
+    multi = per.groupby("bioguide")["idno"].nunique()
+    assert (per.groupby("bioguide")[spells].nunique(dropna=False) <= 1).all().all(), "spells differ within person"
+    log(f"(d) persons: {per['bioguide'].nunique()}; with more than one CLASS idno: {int((multi > 1).sum())} "
+        f"(spells identical)")
+    m = per.groupby("bioguide", as_index=False).agg(
+        {**{k: "first" for k in spells}, "idno": lambda x: ";".join(str(i) for i in sorted(x))})
+    first = vv.dropna(subset=["bioguide_id"]).groupby("bioguide_id")["congress"].min()
+    m["first_house_congress"] = m["bioguide"].map(first)
     m["Y"] = 1789 + 2 * (m["first_house_congress"] - 1)
     yrs = np.zeros(len(m))
     for k in (1, 2):
@@ -238,11 +253,11 @@ def main():
     # (d)
     dm = class_years(vv)
     dm.to_csv(OUT / "testD_d_members.csv", index=False)
-    log(f"(d) CLASS House members 106-110: {len(dm)}; without a Voteview first House Congress: "
+    log(f"(d) CLASS House persons 106-110 (with bioguide): {len(dm)}; without a Voteview first House Congress: "
         f"{int(dm['first_house_congress'].isna().sum())}; with any spell: {int(dm['any_spell'].sum())}; "
         f"years > 0: {int((dm['d_years'] > 0).sum())}; spells cut at Y: {int(dm['spell_cut_by_Y'].sum())}")
-    panel["d_state_leg_years"] = panel["id"].map(dm.set_index("idno")["d_years"])
-    log("(d) CLASS members with no row in the House panel:", int((~dm["idno"].isin(panel["id"])).sum()))
+    panel["d_state_leg_years"] = panel["bioguide"].map(dm.set_index("bioguide")["d_years"])
+    log("(d) CLASS persons with no row in the House panel:", int((~dm["bioguide"].isin(panel["bioguide"])).sum()))
 
     cols = ["id", "t", "bioguide", "served_tm1", "a_dist_median", "b_pagerank", "c_cross_share", "d_state_leg_years"]
     panel[cols].sort_values(["id", "t"]).to_csv(OUT / "testD_predictors.csv", index=False)
