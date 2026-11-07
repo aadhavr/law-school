@@ -236,6 +236,26 @@ def section_c(V):
         chk(f"expl.econ_lo_{suf}", f"{100 * lo:.2f}%")
         chk(f"expl.econ_hi_{suf}", f"{100 * hi:.2f}%")
     chk("expl.matched", f"{lr['matched_people']:,}")
+    # Test D (Amendment 1 rule), recomputed from the bootstrap draws.
+    td = pd.read_csv(OUT / "testD" / "testD_results.csv").set_index("sample")
+    dr = pd.read_csv(OUT / "testD" / "testD_gamma_draws.csv")
+    for smp, kk in [("a_full", "a"), ("a_t109_118", "a109"), ("b", "b"), ("c", "c"), ("d", "d")]:
+        g = td.loc[smp, "gamma_les"]
+        lo, hi = np.percentile(dr[smp].to_numpy(), [0.5, 99.5])
+        chk(f"testd.{kk}_gamma", s3(g))
+        chk(f"testd.{kk}_lo", s3(lo))
+        chk(f"testd.{kk}_hi", s3(hi))
+        chk(f"testd.{kk}_ratio", s3(g / 0.600))
+        chk(f"testd.{kk}_verdict", "supported" if (lo > 0 or hi < 0) and abs(g) >= 0.060 else "no evidence")
+    # Linkage-corrected Step 4 (D15): PREREG JD rule in the fixed full-panel unit.
+    lc = pd.read_csv(OUT / "step4_linked_compare.csv")
+    ld = pd.read_csv(OUT / "step4_linked_lawdeg_draws.csv")
+    for b in ["House", "Senate"]:
+        r = lc[(lc["body"] == b) & (lc["version"] == "linkage-corrected") & (lc["unit"] == "LES points")].iloc[0]
+        sig = k.loc[b, "sigma_alpha"]
+        lo, hi = np.percentile(ld[f"{b}_linked_les"].to_numpy(), [2.5, 97.5])
+        chk(f"link.s4lc_{b.lower()}", s3(r["estimate"] / sig))
+        chk(f"link.s4lc_{b.lower()}_verdict", rule_jd(r["estimate"] / sig, lo / sig, hi / sig))
     return checks
 
 

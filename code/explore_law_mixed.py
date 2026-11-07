@@ -63,13 +63,14 @@ def load_people(bio):
     p.index = p.index.astype(int)
     p["bioguide"] = p.index.map(bio)
     no_bio = [int(i) for i in p.index[p["bioguide"].isna()]]
+    no_bio_econ = int(p.loc[p["bioguide"].isna(), "econ_phd"].sum())
     p = p.dropna(subset=["bioguide"])
     # law_deg: max across the person's idnos (D15). Other fields must agree (checked).
     for col in ["lawyer_occ", "econ_phd"]:
         bad = p.groupby("bioguide")[col].nunique() > 1
         if bad.any():
             raise SystemExit(f"STOP: {col} differs across idnos for {list(bad[bad].index)}")
-    return p.groupby("bioguide")[["law_deg", "lawyer_occ", "econ_phd"]].max(), no_bio
+    return p.groupby("bioguide")[["law_deg", "lawyer_occ", "econ_phd"]].max(), no_bio, no_bio_econ
 
 
 def fit_all(panel, people):
@@ -160,7 +161,7 @@ def main():
     rng = np.random.default_rng(SEED)
     D = load_all()
     bio = bioguide_of_icpsr()
-    people, no_bio = load_people(bio)
+    people, no_bio, no_bio_econ = load_people(bio)
     P = {b: to_person(D[b], bio) for b in ["House", "Senate"]}
     res = {"label": "EXPLORATORY", "linkage": "bioguide (D15)", "seed": SEED, "B": B, "z_sum_80pct_power": float(Z),
            "class_people": len(people) + len(no_bio), "class_idnos_without_bioguide": no_bio}
@@ -256,10 +257,10 @@ def main():
     print(units.to_string())
 
     k = int(people.loc[matched, "econ_phd"].sum())
-    k_all = int(people["econ_phd"].sum())
+    k_all = int(people["econ_phd"].sum()) + no_bio_econ  # all CLASS people, incl. idnos without bioguide
     res["econ_phd_wilson"] = [
-        {"k": k_all, "n": len(people), "denominator": "all CLASS people",
-         "share": k_all / len(people), "ci": wilson(k_all, len(people))},
+        {"k": k_all, "n": res["class_people"], "denominator": "all CLASS people",
+         "share": k_all / res["class_people"], "ci": wilson(k_all, res["class_people"])},
         {"k": k, "n": len(matched), "denominator": "CLASS people matched to LES 1.0",
          "share": k / len(matched), "ci": wilson(k, len(matched))}]
 

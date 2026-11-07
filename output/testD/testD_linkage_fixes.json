@@ -1,0 +1,19 @@
+{
+  "a_rows_restored": 1,
+  "a_rows_restored_list": [
+    {
+      "id": 21980,
+      "bioguide": "V000133",
+      "t": 118
+    }
+  ],
+  "a_rows_restored_t109_118": 1,
+  "d_rows_restored": 21,
+  "d_persons_restored": 4,
+  "d_persons_first_congress_changed": 9,
+  "d_persons_years_changed": [
+    "M000206",
+    "T000058"
+  ],
+  "d_n_persons_years_changed": 2
+}

@@ -66,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#skill-source-does-a-law-degree-predict-skill" id="toc-skill-source-does-a-law-degree-predict-skill" class="nav-link" data-scroll-target="#skill-source-does-a-law-degree-predict-skill">Skill source: Does a law degree predict skill?</a></li>
   <li><a href="#what-the-pre-registered-rule-says" id="toc-what-the-pre-registered-rule-says" class="nav-link" data-scroll-target="#what-the-pre-registered-rule-says">What the pre-registered rule says</a></li>
+  <li><a href="#test-d-what-does-skill-α_i-contain" id="toc-test-d-what-does-skill-α_i-contain" class="nav-link" data-scroll-target="#test-d-what-does-skill-α_i-contain">Test D: What does skill (α_i) contain?</a></li>
   </ul></li>
   <li><a href="#deviations-from-the-pre-registration" id="toc-deviations-from-the-pre-registration" class="nav-link" data-scroll-target="#deviations-from-the-pre-registration">Deviations from the pre-registration</a></li>
   <li><a href="#exploratory-analyses" id="toc-exploratory-analyses" class="nav-link" data-scroll-target="#exploratory-analyses">Exploratory analyses</a></li>
@@ -115,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Data</h1>
 <ul>
 <li><strong>Lawmaking effectiveness.</strong> The Center for Effective Lawmaking’s Legislative Effectiveness Scores (LES) measure how far each member’s bills get: introduced, acted on in committee, passed by the chamber, and signed into law. They weight bills by significance. I use LES 1.0 for the House and Senate (Congresses 93–118) and the state scores (SLES) for state legislators (1989–2024).</li>
-<li><strong>Background.</strong> Carnes’s CLASS data (version 1.9) records each member’s education and jobs, but only for Congresses 106–110. It covers 788 people. I matched 783 of them to LES by ICPSR number.</li>
+<li><strong>Background.</strong> Carnes’s CLASS data (version 1.9) records each member’s education and jobs, but only for Congresses 106–110. It covers 788 people. I matched 779 of them to LES by ICPSR number.</li>
 </ul>
 </section>
 <section id="pre-registered-results" class="level1">
@@ -530,6 +531,212 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Because the second condition already fails, <strong>the data gives no recommendation for law school</strong>. Test C can’t change that. Under PREREG, the decision now rests on cost, time and reversibility, which this project doesn’t measure.</p>
 </section>
+<section id="test-d-what-does-skill-α_i-contain" class="level2">
+<h2 class="anchored" data-anchor-id="test-d-what-does-skill-α_i-contain">Test D: What does skill (α_i) contain?</h2>
+<p>Test D was added to PREREG as Amendment 1, after the Test A and skill-source results were seen and before any Test D data was downloaded. It does not enter the combining rule above. It asks whether α_i, the member effect from Test A, partly reflects things that can be measured in the previous Congress (t−1). Each predictor z is added to the Test A House model one at a time:</p>
+<p>LES_it = X_it·β + γ·z_i,t−1/s_z + α_i + ε_it</p>
+<p>s_z is the standard deviation of z on that fit’s own rows, so γ is in LES points per standard deviation of z. The 99% CI comes from a bootstrap over members (2,000 draws) that refits the model in every draw.</p>
+<p><strong>Rule (from PREREG).</strong> A predictor is supported if its 99% CI excludes 0 and |γ̂| ≥ 0.060 LES points (0.10 × the full-panel σ̂_α of 0.600). Otherwise the result is “no evidence”. The share of σ̂²_α explained is descriptive only, with no rule.</p>
+<p><strong>Power, computed before any γ was estimated.</strong> σ̂_γ̂ is a planning figure: the GLS standard error with the Test A variance components held fixed, which uses no LES outcome. (i) is the power for the 99% CI to exclude 0. (ii) is P(supported), the chance that the CI excludes 0 and |γ̂| ≥ 0.060.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Sample</th>
+<th>σ̂_γ̂ (GLS)</th>
+<th>(i) γ = 0.060</th>
+<th>(ii) γ = 0.060</th>
+<th>(i) γ = 0.120</th>
+<th>(ii) γ = 0.120</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(a) Distance from House median, t−1</td>
+<td>full (verdict)</td>
+<td>0.015</td>
+<td>0.93</td>
+<td>0.50</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td>(a) Distance from House median, t−1</td>
+<td>t = 109–118 (comparison only)</td>
+<td>0.020</td>
+<td>0.67</td>
+<td>0.50</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr class="odd">
+<td>(b) Cosponsorship PageRank, t−1</td>
+<td>t = 109–118</td>
+<td>0.021</td>
+<td>0.61</td>
+<td>0.50</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td>(c) Share of bills with a cross-party cosponsor, t−1</td>
+<td>t = 109–118</td>
+<td>0.020</td>
+<td>0.65</td>
+<td>0.50</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr class="odd">
+<td>(d) Years in state legislature before the House</td>
+<td>CLASS members, Congresses 106–110</td>
+<td>0.028</td>
+<td>0.35</td>
+<td>0.35</td>
+<td>0.96</td>
+<td>0.96</td>
+</tr>
+</tbody>
+</table>
+<p>Two limits follow from this table:</p>
+<ul>
+<li><strong>(ii) has a ceiling at the threshold.</strong> If the true γ is exactly 0.060, γ̂ falls below 0.060 about half the time, whatever the sample size. So (ii) at γ = 0.060 can be at most 0.50. A true effect right at the threshold is a coin flip under this rule.</li>
+<li><strong>(d) has low power.</strong> For state-legislature years, (i) is 0.35 at γ = 0.060. A “no evidence” result for (d) says little.</li>
+</ul>
+<p><strong>Results.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Sample</th>
+<th>Members</th>
+<th>Member-terms</th>
+<th>γ̂ (LES points per s_z)</th>
+<th>99% CI</th>
+<th>γ̂ / 0.600</th>
+<th>Verdict</th>
+<th>Share of σ̂²_α explained</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(a) Distance from House median, t−1</td>
+<td>full (verdict)</td>
+<td>1,835</td>
+<td>9,215</td>
+<td>−0.016</td>
+<td>[−0.052, +0.024]</td>
+<td>−0.027</td>
+<td>no evidence</td>
+<td>0.001</td>
+</tr>
+<tr class="even">
+<td>(a) Distance from House median, t−1</td>
+<td>t = 109–118 (comparison only)</td>
+<td>950</td>
+<td>3,671</td>
+<td>−0.002</td>
+<td>[−0.046, +0.042]</td>
+<td>−0.004</td>
+<td>no evidence</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td>(b) Cosponsorship PageRank, t−1</td>
+<td>t = 109–118</td>
+<td>950</td>
+<td>3,671</td>
+<td>+0.167</td>
+<td>[+0.103, +0.243]</td>
+<td>+0.279</td>
+<td>supported</td>
+<td>0.176</td>
+</tr>
+<tr class="even">
+<td>(c) Share of bills with a cross-party cosponsor, t−1</td>
+<td>t = 109–118</td>
+<td>949</td>
+<td>3,650</td>
+<td>+0.041</td>
+<td>[−0.005, +0.091]</td>
+<td>+0.069</td>
+<td>no evidence</td>
+<td>0.010</td>
+</tr>
+<tr class="odd">
+<td>(d) Years in state legislature before the House</td>
+<td>CLASS members, Congresses 106–110</td>
+<td>657</td>
+<td>5,637</td>
+<td>−0.003</td>
+<td>[−0.052, +0.047]</td>
+<td>−0.005</td>
+<td>no evidence</td>
+<td>-0.002</td>
+</tr>
+<tr class="even">
+<td>(a) + (b) + (c) together</td>
+<td>rows with all three</td>
+<td>949</td>
+<td>3,650</td>
+<td></td>
+<td></td>
+<td></td>
+<td>descriptive only</td>
+<td>0.168</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>(a), full sample: no evidence. γ̂ = −0.016 LES points (99% CI −0.052 to +0.024), or −0.027 × 0.600.</li>
+<li>(b): supported. γ̂ = +0.167 (+0.103 to +0.243).</li>
+<li>(c): no evidence. γ̂ = +0.041 (−0.005 to +0.091).</li>
+<li>(d): no evidence. γ̂ = −0.003 (−0.052 to +0.047). (d) is reported alone and is not part of the total share.</li>
+<li>(a), (b) and (c) together explain a share of 0.168 of σ̂²_α, on the 3,650 member-terms (949 members) where all three are available.</li>
+</ul>
+<p><strong>How to read these.</strong></p>
+<ul>
+<li><strong>(b) is close to a lagged outcome.</strong> Cosponsorship PageRank in t−1 is built from the same kind of bills that LES counts, and members whose bills draw cosponsors tend to have high LES. So a γ for (b) partly measures how LES persists from one Congress to the next, not a separate trait.</li>
+<li><strong>(b) and (c) cover only t = 109–118.</strong> Bill data comes from govinfo BILLSTATUS, which this project used for Congresses 108–117 (GovTrack blocks automated access). (a) is judged on its full sample; the (a) row for t = 109–118 is for comparison only.</li>
+</ul>
+<p><strong>Bugs found and fixed before any γ was estimated.</strong></p>
+<ul>
+<li><strong>Parser.</strong> All 72,206 BILLSTATUS files were parsed. 13 of them use older tag names for the bill type and number, and the first parser run skipped them. This was fixed before any predictor was built. 16 bills list no sponsor in the source.</li>
+<li><strong>(a) linkage.</strong> (a) was first linked to Voteview by the member’s LES-panel ICPSR number in t−1. A party switcher can have a different ICPSR there, so (a) was missing for 1 member-term (Jefferson Van Drew, t = 118). (a) is now linked by bioguide ID. If a person has two Voteview rows in t−1, the row whose ICPSR is in the LES panel is used, otherwise the row with more votes.</li>
+<li><strong>(d) linkage.</strong> (d) was linked by CLASS ID = LES-panel ICPSR. CLASS stores some party switchers under only one of their ICPSRs, so 21 member-terms of 4 people had no (d), and 9 people got the wrong first House Congress. (d) is now linked by bioguide ID, and the first House Congress is taken by person. Years in the state legislature changed for 2 people.</li>
+</ul>
+<p><strong>Implementation choices that PREREG does not specify.</strong></p>
+<ul>
+<li>Service in t−1 is matched by person (bioguide), because the LES panel gives party switchers a new ICPSR. α_i stays one effect per ICPSR, as in Test A.</li>
+<li>Delegates and resident commissioners are not in the Voteview House roster for every Congress, so their cosponsorships are dropped from the network and their bills from (c).</li>
+<li>For (c), each person has one party per Congress. A cosponsor with no party code in t−1 does not count as cross-party.</li>
+<li>PageRank nodes are the whole House roster of t−1, so members with no edges still get a value. Mass from members with no outgoing edges is spread evenly. Self-edges are dropped.</li>
+<li><ol start="4" type="a">
+<li>is missing, not 0, for a member with no first House Congress in Voteview.</li>
+</ol></li>
+<li>s_z uses the sample standard deviation and is recomputed in every bootstrap draw.</li>
+</ul>
+</section>
 </section>
 <section id="deviations-from-the-pre-registration" class="level1">
 <h1>Deviations from the pre-registration</h1>
@@ -541,7 +748,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Sample.</strong> The law-degree test can use only Congresses 106–110, because that is all CLASS covers.</li>
 <li><strong>What counts as the degree.</strong> <code>law_ind</code> counts any law degree, not only the JD. CLASS’s doctorate flag also counts Ed.D. and Ed.S. degrees.</li>
 <li><strong>Which σ_α.</strong> PREREG says effects are “in units of σ_α” but doesn’t say which σ_α. I added this after seeing the results. Every law effect is now reported in LES points, in units of the full-panel σ̂_α (0.600 in the House) and in units of the sample’s own σ̂_α. The PREREG threshold, and the power at it, use the full-panel σ̂_α.</li>
-<li><strong>Not yet run.</strong> Test B (are expert consensus answers used?), Test C (which degree leads to policy roles?) and the lockdown replication aren’t done. Their data (IGM, ABA) has to be downloaded by hand.</li>
+<li><strong>Not yet run.</strong> Test B (are expert consensus answers used?), Test C (which degree leads to policy roles?) and the lockdown replication aren’t done. Test B’s definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.</li>
+<li><strong>Linking people, not ID numbers.</strong> The LES panel and CLASS use ICPSR numbers, and a party switcher can have two. The skill-source test above matched them by ICPSR, so three CLASS members were dropped and a few entered twice. The result above is unchanged as the pre-registered one. A re-run that links by person (bioguide ID) gives a House law-degree effect of +0.102σ_α (95% CI −0.014 to +0.218): no evidence for a JD skill premium. The Senate gives +0.116σ_α (−0.147 to +0.367): no evidence for a JD skill premium. Leaving out the one member whose CLASS records disagree on the law degree (Ralph Hall) gives +0.105σ_α in the House: no evidence for a JD skill premium. Test A run with one ID per person (19 House members have more than one ICPSR, covering 112 member-terms) gives a House κ of 0.253 (95% CI 0.201 to 0.328) and r = 0.408: supported as a measurable trait. Exploratory analyses E1, E2 and E4 below now link by person.</li>
 </ol>
 </section>
 <section id="exploratory-analyses" class="level1">
@@ -551,12 +759,12 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p><strong>E1 and E2: Law background inside the mixed model.</strong> Regressing α̂_i on background understates effects, because α̂_i is shrunk toward zero, more so for members with few terms. So I put the law variable inside the model instead:</p>
 <p>LES_it = X_it·β + γ·LAW_i + α_i + ε_it</p>
-<p>The sample is the 783 matched CLASS members, with all their terms:</p>
+<p>The sample is the 779 matched CLASS members, with all their terms:</p>
 <ul>
-<li>House: 699 members, 5,808 member-terms.</li>
-<li>Senate: 166 members, 1,522 member-terms.</li>
+<li>House: 698 members, 5,838 member-terms.</li>
+<li>Senate: 165 members, 1,528 member-terms.</li>
 </ul>
-<p>Each effect is shown in LES points, in units of the full-panel σ̂_α (0.600 in the House, 0.427 in the Senate), and in units of σ̂_α from the pre-registered model on this sample (0.462 and 0.396). The full-panel units are the ones the PREREG threshold uses. Here they divide by a fixed full-panel σ̂_α, so their CIs ignore uncertainty in that σ̂_α. I ran the law degree, then lawyer occupation (CLASS job codes 1–4).</p>
+<p>Each effect is shown in LES points, in units of the full-panel σ̂_α (0.600 in the House, 0.427 in the Senate), and in units of σ̂_α from the pre-registered model on this sample (0.462 and 0.390). The full-panel units are the ones the PREREG threshold uses. Here they divide by a fixed full-panel σ̂_α, so their CIs ignore uncertainty in that σ̂_α. I ran the law degree, then lawyer occupation (CLASS job codes 1–4).</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 11%">
@@ -586,54 +794,54 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>House</td>
 <td>E1: law degree in the mixed model</td>
-<td>+0.090 [−0.005, +0.186]</td>
-<td>+0.149 [−0.009, +0.310]</td>
-<td>+0.194 [−0.013, +0.398]</td>
+<td>+0.090 [−0.007, +0.190]</td>
+<td>+0.150 [−0.011, +0.316]</td>
+<td>+0.195 [−0.013, +0.409]</td>
 <td>0.462</td>
 <td>0.082</td>
-<td>0.229</td>
-<td>0.69</td>
+<td>0.231</td>
+<td>0.68</td>
 </tr>
 <tr class="even">
 <td>House</td>
 <td>E2: lawyer occupation in the mixed model</td>
-<td>+0.074 [−0.022, +0.169]</td>
-<td>+0.124 [−0.036, +0.281]</td>
-<td>+0.161 [−0.050, +0.371]</td>
+<td>+0.077 [−0.016, +0.181]</td>
+<td>+0.128 [−0.026, +0.302]</td>
+<td>+0.166 [−0.038, +0.385]</td>
 <td>0.462</td>
-<td>0.083</td>
-<td>0.233</td>
-<td>0.67</td>
+<td>0.084</td>
+<td>0.236</td>
+<td>0.66</td>
 </tr>
 <tr class="odd">
 <td>Senate</td>
 <td>E1: law degree in the mixed model</td>
-<td>+0.071 [−0.084, +0.217]</td>
-<td>+0.166 [−0.198, +0.509]</td>
-<td>+0.179 [−0.215, +0.587]</td>
-<td>0.396</td>
-<td>0.180</td>
-<td>0.506</td>
-<td>0.20</td>
+<td>+0.075 [−0.070, +0.228]</td>
+<td>+0.177 [−0.165, +0.535]</td>
+<td>+0.193 [−0.187, +0.586]</td>
+<td>0.390</td>
+<td>0.176</td>
+<td>0.493</td>
+<td>0.21</td>
 </tr>
 <tr class="even">
 <td>Senate</td>
 <td>E2: lawyer occupation in the mixed model</td>
-<td>−0.010 [−0.165, +0.132]</td>
-<td>−0.024 [−0.387, +0.309]</td>
-<td>−0.026 [−0.412, +0.350]</td>
-<td>0.396</td>
-<td>0.180</td>
-<td>0.505</td>
+<td>−0.007 [−0.152, +0.142]</td>
+<td>−0.016 [−0.357, +0.334]</td>
+<td>−0.017 [−0.374, +0.374]</td>
+<td>0.390</td>
+<td>0.178</td>
+<td>0.499</td>
 <td>0.20</td>
 </tr>
 </tbody>
 </table>
 <p>What the House results show:</p>
 <ul>
-<li><strong>Law degree:</strong> +0.090 LES points, or +0.149 full-panel σ_α (95% CI −0.009 to +0.310). This is larger than the pre-registered +0.102, but the CI still includes 0.</li>
-<li><strong>Lawyer occupation:</strong> much the same: +0.124 full-panel σ_α (−0.036 to +0.281).</li>
-<li><strong>Degree and occupation can’t be separated.</strong> I also fit a model with both. In the House, 257 members have both, 22 have only the degree and 10 have only the occupation. With so few members who have one but not the other, the data can’t say which of the two matters, so I don’t report the two terms as separate findings.</li>
+<li><strong>Law degree:</strong> +0.090 LES points, or +0.150 full-panel σ_α (95% CI −0.011 to +0.316). This is larger than the pre-registered +0.102, but the CI still includes 0.</li>
+<li><strong>Lawyer occupation:</strong> much the same: +0.128 full-panel σ_α (−0.026 to +0.302).</li>
+<li><strong>Degree and occupation can’t be separated.</strong> I also fit a model with both. In the House, 257 members have both, 22 have only the degree and 9 have only the occupation. With so few members who have one but not the other, the data can’t say which of the two matters, so I don’t report the two terms as separate findings.</li>
 </ul>
 <p><strong>E4: Could this study have detected a law effect?</strong> I measured precision with the bootstrap standard error (the standard deviation of the bootstrap draws). The smallest effect detectable with 80% power (two-sided, α = 0.05) is 2.80 times that standard error. Power is computed at the PREREG threshold, 0.20 × the full-panel σ̂_α.</p>
 <ul>
@@ -647,10 +855,10 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Mixed-model estimate (E1, House):</strong>
 <ul>
 <li>Bootstrap standard error: 0.082σ_α.</li>
-<li>Smallest detectable effect: 0.229σ_α.</li>
-<li>Power at the threshold: 0.69.</li>
+<li>Smallest detectable effect: 0.231σ_α.</li>
+<li>Power at the threshold: 0.68.</li>
 </ul></li>
-<li><strong>Senate:</strong> power at the threshold is lower still: 0.31 for the pre-registered estimate and 0.20 for E1.</li>
+<li><strong>Senate:</strong> power at the threshold is lower still: 0.31 for the pre-registered estimate and 0.21 for E1.</li>
 </ul>
 <p><strong>In plain terms:</strong> in the House, the less-biased mixed model has less than 80% power to detect a law-degree effect of the size PREREG called meaningful. The Senate has much less. “No evidence” here does not mean “no effect”.</p>
 <p><strong>E3: Does skew drive Test A?</strong> LES is right-skewed, so a few outlier members could inflate σ²_α. I refit the House model with LES replaced by its rank within each Congress, mapped to a normal scale (an inverse-normal rank transform).</p>
@@ -686,7 +894,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>κ rises and r barely moves, so Test A is not an artifact of a few extreme scores.</p>
-<p><strong>E5: How rare are economics PhDs?</strong> 3 of 788 CLASS members hold one, or 0.38% (Wilson 95% CI 0.13% to 1.11%). Restricting to the 783 matched members gives 0.38% (0.13% to 1.12%). Even the upper bounds fall far short of the 30 holders needed for a test. Congress, at least, contains almost no economists to compare against lawyers.</p>
+<p><strong>E5: How rare are economics PhDs?</strong> 3 of 781 CLASS members hold one, or 0.38% (Wilson 95% CI 0.13% to 1.12%). Restricting to the 779 matched members gives 0.39% (0.13% to 1.13%). Even the upper bounds fall far short of the 30 holders needed for a test. Congress, at least, contains almost no economists to compare against lawyers.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="output/figures/fig5_exploratory_law.png" class="img-fluid figure-img"></p>

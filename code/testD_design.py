@@ -45,6 +45,7 @@ GAMMAS = [0.060, 0.120]
 THRESHOLD = 0.060
 Z995 = norm.ppf(0.995)
 LOG = []
+FIX = {}
 
 
 def log(*a):
@@ -237,6 +238,13 @@ def main():
     key = pd.MultiIndex.from_arrays([panel["bioguide"], panel["t"] - 1])
     panel["a_dist_median"] = np.where(panel["served_tm1"], a.reindex(key).to_numpy(), np.nan)
     miss_a = panel[panel["served_tm1"] & panel["a_dist_median"].isna()]
+    # Effect of the D13 fix: rows that the old ICPSR link (LES-panel ICPSR in t−1) left without (a).
+    a_old = vv.set_index(["icpsr", "congress"])["dist_median"].reindex(
+        pd.MultiIndex.from_arrays([panel["id_prev"].fillna(-1).astype(int), panel["t"] - 1])).to_numpy()
+    fix_a = panel[panel["served_tm1"] & np.isnan(a_old) & panel["a_dist_median"].notna()]
+    FIX["a_rows_restored"] = len(fix_a)
+    FIX["a_rows_restored_list"] = fix_a[["id", "bioguide", "t"]].to_dict("records")
+    FIX["a_rows_restored_t109_118"] = int(fix_a["t"].between(109, 118).sum())
     log("rows with service in t-1 and no (a):", miss_a[["id", "bioguide", "t"]].to_dict("records"))
 
     # (b), (c)
@@ -257,6 +265,31 @@ def main():
         f"{int(dm['first_house_congress'].isna().sum())}; with any spell: {int(dm['any_spell'].sum())}; "
         f"years > 0: {int((dm['d_years'] > 0).sum())}; spells cut at Y: {int(dm['spell_cut_by_Y'].sum())}")
     panel["d_state_leg_years"] = panel["bioguide"].map(dm.set_index("bioguide")["d_years"])
+    # Effect of the D14 fix: rows the old idno = ICPSR link left without (d), and persons whose
+    # first House Congress (by ICPSR) or d_years changed.
+    idnos = {int(i) for x in dm["idno"] for i in str(x).split(";")}
+    fix_d = panel[panel["d_state_leg_years"].notna() & ~panel["id"].isin(idnos)]
+    FIX["d_rows_restored"] = len(fix_d)
+    FIX["d_persons_restored"] = int(fix_d["bioguide"].nunique())
+    first_icpsr = vv.groupby("icpsr")["congress"].min()
+    chg_c, chg_y = set(), set()
+    for _, r in dm.iterrows():
+        for i in str(r["idno"]).split(";"):
+            c_old = first_icpsr.get(int(i))
+            if c_old is None or pd.isna(r["first_house_congress"]):
+                continue
+            if c_old != r["first_house_congress"]:
+                chg_c.add(r["bioguide"])
+                Y = 1789 + 2 * (c_old - 1)
+                y_old = sum(max(0.0, min(r[f"pol_stateleg{k}_e"], Y) - r[f"pol_stateleg{k}_s"])
+                            for k in (1, 2) if pd.notna(r[f"pol_stateleg{k}_s"]))
+                if y_old != r["d_years"]:
+                    chg_y.add(r["bioguide"])
+    FIX["d_persons_first_congress_changed"] = len(chg_c)
+    FIX["d_persons_years_changed"] = sorted(chg_y)
+    FIX["d_n_persons_years_changed"] = len(chg_y)
+    (OUT / "testD_linkage_fixes.json").write_text(json.dumps(FIX, indent=2, default=int))
+    log("linkage fixes (D13, D14):", FIX)
     log("(d) CLASS persons with no row in the House panel:", int((~dm["bioguide"].isin(panel["bioguide"])).sum()))
 
     cols = ["id", "t", "bioguide", "served_tm1", "a_dist_median", "b_pagerank", "c_cross_share", "d_state_leg_years"]

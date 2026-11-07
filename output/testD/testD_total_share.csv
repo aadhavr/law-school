@@ -1,0 +1,2 @@
+predictors,n_members,n_member_terms,sig2_alpha_without,sig2_alpha_with,total_share_sig2_alpha_explained,gamma_les_a_dist_median,gamma_les_b_pagerank,gamma_les_c_cross_share
+a_dist_median+b_pagerank+c_cross_share,949,3650,0.2425358683816352,0.20171170519189344,0.1683221680246656,0.06227815134117468,0.18436520434649023,0.019699746725077735

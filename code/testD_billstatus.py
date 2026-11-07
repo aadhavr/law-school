@@ -41,7 +41,7 @@ def text(el, tag):
 def parse_zip(path, congress, btype):
     spons, cospons = [], []
     stats = {"congress": congress, "type": btype, "n_files": 0, "n_bills": 0, "n_refused": 0,
-             "n_wrong_congress_or_type": 0, "n_no_sponsor": 0}
+             "n_wrong_congress_or_type": 0, "n_no_sponsor": 0, "n_old_tag_names": 0}
     with zipfile.ZipFile(path) as z:
         for name in z.namelist():
             if not name.endswith(".xml"):
@@ -54,6 +54,8 @@ def parse_zip(path, congress, btype):
             bill = ET.fromstring(raw).find("bill")
             # 13 files use the older tag names billType / billNumber.
             cong = text(bill, "congress")
+            if text(bill, "type") is None and text(bill, "billType") is not None:
+                stats["n_old_tag_names"] += 1  # counted so the post can cite it (2026-11-07)
             typ = text(bill, "type") or text(bill, "billType")
             num = text(bill, "number") or text(bill, "billNumber")
             if cong != str(congress) or (typ or "").lower() != btype:

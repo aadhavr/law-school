@@ -85,3 +85,18 @@ Implementation choices that Amendments 1–1b do not specify (not deviations):
 - **s_z** uses ddof = 1.
 - **σ̂_γ̂** is computed by quasi-demeaning and checked against explicit block inversion of V for every predictor (equal to 1e−9 relative).
 
+
+### Test D models (2026-11-07)
+Code: `code/testD_models.py` (in `run_all.sh` after `testD_design.py`). Outputs: `output/testD/testD_results.csv`, `testD_total_share.csv`, `testD_results.json`, `testD_gamma_draws.csv`. The design numbers after D13 and D14 were committed (8800ec4) before this script was run.
+
+No deviation from Amendments 1, 1a and 1b. Implementation choices they do not specify:
+- REML fit with `code/remlfit.py`, X_it = the PREREG list, one random effect per LES-panel ICPSR (the Step 3 outcome input, unchanged).
+- s_z (ddof = 1) is recomputed on the rows of every fit, including every bootstrap draw.
+- 99% CI = 0.5th and 99.5th percentiles of B = 2000 draws, resampling members (ICPSR) within each predictor's own rows; seed 20261107, one generator used in the order (a) full, (a) t = 109–118, (b), (c), (d).
+- γ / 0.600 and the threshold 0.060 use the rounded values written in Amendment 1.
+- Share of σ̂²_α explained: both fits (with and without z) on the same rows. The total share fits (a), (b) and (c) together on the 3,650 rows where all three are available.
+- Added for traceability, no effect on any number: `testD_billstatus.py` now counts the files with older tag names (`n_old_tag_names` in `billstatus_parse.csv`), and `testD_design.py` writes the effect of the D13 and D14 fixes to `testD_linkage_fixes.json`. `data/derived/billstatus_*.csv` and the design outputs are unchanged.
+
+### Step 6 verification after Test D (2026-11-07)
+- First `run_all.sh` run: `step6_verify.py` found 2 mismatches. (1) "72,206" (BILLSTATUS files) had no source in output/: the per-ZIP counts were saved but not their sum. The sums are now saved in `output/step5_data_counts.json`. (2) `expl.econ_hi_all`: the linkage-corrected E5 used 779 persons as "all CLASS people" and left out the 2 idnos without a bioguide ID. It now uses 781, and the econ PhD count includes those idnos. Both fixed in code.
+- Second run: no mismatches, all checks pass. All computed outputs equal the first run's except the two fixes and run-time lines. `data/derived/billstatus_*.csv` are byte-identical to before.

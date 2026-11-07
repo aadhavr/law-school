@@ -4,5 +4,8 @@
   "class_rows": 2715,
   "class_rows_law_ind_1": 1153,
   "class_rows_degree_not_lawyer_occ": 96,
-  "class_rows_lawyer_occ_not_degree": 34
+  "class_rows_lawyer_occ_not_degree": 34,
+  "billstatus_n_files_total": 72206,
+  "billstatus_n_old_tag_names_total": 13,
+  "billstatus_n_no_sponsor_total": 16
 }

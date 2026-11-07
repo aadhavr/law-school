@@ -103,7 +103,10 @@ def main():
         "house_rows_raw": int(len(raw_house)), "house_rows_no_icpsr": int(raw_house["id"].isna().sum()),
         "class_rows": int(len(cls)), "class_rows_law_ind_1": int((cls["law_ind"] == 1).sum()),
         "class_rows_degree_not_lawyer_occ": int(((cls["law_ind"] == 1) & ~occ).sum()),
-        "class_rows_lawyer_occ_not_degree": int(((cls["law_ind"] == 0) & occ).sum())}, indent=2))
+        "class_rows_lawyer_occ_not_degree": int(((cls["law_ind"] == 0) & occ).sum()),
+        **{f"billstatus_{c}_total": int(v) for c, v in
+           pd.read_csv(OUT / "testD" / "billstatus_parse.csv")[["n_files", "n_old_tag_names", "n_no_sponsor"]].sum().items()}},
+        indent=2))
     count_rows = []
     for b, key in [("House", "s4house"), ("Senate", "s4senate")]:
         ch = s4r["chambers"][b]
@@ -195,6 +198,70 @@ def main():
     ]))
     assert len(E) == len(set(E))
     V["expl"] = E
+
+    # ---- Test D (PREREG Amendments 1, 1a, 1b; D13, D14) ----
+    TD = OUT / "testD"
+    tr = pd.read_csv(TD / "testD_results.csv").set_index("sample")
+    tj = json.loads((TD / "testD_results.json").read_text())
+    tt = tj["total_share_abc"]
+    pw = pd.read_csv(TD / "testD_power.csv").set_index("sample")
+    bp = pd.read_csv(TD / "billstatus_parse.csv")
+    fx = json.loads((TD / "testD_linkage_fixes.json").read_text())
+    s4l = pd.read_csv(OUT / "step4_linked_compare.csv")
+    sens = pd.read_csv(OUT / "sensitivity" / "step3_person_compare.csv")
+    multi = pd.read_csv(OUT / "sensitivity" / "step3_person_multi_icpsr.csv")
+    T = {"B": n(tj["B"]), "files": n(bp["n_files"].sum()), "old_tags": n(bp["n_old_tag_names"].sum()),
+         "no_sponsor": n(bp["n_no_sponsor"].sum()), "bc_t_min": str(int(tr.loc["b", "t_min"])),
+         "bc_t_max": str(int(tr.loc["b", "t_max"])), "total_share": f3(tt["total_share_sig2_alpha_explained"]),
+         "total_rows": n(tt["n_member_terms"]), "total_members": n(tt["n_members"]),
+         "fix_a_rows": n(fx["a_rows_restored"]), "fix_d_rows": n(fx["d_rows_restored"]),
+         "fix_d_persons": n(fx["d_persons_restored"]), "fix_d_first": n(fx["d_persons_first_congress_changed"]),
+         "fix_d_years": n(fx["d_n_persons_years_changed"]),
+         "ps_ceiling": f2(pw.loc["b", "p_supported_g060"])}
+    labels = {"a_full": ("(a) Distance from House median, t−1", "full (verdict)"),
+              "a_t109_118": ("(a) Distance from House median, t−1", f"t = {T['bc_t_min']}–{T['bc_t_max']} (comparison only)"),
+              "b": ("(b) Cosponsorship PageRank, t−1", f"t = {T['bc_t_min']}–{T['bc_t_max']}"),
+              "c": ("(c) Share of bills with a cross-party cosponsor, t−1", f"t = {T['bc_t_min']}–{T['bc_t_max']}"),
+              "d": ("(d) Years in state legislature before the House", "CLASS members, Congresses 106–110")}
+    keys = {"a_full": "a", "a_t109_118": "a109", "b": "b", "c": "c", "d": "d"}
+    res_rows, pow_rows = [], []
+    for smp, k in keys.items():
+        r, q = tr.loc[smp], pw.loc[smp]
+        T.update({f"{k}_members": n(r["n_members"]), f"{k}_rows": n(r["n_member_terms"]),
+                  f"{k}_gamma": sgn3(r["gamma_les"]), f"{k}_lo": sgn3(r["ci99_lo"]), f"{k}_hi": sgn3(r["ci99_hi"]),
+                  f"{k}_ratio": sgn3(r["gamma_over_0600"]), f"{k}_verdict": r["verdict"],
+                  f"{k}_share": f3(r["share_sig2_alpha_explained"]), f"{k}_se": f3(q["se_gamma_gls"]),
+                  f"{k}_pow060": f2(q["power_ci_excludes_0_g060"]), f"{k}_ps060": f2(q["p_supported_g060"]),
+                  f"{k}_pow120": f2(q["power_ci_excludes_0_g120"]), f"{k}_ps120": f2(q["p_supported_g120"])})
+        lab, samp = labels[smp]
+        res_rows.append([lab, samp, n(r["n_members"]), n(r["n_member_terms"]), sgn3(r["gamma_les"]),
+                         ci3s(r["ci99_lo"], r["ci99_hi"]), sgn3(r["gamma_over_0600"]), r["verdict"],
+                         f3(r["share_sig2_alpha_explained"])])
+        pow_rows.append([lab, samp, f3(q["se_gamma_gls"]), f2(q["power_ci_excludes_0_g060"]), f2(q["p_supported_g060"]),
+                         f2(q["power_ci_excludes_0_g120"]), f2(q["p_supported_g120"])])
+    res_rows.append(["(a) + (b) + (c) together", "rows with all three", n(tt["n_members"]), n(tt["n_member_terms"]),
+                     "", "", "", "descriptive only", f3(tt["total_share_sig2_alpha_explained"])])
+    (TAB / "t_testD_results.md").write_text(md_table(
+        ["Predictor", "Sample", "Members", "Member-terms", "γ̂ (LES points per s_z)", "99% CI", "γ̂ / 0.600",
+         "Verdict", "Share of σ̂²_α explained"], res_rows))
+    (TAB / "t_testD_power.md").write_text(md_table(
+        ["Predictor", "Sample", "σ̂_γ̂ (GLS)", "(i) γ = 0.060", "(ii) γ = 0.060", "(i) γ = 0.120", "(ii) γ = 0.120"],
+        pow_rows))
+    # Linkage-corrected Step 4 (D15) and Test A by person (D16): sensitivity results.
+    L = {}
+    for b in ["House", "Senate"]:
+        k = b.lower()
+        for ver, tag in [("linkage-corrected", "lc"), ("sensitivity: linkage-corrected, Hall left out", "nh")]:
+            r = s4l[(s4l["body"] == b) & (s4l["version"] == ver) & (s4l["unit"] != "LES points")].iloc[0]
+            L.update({f"s4{tag}_{k}": sgn3(r["estimate"]), f"s4{tag}_{k}_lo": sgn3(r["ci_lo"]),
+                      f"s4{tag}_{k}_hi": sgn3(r["ci_hi"]), f"s4{tag}_{k}_verdict": r["verdict"]})
+        r = sens[(sens["body"] == b) & (sens["version"].str.startswith("sensitivity"))].iloc[0]
+        m_ = multi[multi["body"] == b]
+        L.update({f"pa_{k}_kappa": f3(r["kappa"]), f"pa_{k}_lo": f3(r["kappa_lo"]), f"pa_{k}_hi": f3(r["kappa_hi"]),
+                  f"pa_{k}_r": f3(r["r"]), f"pa_{k}_verdict": r["verdict"], f"pa_{k}_multi": n(len(m_)),
+                  f"pa_{k}_multi_rows": n(m_["member_terms"].sum())})
+    V["testd"] = T
+    V["link"] = L
     write_yaml(V, ROOT / "_variables.yml")
     print(sum(len(v) for v in V.values()), "variables;", sorted(p.name for p in TAB.glob("*.md")))
 
