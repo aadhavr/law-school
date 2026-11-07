@@ -244,6 +244,19 @@ def main():
     (TAB / "t_testD_results.md").write_text(md_table(
         ["Predictor", "Sample", "Members", "Member-terms", "γ̂ (LES points per s_z)", "99% CI", "γ̂ / 0.600",
          "Verdict", "Share of σ̂²_α explained"], res_rows))
+    pc = pd.read_csv(TD / "testD_planning_check.csv").set_index("sample")
+    T.update({"unexplained": f"{100 * (1 - tt['total_share_sig2_alpha_explained']):.0f}%",
+              "s2a_full": f3(pc.loc["d", "sig2_alpha_full_panel"]), "s2e_full": f3(pc.loc["d", "sig2_eps_full_panel"]),
+              "d_s2a_own": f3(pc.loc["d", "sig2_alpha_own_rows"]), "d_s2e_own": f3(pc.loc["d", "sig2_eps_own_rows"]),
+              "d_se_planned": f3(pc.loc["d", "se_planned_gls_full_panel"]), "d_se_own": f3(pc.loc["d", "se_gls_own_rows"]),
+              "d_se_boot": f3(pc.loc["d", "se_bootstrap_realized"]),
+              "d_gap_explained": f"{100 * (pc.loc['d', 'se_planned_gls_full_panel'] - pc.loc['d', 'se_gls_own_rows']) / (pc.loc['d', 'se_planned_gls_full_panel'] - pc.loc['d', 'se_bootstrap_realized']):.0f}%",
+              "b_ratio_se": f2(pc.loc["b", "ratio_realized_to_planned"])})
+    (TAB / "t_testD_planning.md").write_text(md_table(
+        ["Predictor", "Sample", "Planned σ̂_γ̂ (GLS, full-panel variance components)", "Realized bootstrap standard error",
+         "Realized / planned", "GLS with this sample's own variance components"],
+        [[labels[smp][0], labels[smp][1], f3(pc.loc[smp, "se_planned_gls_full_panel"]), f3(pc.loc[smp, "se_bootstrap_realized"]),
+          f2(pc.loc[smp, "ratio_realized_to_planned"]), f3(pc.loc[smp, "se_gls_own_rows"])] for smp in keys]))
     (TAB / "t_testD_power.md").write_text(md_table(
         ["Predictor", "Sample", "σ̂_γ̂ (GLS)", "(i) γ = 0.060", "(ii) γ = 0.060", "(i) γ = 0.120", "(ii) γ = 0.120"],
         pow_rows))

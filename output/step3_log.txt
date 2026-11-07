@@ -2,7 +2,7 @@
 0   House         0.360056                0.360056       1.061564              1.061564       1.399974e-07           0.000002                   True
 1  Senate         0.182124                0.182126       0.523288              0.523287       5.458846e-07           0.000013                   True
 2  States         0.367146                0.367146       0.660526              0.660526       1.309336e-08           0.000004                   True
-House done 67s
-Senate done 78s
-States done 322s
-total 323s
+House done 61s
+Senate done 69s
+States done 321s
+total 321s

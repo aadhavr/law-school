@@ -51,6 +51,8 @@ def pool_from_outputs():
     for f in sorted(OUT.rglob("*")):
         if f.parent.name in ("tables", "figures") or f.name == "step3_oos_pairs.csv":
             continue
+        if {"coder1_private", "coder2", "coder2_key"} & set(f.relative_to(OUT).parts):
+            continue  # Test B coding files are not sources for the post
         rel = f.relative_to(ROOT).as_posix()
         if f.suffix == ".csv":
             df = pd.read_csv(f)
@@ -247,6 +249,31 @@ def section_c(V):
         chk(f"testd.{kk}_hi", s3(hi))
         chk(f"testd.{kk}_ratio", s3(g / 0.600))
         chk(f"testd.{kk}_verdict", "supported" if (lo > 0 or hi < 0) and abs(g) >= 0.060 else "no evidence")
+    # Claims in the post's Test D text, recomputed (2026-11-07).
+    def inside(smp):
+        lo, hi = np.percentile(dr[smp].to_numpy(), [0.5, 99.5])
+        return -0.060 < lo and hi < 0.060
+    lo_c, hi_c = np.percentile(dr["c"].to_numpy(), [0.5, 99.5])
+    claims = {"(a) CI inside ±0.060": inside("a_full"), "(d) CI inside ±0.060": inside("d"),
+              "(c) CI includes 0 and reaches above 0.060": lo_c <= 0 <= hi_c and hi_c > 0.060,
+              "(b) supported": V.get("testd.b_verdict") == "supported"}
+    for kk, ok in claims.items():
+        checks.append((f"claim: {kk}", "stated", "true" if ok else "false", ok))
+    tt = json.loads((OUT / "testD" / "testD_results.json").read_text())["total_share_abc"]
+    chk("testd.unexplained", f"{100 * (1 - tt['total_share_sig2_alpha_explained']):.0f}%")
+    # Test B coder-2 sheets carry no coder-1 label, and coder 1's codes are not tracked by git.
+    import subprocess
+    s1 = pd.read_csv(OUT / "coder2" / "sheet1_filter.csv", dtype=str)
+    s2 = pd.read_csv(OUT / "coder2" / "sheet2_adoption.csv", dtype=str)
+    ok1 = list(s1.columns) == ["row_id", "date", "statement", "igm_page", "filter_rule", "policy_flag"] \
+        and s1["policy_flag"].isna().all() and len(s1) == 30
+    ok2 = list(s2.columns) == ["row_id", "date", "statement", "adopted_any_time", "adopted_still_in_force",
+                               "source_url", "source_date", "cause_code"] \
+        and s2.drop(columns=["row_id", "date", "statement"]).isna().all().all() and len(s2) == 10
+    tracked = subprocess.run(["git", "ls-files", "output/coder1_private"], cwd=ROOT, capture_output=True, text=True).stdout
+    checks.append(("claim: sheet 1 has 30 rows and no coder-1 label", "stated", str(ok1).lower(), ok1))
+    checks.append(("claim: sheet 2 has 10 rows and no coder-1 label", "stated", str(ok2).lower(), ok2))
+    checks.append(("claim: output/coder1_private is not tracked by git", "stated", str(tracked == "").lower(), tracked == ""))
     # Linkage-corrected Step 4 (D15): PREREG JD rule in the fixed full-panel unit.
     lc = pd.read_csv(OUT / "step4_linked_compare.csv")
     ld = pd.read_csv(OUT / "step4_linked_lawdeg_draws.csv")

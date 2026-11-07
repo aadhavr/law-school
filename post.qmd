@@ -150,10 +150,7 @@ s_z is the standard deviation of z on that fit's own rows, so γ is in LES point
 
 {{< include output/tables/t_testD_power.md >}}
 
-Two limits follow from this table:
-
-- **(ii) has a ceiling at the threshold.** If the true γ is exactly 0.060, γ̂ falls below 0.060 about half the time, whatever the sample size. So (ii) at γ = 0.060 can be at most {{< var testd.ps_ceiling >}}. A true effect right at the threshold is a coin flip under this rule.
-- **(d) has low power.** For state-legislature years, (i) is {{< var testd.d_pow060 >}} at γ = 0.060. A "no evidence" result for (d) says little.
+One limit follows from this table: **(ii) has a ceiling at the threshold.** If the true γ is exactly 0.060, γ̂ falls below 0.060 about half the time, whatever the sample size. So (ii) at γ = 0.060 can be at most {{< var testd.ps_ceiling >}}. A true effect right at the threshold is a coin flip under this rule.
 
 **Results.**
 
@@ -165,9 +162,21 @@ Two limits follow from this table:
 - (d): {{< var testd.d_verdict >}}. γ̂ = {{< var testd.d_gamma >}} ({{< var testd.d_lo >}} to {{< var testd.d_hi >}}). (d) is reported alone and is not part of the total share.
 - (a), (b) and (c) together explain a share of {{< var testd.total_share >}} of σ̂²_α, on the {{< var testd.total_rows >}} member-terms ({{< var testd.total_members >}} members) where all three are available.
 
-**How to read these.**
+**What the CIs show.**
 
-- **(b) is close to a lagged outcome.** Cosponsorship PageRank in t−1 is built from the same kind of bills that LES counts, and members whose bills draw cosponsors tend to have high LES. So a γ for (b) partly measures how LES persists from one Congress to the next, not a separate trait.
+- **(a) and (d): effects as large as the threshold are excluded.** The 99% CI for (a) ({{< var testd.a_lo >}} to {{< var testd.a_hi >}}) and for (d) ({{< var testd.d_lo >}} to {{< var testd.d_hi >}}) lies inside ±0.060 LES points. So these are not just "no evidence": an effect of the size the rule calls meaningful is ruled out at this confidence level.
+- **(c) is inconclusive.** Its 99% CI includes 0 and reaches {{< var testd.c_hi >}}, above the threshold.
+- **(b) is supported, but it is a sign of skill, not a cause.** (b) is lagged cosponsor standing. Cosponsorship PageRank in t−1 is built from the same kind of bills that LES counts, and members whose bills draw cosponsors tend to have high LES. So (b) partly measures how LES persists from one Congress to the next. It marks skilled members; it does not explain where their skill comes from.
+- **Most of α_i is unexplained.** With (a), (b) and (c) together, about {{< var testd.unexplained >}} of σ̂²_α remains unexplained.
+
+**Post-result note: planned versus realized precision.** This note was added after the results were seen. It changes no verdict and no rule. The planning figure σ̂_γ̂ held the full-panel variance components fixed (σ̂²_α = {{< var testd.s2a_full >}}, σ̂²_ε = {{< var testd.s2e_full >}}). The bootstrap standard errors that were realized differ from it:
+
+{{< include output/tables/t_testD_planning.md >}}
+
+For (d), the realized standard error ({{< var testd.d_se_boot >}}) is well below the planned one ({{< var testd.d_se_planned >}}). Part of the reason is that the (d) rows have a smaller σ̂²_α ({{< var testd.d_s2a_own >}}; σ̂²_ε = {{< var testd.d_s2e_own >}}). With those components, the GLS figure is {{< var testd.d_se_own >}}. That accounts for about {{< var testd.d_gap_explained >}} of the gap, not all of it. For (b), the realized standard error is {{< var testd.b_ratio_se >}} times the planned one, so (b) was less precise than planned.
+
+**Other limits.**
+
 - **(b) and (c) cover only t = {{< var testd.bc_t_min >}}–{{< var testd.bc_t_max >}}.** Bill data comes from govinfo BILLSTATUS, which this project used for Congresses 108–117 (GovTrack blocks automated access). (a) is judged on its full sample; the (a) row for t = {{< var testd.bc_t_min >}}–{{< var testd.bc_t_max >}} is for comparison only.
 
 **Bugs found and fixed before any γ was estimated.**

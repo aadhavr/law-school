@@ -1,12 +1,12 @@
 # Step 6 verification
 
 ## A. Shortcodes
-- var shortcodes used: 125 (120 distinct); missing from _variables.yml: none
-- includes: 11; missing: none
+- var shortcodes used: 139 (129 distinct); missing from _variables.yml: none
+- includes: 12; missing: none
 - figures: 5; missing: none
 
 ## B. Every number in the rendered post
-- distinct numbers: 271; with no source (MISMATCH): none
+- distinct numbers: 284; with no source (MISMATCH): none
 
 | Number | Sources (first matches) |
 |---|---|
@@ -50,12 +50,17 @@
 | 0.000 | PREREG.md; output/step3_results.json.validation[0].max_abs_beta_diff; output/step3_results.json.validation[0].max_abs_blup_diff; output/step3_results.json.validation[1].max_abs_beta_diff; ... 3686 matches in output/ |
 | 0.001 | output/exploratory/expl_law_results.json.econ_phd_wilson[0].ci[0]; output/exploratory/expl_law_results.json.econ_phd_wilson[1].ci[0]; output/step4_linked_lawdeg_draws.csv:House_original_les[67]; ... 1607 matches in output/ |
 | 0.010 | output/step4_linked_coefs.csv:estimate_les[11]; output/step4_linked_coefs.csv:ci_hi_sigma_fixed[4]; output/step4_linked_lawdeg_draws.csv:House_original_les[164]; ... 143 matches in output/ |
-| 0.015 | output/step4_linked_lawdeg_draws.csv:House_original_les[529]; output/step4_linked_lawdeg_draws.csv:House_original_les[891]; output/step4_linked_lawdeg_draws.csv:House_original_les[942]; ... 143 matches in output/ |
-| +0.017 | output/step4_coefs.csv:estimate_sigma_alpha_units[5]; output/step4_linked_coefs.csv:estimate_sigma_fixed[11]; output/step4_linked_lawdeg_draws.csv:House_original_les[85]; ... 139 matches in output/ |
-| 0.020 | output/step4_linked_lawdeg_draws.csv:House_original_les[254]; output/step4_linked_lawdeg_draws.csv:House_original_les[289]; output/step4_linked_lawdeg_draws.csv:House_original_les[353]; ... 128 matches in output/ |
-| 0.021 | output/step4_linked_lawdeg_draws.csv:House_original_les[536]; output/step4_linked_lawdeg_draws.csv:House_original_les[538]; output/step4_linked_lawdeg_draws.csv:House_original_les[877]; ... 116 matches in output/ |
-| +0.024 | output/step4_linked_lawdeg_draws.csv:House_original_les[21]; output/step4_linked_lawdeg_draws.csv:House_original_les[141]; output/step4_linked_lawdeg_draws.csv:House_original_les[449]; ... 124 matches in output/ |
-| 0.028 | output/step4_linked_lawdeg_draws.csv:House_original_les[80]; output/step4_linked_lawdeg_draws.csv:House_original_les[117]; output/step4_linked_lawdeg_draws.csv:House_original_les[223]; ... 122 matches in output/ |
+| 0.015 | output/step4_linked_lawdeg_draws.csv:House_original_les[529]; output/step4_linked_lawdeg_draws.csv:House_original_les[891]; output/step4_linked_lawdeg_draws.csv:House_original_les[942]; ... 145 matches in output/ |
+| 0.016 | output/step4_linked_lawdeg_draws.csv:House_original_les[161]; output/step4_linked_lawdeg_draws.csv:House_original_les[209]; output/step4_linked_lawdeg_draws.csv:House_original_les[221]; ... 108 matches in output/ |
+| +0.017 | output/step4_coefs.csv:estimate_sigma_alpha_units[5]; output/step4_linked_coefs.csv:estimate_sigma_fixed[11]; output/step4_linked_lawdeg_draws.csv:House_original_les[85]; ... 140 matches in output/ |
+| 0.017 | output/step4_coefs.csv:estimate_sigma_alpha_units[5]; output/step4_linked_coefs.csv:estimate_sigma_fixed[11]; output/step4_linked_lawdeg_draws.csv:House_original_les[85]; ... 140 matches in output/ |
+| 0.018 | output/step3_beta.csv:beta[7]; output/step4_linked_coefs.csv:estimate_sigma_fixed[5]; output/step4_linked_lawdeg_draws.csv:House_original_les[73]; ... 107 matches in output/ |
+| 0.019 | output/step4_linked_coefs.csv:estimate_les[3]; output/step4_linked_coefs.csv:estimate_les[9]; output/step4_linked_lawdeg_draws.csv:House_original_les[322]; ... 121 matches in output/ |
+| 0.020 | output/step4_linked_lawdeg_draws.csv:House_original_les[254]; output/step4_linked_lawdeg_draws.csv:House_original_les[289]; output/step4_linked_lawdeg_draws.csv:House_original_les[353]; ... 132 matches in output/ |
+| 0.021 | output/step4_linked_lawdeg_draws.csv:House_original_les[536]; output/step4_linked_lawdeg_draws.csv:House_original_les[538]; output/step4_linked_lawdeg_draws.csv:House_original_les[877]; ... 117 matches in output/ |
+| +0.024 | output/step4_linked_lawdeg_draws.csv:House_original_les[21]; output/step4_linked_lawdeg_draws.csv:House_original_les[141]; output/step4_linked_lawdeg_draws.csv:House_original_les[449]; ... 125 matches in output/ |
+| 0.024 | output/step4_linked_lawdeg_draws.csv:House_original_les[21]; output/step4_linked_lawdeg_draws.csv:House_original_les[141]; output/step4_linked_lawdeg_draws.csv:House_original_les[449]; ... 125 matches in output/ |
+| 0.028 | output/step4_linked_lawdeg_draws.csv:House_original_les[80]; output/step4_linked_lawdeg_draws.csv:House_original_les[117]; output/step4_linked_lawdeg_draws.csv:House_original_les[223]; ... 124 matches in output/ |
 | +0.031 | output/step4_coefs.csv:estimate_sigma_alpha_units[3]; output/step4_linked_coefs.csv:estimate_sigma_fixed[9]; output/step4_linked_lawdeg_draws.csv:House_original_les[179]; ... 129 matches in output/ |
 | +0.041 | output/step4_linked_lawdeg_draws.csv:House_original_les[546]; output/step4_linked_lawdeg_draws.csv:House_original_les[553]; output/step4_linked_lawdeg_draws.csv:House_original_les[559]; ... 118 matches in output/ |
 | +0.042 | output/step4_linked_coefs.csv:ci_hi_les[12]; output/step4_linked_coefs.csv:ci_hi_les[15]; output/step4_linked_coefs.csv:boot_se_les[4]; ... 124 matches in output/ |
@@ -113,14 +118,15 @@
 | 0.20 | PREREG.md; output/exploratory/expl_law_mixed.csv:estimate[2]; output/exploratory/expl_law_mixed.csv:boot_se[13]; output/exploratory/expl_law_units.csv:estimate[14]; ... 449 matches in output/ |
 | 0.200 | PREREG.md; output/exploratory/expl_law_units.csv:threshold_in_this_unit[1]; output/exploratory/expl_law_units.csv:threshold_in_this_unit[4]; output/exploratory/expl_law_units.csv:threshold_in_this_unit[7]; ... 116 matches in output/ |
 | 0.201 | output/sensitivity/step3_person_compare.csv:kappa_lo[1]; output/sensitivity/step3_person_kappa.csv:kappa_lo[0]; output/sensitivity/step3_person_results.json.House.kappa_lo; ... 32 matches in output/ |
-| 0.21 | output/exploratory/expl_law_mixed.csv:boot_se[7]; output/exploratory/expl_law_units.csv:estimate[19]; output/exploratory/expl_law_units.csv:boot_se[20]; ... 345 matches in output/ |
+| 0.209 | output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[453]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[511]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[643]; ... 34 matches in output/ |
+| 0.21 | output/exploratory/expl_law_mixed.csv:boot_se[7]; output/exploratory/expl_law_units.csv:estimate[19]; output/exploratory/expl_law_units.csv:boot_se[20]; ... 346 matches in output/ |
 | +0.214 | output/step4_coefs.csv:estimate_sigma_alpha_units[8]; output/step4_linked_compare.csv:ci_hi[2]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[659]; ... 52 matches in output/ |
 | +0.217 | output/exploratory/expl_law_units.csv:ci_hi[1]; output/step4_coefs.csv:ci_hi[1]; output/step4_linked_compare.csv:ci_hi[1]; ... 36 matches in output/ |
 | +0.218 | output/exploratory/expl_law_units.csv:ci_hi[7]; output/step4_linked_coefs.csv:ci_hi_sigma_fixed[1]; output/step4_linked_compare.csv:ci_hi[4]; ... 26 matches in output/ |
 | +0.228 | output/exploratory/expl_law_mixed.csv:ci_hi[10]; output/exploratory/expl_law_units.csv:ci_hi[24]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[933]; ... 31 matches in output/ |
 | 0.231 | output/exploratory/expl_law_units.csv:mde_80pct_power[13]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[397]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[915]; ... 33 matches in output/ |
 | 0.236 | output/exploratory/expl_law_units.csv:mde_80pct_power[16]; output/exploratory/expl_rank_house.json.marginal_r2_ci[0]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[232]; ... 18 matches in output/ |
-| +0.243 | output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[929]; output/testD/testD_gamma_draws.csv:b[406]; output/testD/testD_gamma_draws.csv:b[1283]; ... 27 matches in output/ |
+| +0.243 | output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[929]; output/testD/testD_gamma_draws.csv:b[406]; output/testD/testD_gamma_draws.csv:b[1283]; ... 28 matches in output/ |
 | 0.248 | output/step3_kappa.csv:marginal_r2_lo[1]; output/step3_results.json.bodies.Senate.marginal_r2_lo; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[366]; ... 14 matches in output/ |
 | 0.253 | output/sensitivity/step3_person_compare.csv:kappa[0]; output/sensitivity/step3_person_compare.csv:kappa[1]; output/sensitivity/step3_person_kappa.csv:kappa[0]; ... 25 matches in output/ |
 | 0.256 | output/exploratory/expl_rank_house.json.marginal_r2; output/exploratory/expl_rank_house.json.share_x; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[239]; ... 28 matches in output/ |
@@ -148,7 +154,7 @@
 | 0.348 | output/exploratory/expl_rank_house.json.kappa_ci[1]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[316]; output/testD/testD_predictors.csv:a_dist_median[181]; ... 20 matches in output/ |
 | 0.35 | output/exploratory/expl_rank_house.json.kappa_ci[1]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[316]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[653]; ... 177 matches in output/ |
 | 0.357 | output/step3_kappa.csv:kappa[2]; output/step3_results.json.bodies.States.kappa; output/testD/testD_predictors.csv:a_dist_median[107]; ... 45 matches in output/ |
-| 0.360 | output/sensitivity/step3_person_kappa.csv:sig2_alpha[0]; output/sensitivity/step3_person_results.json.House.sig2_alpha; output/step3_kappa.csv:sig2_alpha[0]; ... 27 matches in output/ |
+| 0.360 | output/sensitivity/step3_person_kappa.csv:sig2_alpha[0]; output/sensitivity/step3_person_results.json.House.sig2_alpha; output/step3_kappa.csv:sig2_alpha[0]; ... 32 matches in output/ |
 | 0.366 | output/sensitivity/step3_person_compare.csv:r_lo[0]; output/step3_oos.csv:r_lo[0]; output/step3_results.json.bodies.House.oos_r_lo; ... 20 matches in output/ |
 | +0.367 | output/exploratory/expl_law_units.csv:ci_hi[10]; output/step3_kappa.csv:sig2_alpha[2]; output/step3_results.json.bodies.States.sig2_alpha; ... 27 matches in output/ |
 | 0.367 | output/exploratory/expl_law_units.csv:ci_hi[10]; output/step3_kappa.csv:sig2_alpha[2]; output/step3_results.json.bodies.States.sig2_alpha; ... 27 matches in output/ |
@@ -194,19 +200,24 @@
 | 0.67 | output/exploratory/expl_law_units.csv:estimate[31]; output/testD/testD_power.csv:power_ci_excludes_0_g060[1]; output/testD/testD_power.json.results[1].power_ci_excludes_0_g060; ... 233 matches in output/ |
 | 0.68 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[13]; output/testD/testD_predictors.csv:a_dist_median[123]; output/testD/testD_predictors.csv:a_dist_median[583]; ... 115 matches in output/ |
 | +0.694 | output/step4_coefs.csv:ci_hi[8]; output/step4_results.json.chambers.Senate.coefficients[2].ci_hi; output/testD/testD_predictors.csv:a_dist_median[3037]; ... 15 matches in output/ |
+| 0.72 | output/testD/testD_planning_check.csv:ratio_realized_to_planned[4]; output/testD/testD_predictors.csv:a_dist_median[100]; output/testD/testD_predictors.csv:a_dist_median[126]; ... 84 matches in output/ |
 | 0.745 | output/step3_kappa.csv:sig2_eps_hi[2]; output/step3_results.json.bodies.States.sig2_eps_hi; output/testD/testD_predictors.csv:a_dist_median[6224]; ... 8 matches in output/ |
+| 0.87 | output/testD/testD_planning_check.csv:ratio_realized_to_planned[1]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[3]; output/testD/testD_predictors.csv:a_dist_median[828]; ... 38 matches in output/ |
 | 0.895 | output/step3_kappa.csv:sig2_eps_lo[0]; output/step3_results.json.bodies.House.sig2_eps_lo; output/testD/testD_predictors.csv:a_dist_median[5622]; ... 6 matches in output/ |
 | 0.91 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[1]; output/testD/testD_predictors.csv:a_dist_median[1415]; output/testD/testD_predictors.csv:a_dist_median[2026]; ... 22 matches in output/ |
-| 0.93 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[7]; output/testD/testD_power.csv:power_ci_excludes_0_g060[0]; output/testD/testD_power.json.results[0].power_ci_excludes_0_g060; ... 14 matches in output/ |
+| 0.93 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[7]; output/testD/testD_planning_check.csv:ratio_realized_to_own_rows_gls[0]; output/testD/testD_planning_check.csv:ratio_realized_to_own_rows_gls[3]; ... 16 matches in output/ |
 | 0.96 | output/testD/testD_power.csv:power_ci_excludes_0_g120[4]; output/testD/testD_power.csv:p_supported_g120[4]; output/testD/testD_power.json.results[4].power_ci_excludes_0_g120; ... 12 matches in output/ |
+| 0.99 | output/testD/billstatus_match.csv:share_entries_house_same_congress[0]; output/testD/billstatus_match.csv:share_entries_house_same_congress[1]; output/testD/billstatus_match.csv:share_entries_house_same_congress[10]; ... 33 matches in output/ |
 | 1 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 344 matches in output/ |
 | 1, | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 344 matches in output/ |
-| 1.0 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 438 matches in output/ |
+| 1.0 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 442 matches in output/ |
 | 1.00 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 369 matches in output/ |
-| 1.062 | output/step3_kappa.csv:sig2_eps[0]; output/step3_results.json.bodies.House.sig2_eps; output/step3_results.json.validation[0].sig2_eps_fast; ... 7 matches in output/ |
+| 1.062 | output/step3_kappa.csv:sig2_eps[0]; output/step3_results.json.bodies.House.sig2_eps; output/step3_results.json.validation[0].sig2_eps_fast; ... 12 matches in output/ |
 | 1.12% | output/exploratory/expl_law_results.json.econ_phd_wilson[0].ci[1]; output/step4_linked_lawdeg_draws.csv:House_original_les[961]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[731]; ... 14 matches in output/ |
 | 1.13% | output/exploratory/expl_law_results.json.econ_phd_wilson[1].ci[1]; output/step4_linked_lawdeg_draws.csv:House_original_les[888]; output/step4_linked_lawdeg_draws.csv:Senate_original_les[437]; ... 9 matches in output/ |
+| 1.187 | output/testD/testD_planning_check.csv:sig2_eps_own_rows[4] |
 | 1.216 | output/step3_kappa.csv:sig2_eps_hi[0]; output/step3_results.json.bodies.House.sig2_eps_hi |
+| 1.32 | output/exploratory/expl_law_units.csv:mde_80pct_power[35]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[2] |
 | 1.9 | CLASS file name CLASS.1.9.dta; PREREG.md |
 | 2 | PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 229 matches in output/ |
 | 2, | PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 229 matches in output/ |
@@ -216,32 +227,34 @@
 | 6 | cross-reference to deviation list item 6 (points to Which σ_α: OK); output/sensitivity/step3_person_multi_icpsr.csv:member_terms[1]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[4]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[19]; ... 398 matches in output/ |
 | 9 | output/exploratory/expl_law_results.json.House.occ_not_degree; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[2]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[20]; ... 257 matches in output/ |
 | 10 | code/step4_skill_source.py MIN_HOLDERS (deviation D3); PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[18]; output/step4_counts.csv:doctorate_field_blank[0]; output/step4_results.json.chambers.House.counts.doctorate_field_blank; ... 300 matches in output/ |
-| 13 | output/sensitivity/step3_person_multi_icpsr.csv:member_terms[16]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[17]; output/step4_results.json.class_unique_members_both_chambers.phd_field_blank; ... 147 matches in output/ |
+| 13 | PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[16]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[17]; output/step4_results.json.class_unique_members_both_chambers.phd_field_blank; ... 147 matches in output/ |
 | 16 | output/step4_counts.csv:female[1]; output/step4_linked_counts.csv:female[2]; output/step4_linked_counts.csv:female[3]; ... 62 matches in output/ |
-| 19 | output/sensitivity/step3_person_results.json.House.persons_with_more_than_one_icpsr; output/testD/testD_d_members.csv:d_years[354]; output/testD/testD_d_members.csv:d_years[462]; ... 24 matches in output/ |
+| 19 | PREREG.md; output/sensitivity/step3_person_results.json.House.persons_with_more_than_one_icpsr; output/testD/testD_d_members.csv:d_years[354]; output/testD/testD_d_members.csv:d_years[462]; ... 24 matches in output/ |
 | 21 | output/testD/testD_d_members.csv:bioguide[217] (text); output/testD/testD_d_members.csv:d_years[224]; output/testD/testD_linkage_fixes.json.d_rows_restored; ... 26 matches in output/ |
 | 22 | output/exploratory/expl_law_results.json.House.degree_not_occ; output/testD/testD_d_members.csv:bioguide[1] (text); output/testD/testD_d_members.csv:d_years[416]; ... 38 matches in output/ |
 | 24 | PREREG.md; output/step4_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[1]; ... 72 matches in output/ |
 | 26, | post date (front matter; section D); output/testD/testD_d_members.csv:bioguide[292] (text); output/testD/testD_d_members.csv:d_years[391]; output/testD/testD_predictors.csv:bioguide[4774] (text); ... 16 matches in output/ |
 | 30 | PREREG.md; output/testD/testD_d_members.csv:bioguide[194] (text); output/testD/testD_d_members.csv:bioguide[518] (text); output/testD/testD_predictors.csv:bioguide[9347] (text); ... 24 matches in output/ |
 | 30, | PREREG.md; output/testD/testD_d_members.csv:bioguide[194] (text); output/testD/testD_d_members.csv:bioguide[518] (text); output/testD/testD_predictors.csv:bioguide[9347] (text); ... 24 matches in output/ |
-| 34 | output/step5_data_counts.json.class_rows_lawyer_occ_not_degree; output/testD/testD_d_members.csv:bioguide[455] (text); output/testD/testD_predictors.csv:bioguide[4728] (text); ... 25 matches in output/ |
+| 34 | PREREG.md; output/step5_data_counts.json.class_rows_lawyer_occ_not_degree; output/testD/testD_d_members.csv:bioguide[455] (text); output/testD/testD_predictors.csv:bioguide[4728] (text); ... 25 matches in output/ |
 | 35 | output/step4_counts.csv:doctorate_phd_ind[0]; output/step4_linked_counts.csv:doctorate_phd_ind[0]; output/step4_linked_counts.csv:doctorate_phd_ind[1]; ... 14 matches in output/ |
+| 51% | output/exploratory/expl_law_units.csv:ci_hi[19]; output/exploratory/expl_rank_house.json.sig2_eps; output/testD/testD_predictors.csv:a_dist_median[97]; ... 119 matches in output/ |
 | 52 | output/step4_counts.csv:black[0]; output/step4_linked_counts.csv:black[0]; output/step4_linked_counts.csv:black[1]; ... 24 matches in output/ |
 | 80% | code/explore_law_mixed.py: 80% power (z_0.80); PREREG.md; output/step3_beta.csv:beta[4]; output/testD/testD_predictors.csv:a_dist_median[538]; output/testD/testD_predictors.csv:a_dist_median[1416]; ... 65 matches in output/ |
+| 83% | output/testD/testD_predictors.csv:a_dist_median[472]; output/testD/testD_predictors.csv:a_dist_median[1412]; output/testD/testD_predictors.csv:a_dist_median[3088]; ... 51 matches in output/ |
 | 85 | output/step4_counts.csv:law_degree[1]; output/step4_results.json.chambers.Senate.counts.law_degree; output/testD/testD_d_members.csv:bioguide[447] (text); ... 14 matches in output/ |
 | 93 | PREREG.md; output/step3_kappa.csv:t_min[0]; output/step3_kappa.csv:t_min[1]; output/step3_results.json.bodies.House.t_min; ... 462 matches in output/ |
 | 95% | PREREG.md; output/testD/testD_predictors.csv:a_dist_median[834]; output/testD/testD_predictors.csv:a_dist_median[5583]; output/testD/testD_predictors.csv:a_dist_median[8787]; ... 8 matches in output/ |
 | 96 | output/exploratory/expl_law_results.json.Senate.law_deg; output/step4_counts.csv:female[0]; output/step4_linked_counts.csv:female[0]; ... 499 matches in output/ |
-| 99% | PREREG.md; output/testD/billstatus_match.csv:share_entries_house_same_congress[0]; output/testD/billstatus_match.csv:share_entries_house_same_congress[1]; output/testD/billstatus_match.csv:share_entries_house_same_congress[10]; ... 32 matches in output/ |
+| 99% | PREREG.md; output/testD/billstatus_match.csv:share_entries_house_same_congress[0]; output/testD/billstatus_match.csv:share_entries_house_same_congress[1]; output/testD/billstatus_match.csv:share_entries_house_same_congress[10]; ... 33 matches in output/ |
 | 106 | CLASS first Congress (data); PREREG.md; output/testD/billstatus_parse.csv:n_files[19]; output/testD/billstatus_parse.csv:n_bills[19]; output/testD/testD_d_members.csv:bioguide[524] (text); ... 495 matches in output/ |
 | 108 | PREREG.md; output/testD/billstatus_match.csv:congress[0] (text); output/testD/billstatus_match.csv:congress[11] (text); output/testD/billstatus_match.csv:congress[22] (text); ... 526 matches in output/ |
-| 109 | PREREG.md; output/testD/billstatus_match.csv:congress[1] (text); output/testD/billstatus_match.csv:congress[12] (text); output/testD/billstatus_match.csv:congress[23] (text); ... 514 matches in output/ |
+| 109 | PREREG.md; output/testD/billstatus_match.csv:congress[1] (text); output/testD/billstatus_match.csv:congress[12] (text); output/testD/billstatus_match.csv:congress[23] (text); ... 515 matches in output/ |
 | 110 | CLASS last Congress (data); PREREG.md; output/testD/billstatus_match.csv:congress[2] (text); output/testD/billstatus_match.csv:congress[13] (text); output/testD/billstatus_match.csv:congress[24] (text); ... 534 matches in output/ |
 | 110, | CLASS last Congress (data); PREREG.md; output/testD/billstatus_match.csv:congress[2] (text); output/testD/billstatus_match.csv:congress[13] (text); output/testD/billstatus_match.csv:congress[24] (text); ... 534 matches in output/ |
 | 112 | output/sensitivity/step3_person_results.json.House.their_member_terms; output/testD/billstatus_match.csv:congress[4] (text); output/testD/billstatus_match.csv:congress[15] (text); ... 467 matches in output/ |
 | 117 | PREREG.md; output/testD/billstatus_match.csv:congress[9] (text); output/testD/billstatus_match.csv:congress[20] (text); output/testD/billstatus_match.csv:congress[31] (text); ... 464 matches in output/ |
-| 118 | PREREG.md; output/step3_kappa.csv:t_max[0]; output/step3_kappa.csv:t_max[1]; output/step3_results.json.bodies.House.t_max; ... 485 matches in output/ |
+| 118 | PREREG.md; output/step3_kappa.csv:t_max[0]; output/step3_kappa.csv:t_max[1]; output/step3_results.json.bodies.House.t_max; ... 486 matches in output/ |
 | 127 | output/step5_data_counts.json.house_rows_no_icpsr; output/testD/billstatus_parse.csv:n_withdrawn[2]; output/testD/testD_d_members.csv:bioguide[614] (text); ... 13 matches in output/ |
 | 146 | output/step4_coefs.csv:n[6]; output/step4_coefs.csv:n[7]; output/step4_coefs.csv:n[8]; ... 24 matches in output/ |
 | 147 | output/step4_counts.csv:class_members[1]; output/step4_results.json.chambers.Senate.counts.class_members; output/testD/billstatus_match.csv:unmatched_house_same_congress[0] (text); ... 23 matches in output/ |
@@ -269,11 +282,11 @@
 | 2,215 | output/step3_oos.csv:n_pairs[1]; output/step3_results.json.bodies.Senate.oos_n_pairs |
 | 2,222 | output/exploratory/expl_rank_house.json.n_members; output/sensitivity/step3_person_compare.csv:n_units[0]; output/step3_kappa.csv:n_members[0]; ... 4 matches in output/ |
 | 2,635 | output/sensitivity/step3_person_compare.csv:n_rows[2]; output/sensitivity/step3_person_compare.csv:n_rows[3]; output/sensitivity/step3_person_kappa.csv:n_rows[1]; ... 6 matches in output/ |
-| 3,650 | output/testD/testD_power.csv:n_member_terms[3]; output/testD/testD_power.json.abc_rows; output/testD/testD_power.json.results[3].n_member_terms; ... 7 matches in output/ |
-| 3,671 | output/testD/testD_power.csv:n_member_terms[1]; output/testD/testD_power.csv:n_member_terms[2]; output/testD/testD_power.json.results[1].n_member_terms; ... 8 matches in output/ |
-| 5,637 | output/testD/testD_power.csv:n_member_terms[4]; output/testD/testD_power.json.results[4].n_member_terms; output/testD/testD_results.csv:n_member_terms[4]; ... 4 matches in output/ |
+| 3,650 | output/testD/testD_planning_check.csv:n_member_terms[3]; output/testD/testD_power.csv:n_member_terms[3]; output/testD/testD_power.json.abc_rows; ... 8 matches in output/ |
+| 3,671 | output/testD/testD_planning_check.csv:n_member_terms[1]; output/testD/testD_planning_check.csv:n_member_terms[2]; output/testD/testD_power.csv:n_member_terms[1]; ... 10 matches in output/ |
+| 5,637 | output/testD/testD_planning_check.csv:n_member_terms[4]; output/testD/testD_power.csv:n_member_terms[4]; output/testD/testD_power.json.results[4].n_member_terms; ... 5 matches in output/ |
 | 5,838 | output/exploratory/expl_law_results.json.House.n_rows |
-| 9,215 | output/testD/testD_power.csv:n_member_terms[0]; output/testD/testD_power.json.results[0].n_member_terms; output/testD/testD_results.csv:n_member_terms[0]; ... 4 matches in output/ |
+| 9,215 | output/testD/testD_planning_check.csv:n_member_terms[0]; output/testD/testD_power.csv:n_member_terms[0]; output/testD/testD_power.json.results[0].n_member_terms; ... 5 matches in output/ |
 | 9,257 | output/exploratory/expl_rank_house.json.oos_n_pairs; output/step3_oos.csv:n_pairs[0]; output/step3_results.json.bodies.House.oos_n_pairs |
 | 11,479 | output/exploratory/expl_rank_house.json.n_rows; output/sensitivity/step3_person_compare.csv:n_rows[0]; output/sensitivity/step3_person_compare.csv:n_rows[1]; ... 7 matches in output/ |
 | 21,329 | output/step3_oos.csv:n_members[2]; output/step3_results.json.bodies.States.oos_n_members; output/testD/testD_predictors.csv:id[7818]; ... 7 matches in output/ |
@@ -283,7 +296,7 @@
 | 100,627 | output/step3_kappa.csv:n_rows[2]; output/step3_results.json.bodies.States.n_rows |
 
 ## C. Key numbers recomputed separately from output/
-- checks: 117; failed: 0
+- checks: 125; failed: 0
 
 | Variable | In post | Recomputed | OK |
 |---|---|---|---|
@@ -400,6 +413,14 @@
 | testd.d_hi | +0.047 | +0.047 | yes |
 | testd.d_ratio | −0.005 | −0.005 | yes |
 | testd.d_verdict | no evidence | no evidence | yes |
+| claim: (a) CI inside ±0.060 | stated | true | yes |
+| claim: (d) CI inside ±0.060 | stated | true | yes |
+| claim: (c) CI includes 0 and reaches above 0.060 | stated | true | yes |
+| claim: (b) supported | stated | true | yes |
+| testd.unexplained | 83% | 83% | yes |
+| claim: sheet 1 has 30 rows and no coder-1 label | stated | true | yes |
+| claim: sheet 2 has 10 rows and no coder-1 label | stated | true | yes |
+| claim: output/coder1_private is not tracked by git | stated | true | yes |
 | link.s4lc_house | +0.102 | +0.102 | yes |
 | link.s4lc_house_verdict | no evidence for a JD skill premium | no evidence for a JD skill premium | yes |
 | link.s4lc_senate | +0.116 | +0.116 | yes |
@@ -407,6 +428,6 @@
 
 ## D. Numbers typed by hand in post.qmd (outside shortcodes and front matter)
 
-0,, 0, 0.05, 0.060, 0.10, 0.20, 0.600, 1,, 1, 1.0, 1.9, 2,, 2, 3, 4, 5, 6, 7, 8, 10, 30,, 30, 80%, 95%, 99%, 106, 108, 110,, 110, 117, 118
+0,, 0, 0.05, 0.060, 0.10, 0.20, 0.600, 1.0, 1,, 1, 1.9, 2, 2,, 3, 4, 5, 6, 7, 8, 10, 30,, 30, 80%, 95%, 99%, 106, 108, 110,, 110, 117, 118
 
 - Front-matter date: 2026-10-26. It is typed by hand, not computed; it is the post's date, not a result.
