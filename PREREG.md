@@ -105,3 +105,16 @@ Written on 2026-10-29, before any Test D estimate exists: no γ has been estimat
   - (i) power for the 99% CI to exclude 0: Φ(γ/σ̂_γ̂ − z₀.₉₉₅) + Φ(−γ/σ̂_γ̂ − z₀.₉₉₅);
   - (ii) P(supported) = P(99% CI excludes 0 and |γ̂| ≥ 0.060) = 1 − Φ((a − γ)/σ̂_γ̂) + Φ((−a − γ)/σ̂_γ̂), where a = max(0.060, z₀.₉₉₅ · σ̂_γ̂).
 - σ̂_γ̂ is the GLS standard error of γ̂ from Amendment 1a, (X′V⁻¹X)⁻¹ with the Step 3 House variance components held fixed. It is a planning figure only. The test itself uses the percentile CI from the member bootstrap with B = 2000, as in Amendment 1.
+
+## Amendment 2: Test B (2026-11-07)
+Written on 2026-11-07, after the econpanel copy of the IGM votes was downloaded and the agreement shares were computed (`data/derived/igm/igm_all_questions.csv`), and before any statement was coded for the policy filter or for adoption. Tests A, C and D, their rules and the combining rule are unchanged. Test B follows the PREREG text above, except for these added definitions. Where a definition below differs from the text above, the definition below applies.
+
+- **Source:** the econpanel copy of the IGM Forum votes (https://github.com/corybrunson/econpanel, commit `228daee92072a95f65e963e8e96800c5da24fa36`, `data/igm.rda`, sha256 `5098e826b539c55a9d550ccea23a4434386ac7be4ecbad7179fe36dc2b4da55e`). US panel only.
+- **Consensus:** weighted agree ≥ 0.80, agree direction only. Weighted agree = the sum of confidence of panelists who voted Strongly Agree or Agree, divided by the sum of confidence of panelists who voted Strongly Agree, Agree, Uncertain, Disagree or Strongly Disagree. Disagree-direction consensus (weighted disagree ≥ 0.80) is reported as descriptive only.
+- **Window:** statement date ≤ 2016-11-07. Adoption is judged as of 2026-11-07.
+- **Unit:** one policy. If several statements concern the same policy, the earliest is kept.
+- **Policy filter:** the statement proposes or evaluates a specific US federal measure that Congress, an agency or the president could enact, change or repeal, and the favored direction is clear. Excluded: claims about the past or about causes, forecasts, theory, other countries, and state or local measures.
+- **Adopted:** a federal law, rule, regulation or executive measure was in force at any time within 10 years after the statement date, in substantially the form the statement describes. Each code needs a source URL and a date. If it is unclear, the code is "unclear". "Unclear" counts as adopted in the main result and as not adopted in a sensitivity result. (This replaces "within 10 years of the panel statement, and still in force" above.)
+- **Coders:** coder 1 is Claude Code; coder 2 is Aadhav. Coder 2 codes at least 10 policies, chosen with seed 20261029 and blind to coder 1's codes. κ_C and the cause-coding rule follow the PREREG text above.
+- **Fewer than 20 policies:** descriptive only, as the PREREG text above says.
+- **The pool is fixed by these rules, not by results.**
