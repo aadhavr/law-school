@@ -209,15 +209,22 @@ def main():
     log("rows with House service in t-1:", int(panel["served_tm1"].sum()),
         f"(of which {n_switch} have a different ICPSR in t-1)")
 
-    # (a)
+    # (a). Linked by bioguide in t−1 (D13): a party switcher's LES-panel ICPSR in t−1 can differ
+    # from the Voteview ICPSR of that Congress. Two Voteview rows for one person in t−1: use the
+    # row whose ICPSR is in the LES panel in t−1, else the row with more votes (as for (c)).
+    panel_ids_by_t = {t: set(g["id"]) for t, g in panel.groupby("t")}
     med = vv.groupby("congress")["nominate_dim1"].median()
     vv["dist_median"] = (vv["nominate_dim1"] - vv["congress"].map(med)).abs()
-    a = vv.set_index(["icpsr", "congress"])["dist_median"]
-    key = pd.MultiIndex.from_arrays([panel["id_prev"].fillna(-1).astype(int), panel["t"] - 1])
+    va = vv.dropna(subset=["bioguide_id"]).copy()
+    va["in_panel"] = [i in panel_ids_by_t.get(c, set()) for i, c in zip(va["icpsr"], va["congress"])]
+    va = va.sort_values(["in_panel", "nominate_number_of_votes"], ascending=False)
+    a = va.drop_duplicates(["bioguide_id", "congress"]).set_index(["bioguide_id", "congress"])["dist_median"]
+    key = pd.MultiIndex.from_arrays([panel["bioguide"], panel["t"] - 1])
     panel["a_dist_median"] = np.where(panel["served_tm1"], a.reindex(key).to_numpy(), np.nan)
+    miss_a = panel[panel["served_tm1"] & panel["a_dist_median"].isna()]
+    log("rows with service in t-1 and no (a):", miss_a[["id", "bioguide", "t"]].to_dict("records"))
 
     # (b), (c)
-    panel_ids_by_t = {t: set(g["id"]) for t, g in panel.groupby("t")}
     net, net_stats = network_predictors(vv, panel_ids_by_t)
     net_stats.to_csv(OUT / "testD_network_stats.csv", index=False)
     netk = net.set_index(["bioguide", "congress"])
