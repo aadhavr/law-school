@@ -1,9 +1,12 @@
 """EXPLORATORY (not in PREREG.md). Law background inside the mixed model, power, Wilson CI.
 
 Requested 2026-10-26. The PREREG results (step3_*, step4_*) are primary and are not changed.
+Linkage-corrected 2026-11-07 (D15): persons are linked by bioguide ID (through Voteview), one
+record and one random effect per person; law_deg = 1 if any CLASS row of the person has
+law_ind = 1. The ICPSR-linked version is in archive/exploratory_icpsr_linkage/.
 
 1. LES_it = X_it·β + γ·LAW_i + α_i + ε_it, X_it = PREREG list. Sample: CLASS 1.9 members
-   (Congresses 106–110) matched to LES 1.0 by ICPSR, with all their LES 1.0 terms (Congresses
+   (Congresses 106–110) matched to LES 1.0 by bioguide ID, with all their LES 1.0 terms (Congresses
    93–118) in that chamber. House and Senate are fit separately, as in PREREG, because LES is
    scaled within chamber. LAW_i is person-level (identical across a member's CLASS rows; checked).
 2. Same with LAWYER_i (any CLASS occupation code 1–4: lawyer, private/corporate/other/unspecified),
@@ -12,7 +15,8 @@ Requested 2026-10-26. The PREREG results (step3_*, step4_*) are primary and are 
    95% CI: percentile, bootstrap over members (all models refit in every draw).
 4. Bootstrap standard error (SD of the bootstrap draws) of each law effect, here and for the
    PREREG Step 4 law_deg effects (their bootstrap is replayed with the Step 4 seed; the replay
-   is checked against output/step4_coefs.csv). Smallest effect with 80% power, two-sided α = 0.05:
+   is checked against output/step4_coefs.csv), and for the linkage-corrected Step 4 (its draws
+   are read from output/step4_linked_lawdeg_draws.csv). Smallest effect with 80% power, two-sided α = 0.05:
    MDE = (z_0.975 + z_0.80) × SE.
 D9 (ANALYSIS_LOG.md). Every law effect is reported three ways (expl_law_units.csv):
    LES points; units of the full-panel σ̂_α (the Step 3 estimate; for Step 4 this is the PREREG
@@ -36,6 +40,7 @@ from load_data import load_all, ROOT
 import remlfit
 from step3_test_A import design, member_blocks, resample_rows, ci
 import step4_skill_source as s4
+from person_ids import bioguide_of_icpsr, to_person
 
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "output" / "exploratory"
 SEED = 20261027
@@ -45,7 +50,8 @@ OCC = [f"occupation{k}_category" for k in range(1, 11)]
 MODELS = {"degree": ["law_deg"], "occupation": ["lawyer_occ"], "both": ["law_deg", "lawyer_occ"]}
 
 
-def load_people():
+def load_people(bio):
+    """One record per person (bioguide). Returns (people, idnos without a bioguide ID)."""
     c = pd.read_stata(s4.CLASS, convert_categoricals=False,
                       columns=["idno", "law_ind", "phd_ind", "college_doctorate_major"] + OCC)
     c["lawyer_occ"] = c[OCC].isin([1, 2, 3, 4]).any(axis=1).astype(float)
@@ -55,7 +61,15 @@ def load_people():
     assert (g["law_ind"].nunique() == 1).all() and (g["lawyer_occ"].nunique() == 1).all()
     p = g.agg(law_deg=("law_ind", "max"), lawyer_occ=("lawyer_occ", "max"), econ_phd=("econ_phd", "max"))
     p.index = p.index.astype(int)
-    return p
+    p["bioguide"] = p.index.map(bio)
+    no_bio = [int(i) for i in p.index[p["bioguide"].isna()]]
+    p = p.dropna(subset=["bioguide"])
+    # law_deg: max across the person's idnos (D15). Other fields must agree (checked).
+    for col in ["lawyer_occ", "econ_phd"]:
+        bad = p.groupby("bioguide")[col].nunique() > 1
+        if bad.any():
+            raise SystemExit(f"STOP: {col} differs across idnos for {list(bad[bad].index)}")
+    return p.groupby("bioguide")[["law_deg", "lawyer_occ", "econ_phd"]].max(), no_bio
 
 
 def fit_all(panel, people):
@@ -145,19 +159,22 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(SEED)
     D = load_all()
-    people = load_people()
-    res = {"label": "EXPLORATORY", "seed": SEED, "B": B, "z_sum_80pct_power": float(Z),
-           "class_people": len(people)}
-    matched = people.index[people.index.isin(D["House"]["id"]) | people.index.isin(D["Senate"]["id"])]
+    bio = bioguide_of_icpsr()
+    people, no_bio = load_people(bio)
+    P = {b: to_person(D[b], bio) for b in ["House", "Senate"]}
+    res = {"label": "EXPLORATORY", "linkage": "bioguide (D15)", "seed": SEED, "B": B, "z_sum_80pct_power": float(Z),
+           "class_people": len(people) + len(no_bio), "class_idnos_without_bioguide": no_bio}
+    matched = people.index[people.index.isin(P["House"]["bioguide"]) | people.index.isin(P["Senate"]["bioguide"])]
     res["matched_people"] = len(matched)
-    res["unmatched_icpsr"] = [int(i) for i in people.index.difference(matched)]
+    # Key name kept for step5/step6: CLASS people not matched to LES 1.0 (by bioguide, or no bioguide).
+    res["unmatched_icpsr"] = [str(i) for i in people.index.difference(matched)] + [str(i) for i in no_bio]
     rows = []
     all_est, all_draws = {}, {}
 
     for body in ["House", "Senate"]:
-        panel = D[body][D[body]["id"].isin(people.index)].sort_values(["id", "t"]).reset_index(drop=True)
-        panel["orig"] = panel["id"]
-        pp = people.loc[panel["id"].unique()]
+        panel = P[body][P[body]["bioguide"].isin(people.index)].sort_values(["id", "t"]).reset_index(drop=True)
+        panel["orig"] = panel["bioguide"]
+        pp = people.loc[panel["bioguide"].unique()]
         info = {"n_rows": len(panel), "n_members": len(pp), "law_deg": int(pp["law_deg"].sum()),
                 "lawyer_occ": int(pp["lawyer_occ"].sum()),
                 "both": int(((pp["law_deg"] == 1) & (pp["lawyer_occ"] == 1)).sum()),
@@ -202,6 +219,20 @@ def main():
         add(body, a, "law_deg", "full-panel sigma_alpha (PREREG; re-estimated per draw)", est[1], d4[:, 1], 0.20)
         add(body, a, "law_deg", f"sample sigma_alpha ({est[3]:.6f})", est[2], d4[:, 2], None)
     res["step4_replay_ci_matches_output"] = True
+    # Linkage-corrected Step 4 (D15): draws saved by step4_linked.py. Sample σ̂_α is fixed at the
+    # person-model estimate on the CLASS persons' own terms.
+    ld = pd.read_csv(ROOT / "output" / "step4_linked_lawdeg_draws.csv")
+    lc = pd.read_csv(ROOT / "output" / "step4_linked_compare.csv")
+    for body in ["House", "Senate"]:
+        sig_full = float(kap.loc[body, "sigma_alpha"])
+        est_les = float(lc[(lc["body"] == body) & (lc["version"] == "linkage-corrected")
+                           & (lc["unit"] == "LES points")]["estimate"].iloc[0])
+        d = ld[f"{body}_linked_les"].to_numpy()
+        sig_s = sigma_alpha_prereg(P[body][P[body]["bioguide"].isin(people.index)])
+        a = "Step 4 linkage-corrected (OLS on BLUP)"
+        add(body, a, "law_deg", "LES points", est_les, d, None)
+        add(body, a, "law_deg", f"full-panel sigma_alpha (fixed at {sig_full:.6f})", est_les / sig_full, d / sig_full, 0.20)
+        add(body, a, "law_deg", f"sample sigma_alpha ({sig_s:.6f}, fixed)", est_les / sig_s, d / sig_s, None)
 
     for body in ["House", "Senate"]:
         sig_full = float(kap.loc[body, "sigma_alpha"])

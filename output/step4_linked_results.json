@@ -1,0 +1,143 @@
+{
+  "seed": 20261107,
+  "B": 1000,
+  "class_idnos_without_bioguide": [
+    928489,
+    928490
+  ],
+  "law_deg_changed_by_person_rule": [
+    {
+      "bioguide": "H000067",
+      "idno": 94828,
+      "chamber": "H",
+      "law_deg_idno_rule": 0.0,
+      "law_deg": 1.0
+    }
+  ],
+  "chambers": {
+    "House": {
+      "linkage-corrected": {
+        "counts": {
+          "version": "linkage-corrected",
+          "body": "House",
+          "class_persons_with_bioguide": 650,
+          "matched_to_LES": 650,
+          "unmatched": 0,
+          "excluded": "",
+          "persons_with_more_than_one_class_idno": 5,
+          "multi_idno_persons": "A000361;F000257;G000280;H000067;M000206",
+          "law_degree": 254,
+          "doctorate_phd_ind": 35,
+          "econ_phd": 3,
+          "female": 96,
+          "black": 52,
+          "hispanic": 24,
+          "sigma_alpha_person_model": 0.6003317166825488,
+          "terms_dropped_lt_min_holders": "",
+          "sigma_alpha_fixed_step3": 0.6000468999642989
+        },
+        "terms": [
+          "Intercept",
+          "law_deg",
+          "phd",
+          "female",
+          "black",
+          "hispanic"
+        ]
+      },
+      "sensitivity: linkage-corrected, Hall left out": {
+        "counts": {
+          "version": "sensitivity: linkage-corrected, Hall left out",
+          "body": "House",
+          "class_persons_with_bioguide": 649,
+          "matched_to_LES": 649,
+          "unmatched": 0,
+          "excluded": "H000067",
+          "persons_with_more_than_one_class_idno": 4,
+          "multi_idno_persons": "A000361;F000257;G000280;M000206",
+          "law_degree": 253,
+          "doctorate_phd_ind": 35,
+          "econ_phd": 3,
+          "female": 96,
+          "black": 52,
+          "hispanic": 24,
+          "sigma_alpha_person_model": 0.6003317166825488,
+          "terms_dropped_lt_min_holders": "",
+          "sigma_alpha_fixed_step3": 0.6000468999642989
+        },
+        "terms": [
+          "Intercept",
+          "law_deg",
+          "phd",
+          "female",
+          "black",
+          "hispanic"
+        ]
+      },
+      "verdict_original": "no evidence for a JD skill premium",
+      "verdict linkage-corrected": "no evidence for a JD skill premium",
+      "verdict changes (linkage-corrected)": false,
+      "verdict sensitivity: linkage-corrected, Hall left out": "no evidence for a JD skill premium",
+      "verdict changes (sensitivity: linkage-corrected, Hall left out)": false
+    },
+    "Senate": {
+      "linkage-corrected": {
+        "counts": {
+          "version": "linkage-corrected",
+          "body": "Senate",
+          "class_persons_with_bioguide": 145,
+          "matched_to_LES": 145,
+          "unmatched": 0,
+          "excluded": "",
+          "persons_with_more_than_one_class_idno": 1,
+          "multi_idno_persons": "J000072",
+          "law_degree": 84,
+          "doctorate_phd_ind": 3,
+          "econ_phd": 0,
+          "female": 16,
+          "black": 1,
+          "hispanic": 2,
+          "sigma_alpha_person_model": 0.4240686483005545,
+          "terms_dropped_lt_min_holders": "phd;black;hispanic",
+          "sigma_alpha_fixed_step3": 0.4267596132228223
+        },
+        "terms": [
+          "Intercept",
+          "law_deg",
+          "female"
+        ]
+      },
+      "sensitivity: linkage-corrected, Hall left out": {
+        "counts": {
+          "version": "sensitivity: linkage-corrected, Hall left out",
+          "body": "Senate",
+          "class_persons_with_bioguide": 145,
+          "matched_to_LES": 145,
+          "unmatched": 0,
+          "excluded": "H000067",
+          "persons_with_more_than_one_class_idno": 1,
+          "multi_idno_persons": "J000072",
+          "law_degree": 84,
+          "doctorate_phd_ind": 3,
+          "econ_phd": 0,
+          "female": 16,
+          "black": 1,
+          "hispanic": 2,
+          "sigma_alpha_person_model": 0.4240686483005545,
+          "terms_dropped_lt_min_holders": "phd;black;hispanic",
+          "sigma_alpha_fixed_step3": 0.4267596132228223
+        },
+        "terms": [
+          "Intercept",
+          "law_deg",
+          "female"
+        ]
+      },
+      "verdict_original": "no evidence for a JD skill premium",
+      "verdict linkage-corrected": "no evidence for a JD skill premium",
+      "verdict changes (linkage-corrected)": false,
+      "verdict sensitivity: linkage-corrected, Hall left out": "no evidence for a JD skill premium",
+      "verdict changes (sensitivity: linkage-corrected, Hall left out)": false
+    }
+  }
+}

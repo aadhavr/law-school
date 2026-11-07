@@ -12,6 +12,7 @@ $PY -I code/step4_skill_source.py > output/step4_log.txt 2>&1
 mkdir -p output/testD
 $PY -I code/testD_billstatus.py > output/testD/billstatus_log.txt 2>&1
 $PY -I code/testD_design.py > /dev/null
+$PY -I code/step4_linked.py > output/step4_linked_log.txt 2>&1
 $PY -I code/explore_law_mixed.py > output/exploratory/expl_law_log.txt 2>&1
 $PY -I code/explore_rank_house.py > output/exploratory/expl_rank_log.txt 2>&1
 $PY -I code/step5_figures.py

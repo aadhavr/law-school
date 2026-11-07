@@ -1,0 +1,38 @@
+rows whose law_deg differs from the max-within-idno rule:
+    bioguide   idno chamber  law_deg_idno_rule  law_deg
+796  H000067  94828       H                0.0      1.0
+House linkage-corrected {'version': 'linkage-corrected', 'body': 'House', 'class_persons_with_bioguide': 650, 'matched_to_LES': 650, 'unmatched': 0, 'excluded': '', 'persons_with_more_than_one_class_idno': 5, 'multi_idno_persons': 'A000361;F000257;G000280;H000067;M000206', 'law_degree': 254, 'doctorate_phd_ind': 35, 'econ_phd': 3, 'female': 96, 'black': 52, 'hispanic': 24, 'sigma_alpha_person_model': 0.6003317166825488, 'terms_dropped_lt_min_holders': '', 'sigma_alpha_fixed_step3': 0.6000468999642989}
+House sensitivity: linkage-corrected, Hall left out {'version': 'sensitivity: linkage-corrected, Hall left out', 'body': 'House', 'class_persons_with_bioguide': 649, 'matched_to_LES': 649, 'unmatched': 0, 'excluded': 'H000067', 'persons_with_more_than_one_class_idno': 4, 'multi_idno_persons': 'A000361;F000257;G000280;M000206', 'law_degree': 253, 'doctorate_phd_ind': 35, 'econ_phd': 3, 'female': 96, 'black': 52, 'hispanic': 24, 'sigma_alpha_person_model': 0.6003317166825488, 'terms_dropped_lt_min_holders': '', 'sigma_alpha_fixed_step3': 0.6000468999642989}
+Senate linkage-corrected {'version': 'linkage-corrected', 'body': 'Senate', 'class_persons_with_bioguide': 145, 'matched_to_LES': 145, 'unmatched': 0, 'excluded': '', 'persons_with_more_than_one_class_idno': 1, 'multi_idno_persons': 'J000072', 'law_degree': 84, 'doctorate_phd_ind': 3, 'econ_phd': 0, 'female': 16, 'black': 1, 'hispanic': 2, 'sigma_alpha_person_model': 0.4240686483005545, 'terms_dropped_lt_min_holders': 'phd;black;hispanic', 'sigma_alpha_fixed_step3': 0.4267596132228223}
+Senate sensitivity: linkage-corrected, Hall left out {'version': 'sensitivity: linkage-corrected, Hall left out', 'body': 'Senate', 'class_persons_with_bioguide': 145, 'matched_to_LES': 145, 'unmatched': 0, 'excluded': 'H000067', 'persons_with_more_than_one_class_idno': 1, 'multi_idno_persons': 'J000072', 'law_degree': 84, 'doctorate_phd_ind': 3, 'econ_phd': 0, 'female': 16, 'black': 1, 'hispanic': 2, 'sigma_alpha_person_model': 0.4240686483005545, 'terms_dropped_lt_min_holders': 'phd;black;hispanic', 'sigma_alpha_fixed_step3': 0.4267596132228223}
+      body     term                                        version                                                    unit  estimate     ci_lo     ci_hi   boot_se    n                             verdict
+0    House  law_deg                       original (PREREG Step 4)                                              LES points  0.061195 -0.011667  0.128575  0.035826  653                                    
+1    House  law_deg                       original (PREREG Step 4)  full-panel sigma_alpha, re-estimated per draw (PREREG)  0.101984 -0.019126  0.216974  0.060446  653  no evidence for a JD skill premium
+2    House  law_deg                       original (PREREG Step 4)                    fixed full-panel sigma_alpha (0.600)  0.101984 -0.019443  0.214276  0.059706  653  no evidence for a JD skill premium
+3    House  law_deg                              linkage-corrected                                              LES points  0.061049 -0.008541  0.130995  0.034914  650                                    
+4    House  law_deg                              linkage-corrected                    fixed full-panel sigma_alpha (0.600)  0.101740 -0.014234  0.218307  0.058186  650  no evidence for a JD skill premium
+5    House  law_deg  sensitivity: linkage-corrected, Hall left out                                              LES points  0.062889 -0.007324  0.132377  0.034896  649                                    
+6    House  law_deg  sensitivity: linkage-corrected, Hall left out                    fixed full-panel sigma_alpha (0.600)  0.104807 -0.012206  0.220610  0.058155  649  no evidence for a JD skill premium
+7   Senate  law_deg                       original (PREREG Step 4)                                              LES points  0.047188 -0.071369  0.156616  0.056845  146                                    
+8   Senate  law_deg                       original (PREREG Step 4)  full-panel sigma_alpha, re-estimated per draw (PREREG)  0.110573 -0.169923  0.372623  0.135721  146  no evidence for a JD skill premium
+9   Senate  law_deg                       original (PREREG Step 4)                    fixed full-panel sigma_alpha (0.427)  0.110573 -0.167236  0.366988  0.133202  146  no evidence for a JD skill premium
+10  Senate  law_deg                              linkage-corrected                                              LES points  0.049637 -0.062637  0.156723  0.056194  145                                    
+11  Senate  law_deg                              linkage-corrected                    fixed full-panel sigma_alpha (0.427)  0.116312 -0.146774  0.367239  0.131675  145  no evidence for a JD skill premium
+12  Senate  law_deg  sensitivity: linkage-corrected, Hall left out                                              LES points  0.049637 -0.062637  0.156723  0.056194  145                                    
+13  Senate  law_deg  sensitivity: linkage-corrected, Hall left out                    fixed full-panel sigma_alpha (0.427)  0.116312 -0.146774  0.367239  0.131675  145  no evidence for a JD skill premium
+{
+ "House": {
+  "verdict_original": "no evidence for a JD skill premium",
+  "verdict linkage-corrected": "no evidence for a JD skill premium",
+  "verdict changes (linkage-corrected)": false,
+  "verdict sensitivity: linkage-corrected, Hall left out": "no evidence for a JD skill premium",
+  "verdict changes (sensitivity: linkage-corrected, Hall left out)": false
+ },
+ "Senate": {
+  "verdict_original": "no evidence for a JD skill premium",
+  "verdict linkage-corrected": "no evidence for a JD skill premium",
+  "verdict changes (linkage-corrected)": false,
+  "verdict sensitivity: linkage-corrected, Hall left out": "no evidence for a JD skill premium",
+  "verdict changes (sensitivity: linkage-corrected, Hall left out)": false
+ }
+}

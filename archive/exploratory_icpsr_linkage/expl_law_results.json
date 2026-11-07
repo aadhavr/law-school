@@ -1,0 +1,118 @@
+{
+  "label": "EXPLORATORY",
+  "seed": 20261027,
+  "B": 1000,
+  "z_sum_80pct_power": 2.8015852181129683,
+  "class_people": 788,
+  "matched_people": 783,
+  "unmatched_icpsr": [
+    94879,
+    99542,
+    99767,
+    928489,
+    928490
+  ],
+  "House": {
+    "n_rows": 5808,
+    "n_members": 699,
+    "law_deg": 279,
+    "lawyer_occ": 267,
+    "both": 257,
+    "degree_not_occ": 22,
+    "occ_not_degree": 10
+  },
+  "Senate": {
+    "n_rows": 1522,
+    "n_members": 166,
+    "law_deg": 97,
+    "lawyer_occ": 93,
+    "both": 89,
+    "degree_not_occ": 8,
+    "occ_not_degree": 4
+  },
+  "step4_replay_ci_matches_output": true,
+  "prereg_rule_on_full_panel_units": [
+    {
+      "body": "House",
+      "analysis": "PREREG step4 (OLS on BLUP)",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "PREREG step4 (OLS on BLUP)",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "House",
+      "analysis": "E1/E2 mixed model: degree",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "House",
+      "analysis": "E1/E2 mixed model: occupation",
+      "term": "lawyer_occ",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "House",
+      "analysis": "E1/E2 mixed model: both",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "House",
+      "analysis": "E1/E2 mixed model: both",
+      "term": "lawyer_occ",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "E1/E2 mixed model: degree",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "E1/E2 mixed model: occupation",
+      "term": "lawyer_occ",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "E1/E2 mixed model: both",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "E1/E2 mixed model: both",
+      "term": "lawyer_occ",
+      "verdict": "no evidence for a JD skill premium"
+    }
+  ],
+  "econ_phd_wilson": [
+    {
+      "k": 3,
+      "n": 788,
+      "denominator": "all CLASS people",
+      "share": 0.0038071065989847717,
+      "ci": [
+        0.001295586453567383,
+        0.011132985845932083
+      ]
+    },
+    {
+      "k": 3,
+      "n": 783,
+      "denominator": "CLASS people matched to LES 1.0",
+      "share": 0.0038314176245210726,
+      "ci": [
+        0.0013038649945517396,
+        0.011203684919562284
+      ]
+    }
+  ]
+}

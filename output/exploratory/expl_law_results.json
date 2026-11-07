@@ -1,32 +1,34 @@
 {
   "label": "EXPLORATORY",
+  "linkage": "bioguide (D15)",
   "seed": 20261027,
   "B": 1000,
   "z_sum_80pct_power": 2.8015852181129683,
-  "class_people": 788,
-  "matched_people": 783,
-  "unmatched_icpsr": [
-    94879,
-    99542,
-    99767,
+  "class_people": 781,
+  "class_idnos_without_bioguide": [
     928489,
     928490
   ],
+  "matched_people": 779,
+  "unmatched_icpsr": [
+    "928489",
+    "928490"
+  ],
   "House": {
-    "n_rows": 5808,
-    "n_members": 699,
+    "n_rows": 5838,
+    "n_members": 698,
     "law_deg": 279,
-    "lawyer_occ": 267,
+    "lawyer_occ": 266,
     "both": 257,
     "degree_not_occ": 22,
-    "occ_not_degree": 10
+    "occ_not_degree": 9
   },
   "Senate": {
-    "n_rows": 1522,
-    "n_members": 166,
-    "law_deg": 97,
-    "lawyer_occ": 93,
-    "both": 89,
+    "n_rows": 1528,
+    "n_members": 165,
+    "law_deg": 96,
+    "lawyer_occ": 92,
+    "both": 88,
     "degree_not_occ": 8,
     "occ_not_degree": 4
   },
@@ -41,6 +43,18 @@
     {
       "body": "Senate",
       "analysis": "PREREG step4 (OLS on BLUP)",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "House",
+      "analysis": "Step 4 linkage-corrected (OLS on BLUP)",
+      "term": "law_deg",
+      "verdict": "no evidence for a JD skill premium"
+    },
+    {
+      "body": "Senate",
+      "analysis": "Step 4 linkage-corrected (OLS on BLUP)",
       "term": "law_deg",
       "verdict": "no evidence for a JD skill premium"
     },
@@ -96,22 +110,22 @@
   "econ_phd_wilson": [
     {
       "k": 3,
-      "n": 788,
+      "n": 779,
       "denominator": "all CLASS people",
-      "share": 0.0038071065989847717,
+      "share": 0.0038510911424903724,
       "ci": [
-        0.001295586453567383,
-        0.011132985845932083
+        0.001310564392225772,
+        0.01126089399159529
       ]
     },
     {
       "k": 3,
-      "n": 783,
+      "n": 779,
       "denominator": "CLASS people matched to LES 1.0",
-      "share": 0.0038314176245210726,
+      "share": 0.0038510911424903724,
       "ci": [
-        0.0013038649945517396,
-        0.011203684919562284
+        0.001310564392225772,
+        0.01126089399159529
       ]
     }
   ]

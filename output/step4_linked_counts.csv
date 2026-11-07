@@ -1,0 +1,5 @@
+version,body,class_persons_with_bioguide,matched_to_LES,unmatched,excluded,persons_with_more_than_one_class_idno,multi_idno_persons,law_degree,doctorate_phd_ind,econ_phd,female,black,hispanic,sigma_alpha_person_model,terms_dropped_lt_min_holders,sigma_alpha_fixed_step3
+linkage-corrected,House,650,650,0,,5,A000361;F000257;G000280;H000067;M000206,254,35,3,96,52,24,0.6003317166825488,,0.6000468999642989
+"sensitivity: linkage-corrected, Hall left out",House,649,649,0,H000067,4,A000361;F000257;G000280;M000206,253,35,3,96,52,24,0.6003317166825488,,0.6000468999642989
+linkage-corrected,Senate,145,145,0,,1,J000072,84,3,0,16,1,2,0.4240686483005545,phd;black;hispanic,0.4267596132228223
+"sensitivity: linkage-corrected, Hall left out",Senate,145,145,0,H000067,1,J000072,84,3,0,16,1,2,0.4240686483005545,phd;black;hispanic,0.4267596132228223

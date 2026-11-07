@@ -1,0 +1,15 @@
+body,term,version,unit,estimate,ci_lo,ci_hi,boot_se,n,verdict
+House,law_deg,original (PREREG Step 4),LES points,0.06119527166537928,-0.011666927592919995,0.1285754776732048,0.035826139893927064,653,
+House,law_deg,original (PREREG Step 4),"full-panel sigma_alpha, re-estimated per draw (PREREG)",0.10198414768783946,-0.019126458171700236,0.21697381568342727,0.06044574594817765,653,no evidence for a JD skill premium
+House,law_deg,original (PREREG Step 4),fixed full-panel sigma_alpha (0.600),0.10198414768748947,-0.019443359500089314,0.214275713583146,0.05970556617500835,653,no evidence for a JD skill premium
+House,law_deg,linkage-corrected,LES points,0.0610485697226644,-0.00854107659866315,0.13099460238665686,0.034914473396195404,650,
+House,law_deg,linkage-corrected,fixed full-panel sigma_alpha (0.600),0.10173966356012606,-0.014234015039776591,0.2183072729722471,0.05818624077263413,650,no evidence for a JD skill premium
+House,law_deg,"sensitivity: linkage-corrected, Hall left out",LES points,0.06288883458799807,-0.007324299592833418,0.13237654077591463,0.034895614515399666,649,
+House,law_deg,"sensitivity: linkage-corrected, Hall left out",fixed full-panel sigma_alpha (0.600),0.10480653194231947,-0.012206211869887492,0.2206103235993564,0.058154811761340415,649,no evidence for a JD skill premium
+Senate,law_deg,original (PREREG Step 4),LES points,0.047188271925432554,-0.07136946951310058,0.1566158358240647,0.0568451781650875,146,
+Senate,law_deg,original (PREREG Step 4),"full-panel sigma_alpha, re-estimated per draw (PREREG)",0.11057342783116303,-0.16992305150463793,0.37262269948154186,0.1357214624567294,146,no evidence for a JD skill premium
+Senate,law_deg,original (PREREG Step 4),fixed full-panel sigma_alpha (0.427),0.11057342462440167,-0.16723576294891035,0.3669884191742659,0.13320186916423873,146,no evidence for a JD skill premium
+Senate,law_deg,linkage-corrected,LES points,0.049637309715061105,-0.06263715125241363,0.156722873256182,0.05619355460319288,145,
+Senate,law_deg,linkage-corrected,fixed full-panel sigma_alpha (0.427),0.11631210680928275,-0.146773849520079,0.3672392335175187,0.1316749590684739,145,no evidence for a JD skill premium
+Senate,law_deg,"sensitivity: linkage-corrected, Hall left out",LES points,0.049637309715061105,-0.06263715125241363,0.156722873256182,0.05619355460319288,145,
+Senate,law_deg,"sensitivity: linkage-corrected, Hall left out",fixed full-panel sigma_alpha (0.427),0.11631210680928275,-0.146773849520079,0.3672392335175187,0.1316749590684739,145,no evidence for a JD skill premium
