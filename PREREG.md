@@ -132,3 +132,13 @@ Written on 2026-11-07 at about 16:20 EST. By then coder 1 had coded adoption (20
 
 - **Disagreement rule (adoption).** The main π uses coder 1's adoption codes. Two sensitivity results: (i) a policy counts as adopted only if both coders say yes; (ii) a policy counts as adopted if either coder says yes. They apply to the policies both coders coded for adoption; for the other policies, coder 1's code is used.
 - **Policy type.** Two policies are preserve-type: "do not restrict LNG exports" (pool 53) and "maintain BLS funding" (pool 85, with 86 merged into it). All other policies are change-type. The main result keeps all policies. π is also reported for change-type policies only.
+
+## Amendment 2c: How "unclear" counts in Test B (2026-11-07)
+Written on 2026-11-07, after Amendment 2b and before any adoption code or returned coder-2 sheet was opened. It applies to both adoption outcomes: adopted at any time within the window, and still in force. Everything else in Amendments 2, 2a and 2b is unchanged, except that the two-coder sensitivity results of Amendment 2b are defined as S2 and S3 below.
+
+- **Main result:** coder 1's codes. "Unclear" counts as adopted (unchanged).
+- **S1:** coder 1's codes. "Unclear" counts as not adopted.
+- **S2:** a policy is adopted only if both coders code it adopted. For each coder, "unclear" counts as adopted.
+- **S3:** a policy is adopted if either coder codes it adopted. For each coder, "unclear" counts as adopted.
+- For a policy that coder 2 did not code, S2 and S3 use coder 1's code.
+- All four results are reported for all policies and for change-type policies only.
