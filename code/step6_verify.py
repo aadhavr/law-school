@@ -323,6 +323,38 @@ def section_c(V):
     chk("lockdown.events", f"{int((cty.ever == 1).sum()):,}")
     chk("lockdown.law_n", f"{int((cty.law == 1).sum()):,}")
     chk("lockdown.law_events", f"{int(((cty.law == 1) & (cty.ever == 1)).sum()):,}")
+    # Test B (Amendments 2–2c): κ_C and π recomputed from the returned sheets and coder 1's codes.
+    from statsmodels.stats.inter_rater import cohens_kappa as sm_kappa
+
+    def cohen_kappa_score(x, y):
+        t = pd.crosstab(pd.Series(list(x), name="a"), pd.Series(list(y), name="b"))
+        cats = sorted(set(t.index) | set(t.columns))
+        return sm_kappa(t.reindex(index=cats, columns=cats, fill_value=0).to_numpy()).kappa
+    key = pd.read_csv(ROOT / "output/coder2_key/row_key.csv").set_index("row_id")["pool_no"]
+    r1 = pd.read_csv(ROOT / "output/coder2/returned/sheet1_filter.csv", dtype=str)
+    r2 = pd.read_csv(ROOT / "output/coder2/returned/sheet2_adoption.csv", dtype=str)
+    r1["pool"], r2["pool"] = r1.row_id.map(key), r2.row_id.map(key)
+    pf = pd.read_csv(ROOT / "data/derived/igm/test_b_policy_filter.csv").set_index("pool_no")
+    a1 = pd.read_csv(OUT / "testB" / "testB_coder1_adoption_revealed.csv").set_index("pool_no")
+    chk("testb.k_filter", f"{cohen_kappa_score(pf.loc[r1.pool, 'policy_flag'], r1.policy_flag):.2f}")
+    chk("testb.k_adopt", f"{cohen_kappa_score(a1.loc[r2.pool, 'adopted_any_time'], r2.adopted_any_time):.2f}")
+    no2 = r2[(r2.adopted_any_time == "no") & (a1.loc[r2.pool, "adopted_any_time"].values == "no")]
+    one_cat = len(set(no2.cause_code) | set(a1.loc[no2.pool, "cause_code"])) == 1
+    chk("testb.k_cause", "undefined" if one_cat else
+        f"{cohen_kappa_score(a1.loc[no2.pool, 'cause_code'], no2.cause_code):.2f}")
+    no_c2 = set(r1.loc[r1.policy_flag == "no", "pool"])
+    prim = [p for p in pf.index[pf.kept_as_policy == "yes"] if p not in no_c2]
+    chk("testb.n_primary", str(len(prim)))
+    c2a = r2.set_index("pool")["adopted_any_time"]
+    for scope, ps in [("all", prim), ("chg", [p for p in prim if p not in (53, 85)])]:
+        v1 = a1.loc[ps, "adopted_any_time"]
+        v2 = pd.Series([c2a.get(p, v1[p]) for p in ps], index=ps)
+        ad1, ad2 = v1.isin(["yes", "unclear"]), v2.isin(["yes", "unclear"])
+        chk(f"testb.pi_main_any_{scope}", f"{ad1.mean():.2f}")
+        chk(f"testb.pi_S1_any_{scope}", f"{(v1 == 'yes').mean():.2f}")
+        chk(f"testb.pi_S2_any_{scope}", f"{(ad1 & ad2).mean():.2f}")
+        chk(f"testb.pi_S3_any_{scope}", f"{(ad1 | ad2).mean():.2f}")
+    chk("testb.wilson", "no" if len(set(prim) | set(r1.loc[r1.policy_flag == "yes", "pool"])) < 20 else "yes")
     return checks
 
 

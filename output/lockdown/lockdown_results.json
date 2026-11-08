@@ -1,5 +1,6 @@
 {
   "replication": {
+    "max_abs_score": 3.490185918053612e-11,
     "n_records": 19974,
     "n_countries": 168,
     "n_events": 152,
@@ -19,12 +20,25 @@
   },
   "tol_hr": 0.01,
   "tol_ci": 0.02,
+  "convergence": {
+    "tight_settings": {
+      "method": "newton",
+      "tol": 1e-12,
+      "maxiter": 1000
+    },
+    "loglik_default": -728.2434410080903,
+    "loglik_tight": -728.2434410080904,
+    "max_abs_score_default": 3.490185918053612e-11,
+    "max_abs_score_tight": 6.927791673660977e-12,
+    "max_abs_hr_shift": 3.4061642395499803e-13
+  },
   "main_rows": 61488,
   "main_cols": 59,
   "leaders_rows": 188,
   "leaders_cols": 35,
   "law_label": "not an exact replication",
   "law": {
+    "max_abs_score": 2.879119165299926e-11,
     "n_records": 19974,
     "n_countries": 168,
     "n_events": 152,

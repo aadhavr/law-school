@@ -1,12 +1,12 @@
 # Step 6 verification
 
 ## A. Shortcodes
-- var shortcodes used: 168 (154 distinct); missing from _variables.yml: none
-- includes: 14; missing: none
+- var shortcodes used: 189 (170 distinct); missing from _variables.yml: none
+- includes: 17; missing: none
 - figures: 5; missing: none
 
 ## B. Every number in the rendered post
-- distinct numbers: 314; with no source (MISMATCH): none
+- distinct numbers: 338; with no source (MISMATCH): none
 
 | Number | Sources (first matches) |
 |---|---|
@@ -51,9 +51,9 @@
 | −0.0026 | output/lockdown/lockdown_A5_compare.csv:d_hi[0]; output/step4_linked_lawdeg_draws.csv:House_linked_no_hall_les[342]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[419]; ... 12 matches in output/ |
 | -0.002 | output/step4_coefs.csv:ci_hi[4]; output/step4_linked_lawdeg_draws.csv:House_original_les[136]; output/step4_linked_lawdeg_draws.csv:House_original_les[379]; ... 160 matches in output/ |
 | −0.002 | output/step4_coefs.csv:ci_hi[4]; output/step4_linked_lawdeg_draws.csv:House_original_les[136]; output/step4_linked_lawdeg_draws.csv:House_original_les[379]; ... 160 matches in output/ |
-| 0 | PREREG.md; output/lockdown/lockdown_rel_invariance.csv:abs_diff[0]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[1]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[2]; ... 3273 matches in output/ |
-| 0, | PREREG.md; output/lockdown/lockdown_rel_invariance.csv:abs_diff[0]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[1]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[2]; ... 3273 matches in output/ |
-| 0.000 | PREREG.md; output/lockdown/lockdown_A5_col1.csv:p[0]; output/lockdown/lockdown_law.csv:p[0]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[0]; ... 3723 matches in output/ |
+| 0 | PREREG.md; output/lockdown/lockdown_convergence.csv:max_abs_score[0]; output/lockdown/lockdown_convergence.csv:max_abs_score[1]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[0]; ... 3289 matches in output/ |
+| 0, | PREREG.md; output/lockdown/lockdown_convergence.csv:max_abs_score[0]; output/lockdown/lockdown_convergence.csv:max_abs_score[1]; output/lockdown/lockdown_rel_invariance.csv:abs_diff[0]; ... 3289 matches in output/ |
+| 0.000 | PREREG.md; output/lockdown/lockdown_A5_col1.csv:p[0]; output/lockdown/lockdown_convergence.csv:max_abs_score[0]; output/lockdown/lockdown_convergence.csv:max_abs_score[1]; ... 3739 matches in output/ |
 | 0.001 | output/exploratory/expl_law_results.json.econ_phd_wilson[0].ci[0]; output/exploratory/expl_law_results.json.econ_phd_wilson[1].ci[0]; output/lockdown/lockdown_law.csv:coef[26]; ... 1608 matches in output/ |
 | 0.01 | output/exploratory/expl_law_results.json.econ_phd_wilson[0].ci[1]; output/exploratory/expl_law_results.json.econ_phd_wilson[1].ci[1]; output/lockdown/lockdown_A5_col1.csv:se[7]; ... 1669 matches in output/ |
 | 0.010 | output/lockdown/lockdown_A5_col1.csv:p[24]; output/lockdown/lockdown_law.csv:p[20]; output/lockdown/lockdown_results.json.tol_hr; ... 146 matches in output/ |
@@ -109,10 +109,10 @@
 | +0.152 | output/step4_coefs.csv:ci_hi[3]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[81]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[575]; ... 45 matches in output/ |
 | +0.157 | output/exploratory/expl_law_units.csv:ci_hi[3]; output/exploratory/expl_law_units.csv:ci_hi[9]; output/exploratory/expl_law_units.csv:mde_80pct_power[9]; ... 72 matches in output/ |
 | +0.166 | output/exploratory/expl_law_mixed.csv:estimate[4]; output/exploratory/expl_law_units.csv:estimate[17]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[709]; ... 53 matches in output/ |
-| +0.167 | output/step3_kappa.csv:share_alpha[0]; output/step3_results.json.bodies.House.share_alpha; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[242]; ... 108 matches in output/ |
+| +0.167 | output/step3_kappa.csv:share_alpha[0]; output/step3_results.json.bodies.House.share_alpha; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[242]; ... 110 matches in output/ |
 | 0.168 | output/lockdown/lockdown_A5_col1.csv:ci_lo[24]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[26]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[275]; ... 60 matches in output/ |
 | 0.169 | output/exploratory/expl_law_units.csv:mde_80pct_power[1]; output/lockdown/lockdown_A5_col1.csv:ci_lo[19]; output/lockdown/lockdown_law.csv:ci_lo[25]; ... 57 matches in output/ |
-| 0.17 | output/exploratory/expl_law_mixed.csv:estimate[4]; output/exploratory/expl_law_units.csv:estimate[17]; output/exploratory/expl_law_units.csv:mde_80pct_power[1]; ... 613 matches in output/ |
+| 0.17 | output/exploratory/expl_law_mixed.csv:estimate[4]; output/exploratory/expl_law_units.csv:estimate[17]; output/exploratory/expl_law_units.csv:mde_80pct_power[1]; ... 615 matches in output/ |
 | 0.176 | output/exploratory/expl_law_units.csv:boot_se[25]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[703]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[990]; ... 62 matches in output/ |
 | +0.177 | output/exploratory/expl_law_units.csv:estimate[25]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[390]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[405]; ... 58 matches in output/ |
 | 0.178 | output/exploratory/expl_law_units.csv:boot_se[28]; output/step4_linked_coefs.csv:ci_hi_les[11]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[185]; ... 45 matches in output/ |
@@ -145,15 +145,17 @@
 | +0.283 | output/exploratory/expl_law_units.csv:ci_hi[2]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[519]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[933]; ... 19 matches in output/ |
 | +0.289 | output/lockdown/lockdown_A5_col1.csv:ci_lo[10]; output/step3_kappa.csv:marginal_r2[1]; output/step3_kappa.csv:share_x[1]; ... 27 matches in output/ |
 | 0.289 | output/lockdown/lockdown_A5_col1.csv:ci_lo[10]; output/step3_kappa.csv:marginal_r2[1]; output/step3_kappa.csv:share_x[1]; ... 27 matches in output/ |
+| 0.29 | output/exploratory/expl_law_mixed.csv:estimate[14]; output/exploratory/expl_law_mixed.csv:ci_hi[17]; output/exploratory/expl_law_units.csv:estimate[30]; ... 271 matches in output/ |
 | 0.293 | output/exploratory/expl_rank_house.json.kappa_ci[0]; output/lockdown/lockdown_A5_col1.csv:se[14]; output/lockdown/lockdown_law.csv:se[14]; ... 26 matches in output/ |
 | +0.297 | output/exploratory/expl_law_units.csv:mde_80pct_power[14]; output/step4_coefs.csv:ci_hi[2]; output/step4_linked_coefs.csv:ci_hi_sigma_fixed[11]; ... 18 matches in output/ |
 | +0.302 | output/exploratory/expl_law_units.csv:ci_hi[16]; output/step3_kappa.csv:marginal_r2_lo[0]; output/step3_results.json.bodies.House.marginal_r2_lo; ... 19 matches in output/ |
 | 0.302 | output/exploratory/expl_law_units.csv:ci_hi[16]; output/step3_kappa.csv:marginal_r2_lo[0]; output/step3_results.json.bodies.House.marginal_r2_lo; ... 19 matches in output/ |
-| 0.31 | output/exploratory/expl_law_mixed.csv:ci_lo[9]; output/exploratory/expl_law_mixed.csv:ci_hi[5]; output/exploratory/expl_law_units.csv:ci_hi[18]; ... 207 matches in output/ |
+| 0.31 | output/exploratory/expl_law_mixed.csv:ci_lo[9]; output/exploratory/expl_law_mixed.csv:ci_hi[5]; output/exploratory/expl_law_units.csv:ci_hi[18]; ... 208 matches in output/ |
 | +0.316 | output/exploratory/expl_law_units.csv:ci_hi[13]; output/lockdown/lockdown_A5_col1.csv:se[11]; output/lockdown/lockdown_law.csv:se[10]; ... 29 matches in output/ |
 | 0.321 | output/exploratory/expl_rank_house.json.kappa; output/step3_kappa.csv:sig2_alpha_lo[2]; output/step3_results.json.bodies.States.sig2_alpha_lo; ... 24 matches in output/ |
 | 0.323 | output/sensitivity/step3_person_compare.csv:kappa_hi[0]; output/step3_kappa.csv:kappa_lo[2]; output/step3_kappa.csv:kappa_hi[0]; ... 21 matches in output/ |
 | 0.328 | output/exploratory/expl_law_mixed.csv:ci_hi[8]; output/exploratory/expl_law_units.csv:ci_hi[23]; output/lockdown/lockdown_A5_col1.csv:coef[16]; ... 11 matches in output/ |
+| 0.33 | output/exploratory/expl_law_mixed.csv:ci_hi[8]; output/exploratory/expl_law_units.csv:ci_hi[23]; output/exploratory/expl_law_units.csv:ci_hi[28]; ... 339 matches in output/ |
 | 0.332 | output/lockdown/lockdown_law.csv:se[17]; output/sensitivity/step3_person_compare.csv:kappa_hi[2]; output/step3_kappa.csv:kappa_hi[1]; ... 20 matches in output/ |
 | +0.334 | output/exploratory/expl_law_units.csv:ci_hi[28]; output/testD/testD_predictors.csv:a_dist_median[483]; output/testD/testD_predictors.csv:a_dist_median[575]; ... 20 matches in output/ |
 | 0.335 | output/sensitivity/step3_person_compare.csv:r_lo[2]; output/step3_oos.csv:r_lo[1]; output/step3_results.json.bodies.Senate.oos_r_lo; ... 22 matches in output/ |
@@ -166,7 +168,7 @@
 | 0.366 | output/sensitivity/step3_person_compare.csv:r_lo[0]; output/step3_oos.csv:r_lo[0]; output/step3_results.json.bodies.House.oos_r_lo; ... 20 matches in output/ |
 | +0.367 | output/exploratory/expl_law_units.csv:ci_hi[10]; output/lockdown/lockdown_law.csv:hr[25]; output/step3_kappa.csv:sig2_alpha[2]; ... 28 matches in output/ |
 | 0.367 | output/exploratory/expl_law_units.csv:ci_hi[10]; output/lockdown/lockdown_law.csv:hr[25]; output/step3_kappa.csv:sig2_alpha[2]; ... 28 matches in output/ |
-| 0.371 | output/lockdown/lockdown_A5_col1.csv:se[2]; output/lockdown/lockdown_A5_col1.csv:ci_lo[4]; output/lockdown/lockdown_A5_compare.csv:rep_lo[1]; ... 17 matches in output/ |
+| 0.371 | output/lockdown/lockdown_A5_col1.csv:se[2]; output/lockdown/lockdown_A5_col1.csv:ci_lo[4]; output/lockdown/lockdown_A5_compare.csv:rep_lo[1]; ... 19 matches in output/ |
 | +0.373 | output/exploratory/expl_law_units.csv:ci_hi[4]; output/step4_coefs.csv:ci_hi[7]; output/step4_linked_compare.csv:ci_hi[8]; ... 18 matches in output/ |
 | +0.374 | output/exploratory/expl_law_mixed.csv:ci_hi[13]; output/exploratory/expl_law_units.csv:ci_hi[29]; output/testD/testD_predictors.csv:a_dist_median[935]; ... 15 matches in output/ |
 | 0.38% | output/exploratory/expl_law_results.json.econ_phd_wilson[0].share; output/lockdown/lockdown_A5_col1.csv:ci_lo[20]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[852]; ... 48 matches in output/ |
@@ -182,9 +184,11 @@
 | +0.409 | output/exploratory/expl_law_mixed.csv:ci_hi[2]; output/exploratory/expl_law_units.csv:ci_hi[14]; output/testD/testD_predictors.csv:a_dist_median[1129]; ... 14 matches in output/ |
 | 0.411 | output/exploratory/expl_law_units.csv:unit[5] (text); output/lockdown/lockdown_law.csv:hr[28]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[249]; ... 9 matches in output/ |
 | 0.416 | output/exploratory/expl_rank_house.json.oos_r; output/lockdown/lockdown_law.csv:ci_lo[11]; output/lockdown/lockdown_law.csv:p[11]; ... 12 matches in output/ |
+| 0.42 | output/exploratory/expl_rank_house.json.oos_r; output/lockdown/lockdown_A5_col1.csv:ci_lo[11]; output/lockdown/lockdown_law.csv:ci_lo[11]; ... 196 matches in output/ |
 | 0.422 | output/step3_kappa.csv:sig2_alpha_hi[2]; output/step3_results.json.bodies.States.sig2_alpha_hi; output/testD/testD_predictors.csv:a_dist_median[189]; ... 11 matches in output/ |
 | 0.427 | output/exploratory/expl_law_units.csv:unit[10] (text); output/exploratory/expl_law_units.csv:unit[25] (text); output/exploratory/expl_law_units.csv:unit[28] (text); ... 29 matches in output/ |
-| 0.429 | output/step3_kappa.csv:sig2_eps_lo[1]; output/step3_results.json.bodies.Senate.sig2_eps_lo; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[260]; ... 80 matches in output/ |
+| 0.429 | output/step3_kappa.csv:sig2_eps_lo[1]; output/step3_results.json.bodies.Senate.sig2_eps_lo; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[260]; ... 82 matches in output/ |
+| 0.43 | output/exploratory/expl_law_units.csv:unit[10] (text); output/exploratory/expl_law_units.csv:unit[25] (text); output/exploratory/expl_law_units.csv:unit[28] (text); ... 217 matches in output/ |
 | 0.442 | output/exploratory/expl_rank_house.json.oos_r_ci[1]; output/testD/testD_predictors.csv:a_dist_median[488]; output/testD/testD_predictors.csv:a_dist_median[589]; ... 13 matches in output/ |
 | 0.449 | output/exploratory/expl_law_units.csv:mde_80pct_power[19]; output/sensitivity/step3_person_compare.csv:r_hi[2]; output/sensitivity/step3_person_compare.csv:r_hi[3]; ... 20 matches in output/ |
 | 0.452 | output/exploratory/expl_law_mixed.csv:ci_hi[9]; output/sensitivity/step3_person_compare.csv:r_hi[0]; output/step3_oos.csv:r_hi[0]; ... 18 matches in output/ |
@@ -192,43 +196,46 @@
 | 0.462 | output/exploratory/expl_law_mixed.csv:estimate[0]; output/exploratory/expl_law_units.csv:unit[8] (text); output/exploratory/expl_law_units.csv:unit[14] (text); ... 45 matches in output/ |
 | 0.490 | output/step3_kappa.csv:sig2_alpha_hi[0]; output/step3_results.json.bodies.House.sig2_alpha_hi; output/testD/testD_predictors.csv:a_dist_median[246]; ... 15 matches in output/ |
 | 0.492 | output/step3_kappa.csv:share_eps[0]; output/step3_oos.csv:r_lo[2]; output/step3_results.json.bodies.House.share_eps; ... 13 matches in output/ |
-| 0.493 | output/exploratory/expl_law_units.csv:mde_80pct_power[25]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[345]; output/testD/testD_predictors.csv:a_dist_median[823]; ... 10 matches in output/ |
+| 0.493 | output/exploratory/expl_law_units.csv:mde_80pct_power[25]; output/step4_linked_lawdeg_draws.csv:Senate_original_sigma_per_draw[345]; output/testB/testB_kappa.csv:p_expected[0]; ... 12 matches in output/ |
 | 0.499 | output/exploratory/expl_law_units.csv:mde_80pct_power[28]; output/testD/testD_predictors.csv:a_dist_median[1444]; output/testD/testD_predictors.csv:a_dist_median[1721]; ... 16 matches in output/ |
-| 0.50 | PREREG.md; output/exploratory/expl_law_units.csv:mde_80pct_power[28]; output/step3_beta.csv:beta[16]; output/testD/testD_power.csv:p_supported_g060[0]; ... 403 matches in output/ |
-| 0.523 | output/lockdown/lockdown_A5_col1.csv:ci_lo[2]; output/lockdown/lockdown_A5_compare.csv:rep_lo[0]; output/lockdown/lockdown_law.csv:ci_lo[2]; ... 14 matches in output/ |
+| 0.50 | PREREG.md; output/exploratory/expl_law_units.csv:mde_80pct_power[28]; output/step3_beta.csv:beta[16]; output/testB/testB_pi.csv:pi[0]; ... 412 matches in output/ |
+| 0.523 | output/lockdown/lockdown_A5_col1.csv:ci_lo[2]; output/lockdown/lockdown_A5_compare.csv:rep_lo[0]; output/lockdown/lockdown_convergence.csv:sciencesmedicine_ci_lo[0]; ... 16 matches in output/ |
 | 0.532 | output/exploratory/expl_law_units.csv:mde_80pct_power[30]; output/lockdown/lockdown_A5_compare.csv:pub_lo[0]; output/step3_oos.csv:r[2]; ... 15 matches in output/ |
 | +0.535 | output/exploratory/expl_law_mixed.csv:ci_hi[0]; output/exploratory/expl_law_units.csv:ci_hi[25]; output/lockdown/lockdown_A5_col1.csv:hr[10]; ... 15 matches in output/ |
-| 0.559 | output/lockdown/lockdown_A5_col1.csv:hr[4]; output/lockdown/lockdown_A5_compare.csv:rep_hr[1]; output/lockdown/lockdown_rel_invariance.csv:hr_drop_rel_buddhist[4]; ... 14 matches in output/ |
+| 0.559 | output/lockdown/lockdown_A5_col1.csv:hr[4]; output/lockdown/lockdown_A5_compare.csv:rep_hr[1]; output/lockdown/lockdown_convergence.csv:medicine_hm2_hr[0]; ... 16 matches in output/ |
 | 0.577 | output/lockdown/lockdown_A5_compare.csv:pub_hr[1]; output/testD/testD_predictors.csv:a_dist_median[597]; output/testD/testD_predictors.csv:a_dist_median[1109]; ... 15 matches in output/ |
 | 0.578 | output/step3_oos.csv:r_hi[2]; output/step3_results.json.bodies.States.oos_r_hi; output/testD/testD_predictors.csv:a_dist_median[4025]; ... 10 matches in output/ |
 | 0.585 | output/step3_kappa.csv:sig2_eps_lo[2]; output/step3_results.json.bodies.States.sig2_eps_lo; output/testD/testD_predictors.csv:a_dist_median[1388]; ... 8 matches in output/ |
 | +0.586 | output/exploratory/expl_law_mixed.csv:ci_hi[11]; output/exploratory/expl_law_units.csv:ci_hi[26]; output/testD/testD_predictors.csv:a_dist_median[1790]; ... 15 matches in output/ |
-| 0.600 | PREREG.md; output/exploratory/expl_law_units.csv:unit[7] (text); output/exploratory/expl_law_units.csv:unit[13] (text); output/exploratory/expl_law_units.csv:unit[16] (text); ... 113 matches in output/ |
+| 0.6 | PREREG.md; output/exploratory/expl_law_mixed.csv:ci_hi[11]; output/exploratory/expl_law_units.csv:unit[7] (text); output/exploratory/expl_law_units.csv:unit[13] (text); ... 1464 matches in output/ |
+| 0.600 | PREREG.md; output/exploratory/expl_law_units.csv:unit[7] (text); output/exploratory/expl_law_units.csv:unit[13] (text); output/exploratory/expl_law_units.csv:unit[16] (text); ... 115 matches in output/ |
 | 0.61 | output/exploratory/expl_law_units.csv:mde_80pct_power[23]; output/lockdown/lockdown_A5_col1.csv:se[27]; output/lockdown/lockdown_law.csv:p[7]; ... 133 matches in output/ |
 | 0.624 | output/lockdown/lockdown_law.csv:p[8]; output/step3_kappa.csv:sig2_eps_hi[1]; output/step3_results.json.bodies.Senate.sig2_eps_hi; ... 16 matches in output/ |
 | 0.65 | output/lockdown/lockdown_A5_col1.csv:hr[12]; output/lockdown/lockdown_A5_col1.csv:ci_hi[29]; output/lockdown/lockdown_rel_invariance.csv:hr_drop_rel_buddhist[12]; ... 119 matches in output/ |
 | 0.66 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[16]; output/lockdown/lockdown_A5_col1.csv:se[18]; output/lockdown/lockdown_A5_col1.csv:hr[1]; ... 122 matches in output/ |
 | 0.661 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[16]; output/lockdown/lockdown_law.csv:ci_lo[22]; output/lockdown/lockdown_results.json.law.ci_lo; ... 30 matches in output/ |
-| 0.67 | output/exploratory/expl_law_units.csv:estimate[31]; output/lockdown/lockdown_A5_col1.csv:se[28]; output/testD/testD_power.csv:power_ci_excludes_0_g060[1]; ... 234 matches in output/ |
+| 0.67 | output/exploratory/expl_law_units.csv:estimate[31]; output/lockdown/lockdown_A5_col1.csv:se[28]; output/testB/testB_kappa.csv:kappa[1]; ... 236 matches in output/ |
 | 0.68 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[13]; output/lockdown/lockdown_law.csv:coef[21]; output/lockdown/lockdown_law.csv:se[29]; ... 118 matches in output/ |
 | +0.694 | output/step4_coefs.csv:ci_hi[8]; output/step4_results.json.chambers.Senate.coefficients[2].ci_hi; output/testD/testD_predictors.csv:a_dist_median[3037]; ... 15 matches in output/ |
 | 0.72 | output/testD/testD_planning_check.csv:ratio_realized_to_planned[4]; output/testD/testD_predictors.csv:a_dist_median[100]; output/testD/testD_predictors.csv:a_dist_median[126]; ... 84 matches in output/ |
+| 0.74 | output/exploratory/expl_law_mixed.csv:estimate[16]; output/exploratory/expl_law_units.csv:estimate[32]; output/lockdown/lockdown_A5_col1.csv:ci_lo[5]; ... 82 matches in output/ |
 | 0.745 | output/step3_kappa.csv:sig2_eps_hi[2]; output/step3_results.json.bodies.States.sig2_eps_hi; output/testD/testD_predictors.csv:a_dist_median[6224]; ... 8 matches in output/ |
-| 0.844 | output/lockdown/lockdown_A5_col1.csv:ci_hi[4]; output/lockdown/lockdown_A5_compare.csv:rep_hi[1]; output/testD/testD_predictors.csv:a_dist_median[5617]; ... 4 matches in output/ |
+| 0.80 | PREREG.md; output/lockdown/lockdown_A5_col1.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_hi[25]; ... 70 matches in output/ |
+| 0.844 | output/lockdown/lockdown_A5_col1.csv:ci_hi[4]; output/lockdown/lockdown_A5_compare.csv:rep_hi[1]; output/lockdown/lockdown_convergence.csv:medicine_hm2_ci_hi[0]; ... 6 matches in output/ |
 | 0.869 | output/lockdown/lockdown_A5_compare.csv:pub_hi[1]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[1]; output/testD/testD_predictors.csv:a_dist_median[828]; ... 4 matches in output/ |
-| 0.87 | output/lockdown/lockdown_A5_compare.csv:pub_hi[1]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[1]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[3]; ... 39 matches in output/ |
+| 0.87 | output/lockdown/lockdown_A5_compare.csv:pub_hi[1]; output/testB/testB_kappa.csv:pct_agree[0]; output/testB/testB_results.json.kappa.policy filter.pct_agree; ... 41 matches in output/ |
 | 0.895 | output/step3_kappa.csv:sig2_eps_lo[0]; output/step3_results.json.bodies.House.sig2_eps_lo; output/testD/testD_predictors.csv:a_dist_median[5622]; ... 6 matches in output/ |
 | 0.91 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[1]; output/testD/testD_predictors.csv:a_dist_median[1415]; output/testD/testD_predictors.csv:a_dist_median[2026]; ... 22 matches in output/ |
 | 0.93 | output/exploratory/expl_law_units.csv:power_at_prereg_threshold[7]; output/lockdown/lockdown_A5_col1.csv:ci_hi[13]; output/testD/testD_planning_check.csv:ratio_realized_to_own_rows_gls[0]; ... 17 matches in output/ |
 | 0.96 | output/testD/testD_power.csv:power_ci_excludes_0_g120[4]; output/testD/testD_power.csv:p_supported_g120[4]; output/testD/testD_power.json.results[4].power_ci_excludes_0_g120; ... 12 matches in output/ |
 | 0.99 | output/lockdown/lockdown_A5_col1.csv:hr[7]; output/lockdown/lockdown_A5_col1.csv:hr[25]; output/lockdown/lockdown_A5_col1.csv:ci_hi[10]; ... 42 matches in output/ |
-| 1 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 345 matches in output/ |
-| 1, | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 345 matches in output/ |
-| 1.0 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 478 matches in output/ |
-| 1.00 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 379 matches in output/ |
+| 1 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 429 matches in output/ |
+| 1, | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 429 matches in output/ |
+| 1.0 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 562 matches in output/ |
+| 1.00 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 463 matches in output/ |
 | 1.062 | output/step3_kappa.csv:sig2_eps[0]; output/step3_results.json.bodies.House.sig2_eps; output/step3_results.json.validation[0].sig2_eps_fast; ... 12 matches in output/ |
 | 1.077 | output/lockdown/lockdown_law.csv:hr[22]; output/lockdown/lockdown_results.json.law.hr |
-| 1.082 | output/lockdown/lockdown_A5_col1.csv:hr[2]; output/lockdown/lockdown_A5_compare.csv:rep_hr[0]; output/lockdown/lockdown_rel_invariance.csv:hr_drop_rel_buddhist[2]; ... 4 matches in output/ |
+| 1.082 | output/lockdown/lockdown_A5_col1.csv:hr[2]; output/lockdown/lockdown_A5_compare.csv:rep_hr[0]; output/lockdown/lockdown_convergence.csv:sciencesmedicine_hr[0]; ... 6 matches in output/ |
 | 1.092 | output/lockdown/lockdown_A5_compare.csv:pub_hr[0] |
 | 1.12% | output/exploratory/expl_law_results.json.econ_phd_wilson[0].ci[1]; output/step4_linked_lawdeg_draws.csv:House_original_les[961]; output/step4_linked_lawdeg_draws.csv:House_original_sigma_per_draw[731]; ... 14 matches in output/ |
 | 1.13% | output/exploratory/expl_law_results.json.econ_phd_wilson[1].ci[1]; output/step4_linked_lawdeg_draws.csv:House_original_les[888]; output/step4_linked_lawdeg_draws.csv:Senate_original_les[437]; ... 9 matches in output/ |
@@ -237,49 +244,66 @@
 | 1.32 | output/exploratory/expl_law_units.csv:mde_80pct_power[35]; output/testD/testD_planning_check.csv:ratio_realized_to_planned[2] |
 | 1.755 | output/lockdown/lockdown_law.csv:ci_hi[22]; output/lockdown/lockdown_results.json.law.ci_hi |
 | 1.9 | CLASS file name CLASS.1.9.dta; PREREG.md; output/lockdown/lockdown_A5_col1.csv:ci_hi[5]; output/lockdown/lockdown_law.csv:ci_hi[5] |
-| 2 | PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 242 matches in output/ |
-| 2, | PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 242 matches in output/ |
-| 2.238 | output/lockdown/lockdown_A5_col1.csv:ci_hi[2]; output/lockdown/lockdown_A5_compare.csv:rep_hi[0] |
+| 2 | PREREG.md; output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 281 matches in output/ |
+| 2.238 | output/lockdown/lockdown_A5_col1.csv:ci_hi[2]; output/lockdown/lockdown_A5_compare.csv:rep_hi[0]; output/lockdown/lockdown_convergence.csv:sciencesmedicine_ci_hi[0]; ... 4 matches in output/ |
 | 2.241 | output/lockdown/lockdown_A5_compare.csv:pub_hi[0] |
 | 2.80 | output/exploratory/expl_law_results.json.z_sum_80pct_power |
-| 3 | PREREG.md; output/exploratory/expl_law_results.json.econ_phd_wilson[0].k; output/exploratory/expl_law_results.json.econ_phd_wilson[1].k; output/lockdown/lockdown_A5_col1.csv:term[23] (text); ... 173 matches in output/ |
-| 4 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; output/exploratory/expl_law_results.json.Senate.occ_not_degree; output/exploratory/expl_law_units.csv:analysis[0] (text); output/exploratory/expl_law_units.csv:analysis[1] (text); ... 338 matches in output/ |
-| 6 | cross-reference to deviation list item 6 (points to Which σ_α: OK); output/lockdown/lockdown_A5_col1.csv:term[26] (text); output/lockdown/lockdown_law.csv:term[27] (text); output/lockdown/lockdown_rel_invariance.csv:term[22] (text); ... 401 matches in output/ |
-| 9 | output/exploratory/expl_law_results.json.House.occ_not_degree; output/lockdown/lockdown_A5_col1.csv:term[29] (text); output/lockdown/lockdown_law.csv:term[30] (text); ... 260 matches in output/ |
-| 10 | code/step4_skill_source.py MIN_HOLDERS (deviation D3); PREREG.md; output/lockdown/lockdown_A5_col1.csv:term[30] (text); output/lockdown/lockdown_law.csv:term[31] (text); output/lockdown/lockdown_rel_invariance.csv:term[26] (text); ... 303 matches in output/ |
-| 13 | PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[16]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[17]; output/step4_results.json.class_unique_members_both_chambers.phd_field_blank; ... 147 matches in output/ |
-| 16 | output/step4_counts.csv:female[1]; output/step4_linked_counts.csv:female[2]; output/step4_linked_counts.csv:female[3]; ... 62 matches in output/ |
-| 19 | PREREG.md; output/sensitivity/step3_person_results.json.House.persons_with_more_than_one_icpsr; output/testD/testD_d_members.csv:d_years[354]; output/testD/testD_d_members.csv:d_years[462]; ... 24 matches in output/ |
-| 21 | output/testD/testD_d_members.csv:bioguide[217] (text); output/testD/testD_d_members.csv:d_years[224]; output/testD/testD_linkage_fixes.json.d_rows_restored; ... 26 matches in output/ |
-| 22 | output/exploratory/expl_law_results.json.House.degree_not_occ; output/testD/testD_d_members.csv:bioguide[1] (text); output/testD/testD_d_members.csv:d_years[416]; ... 38 matches in output/ |
-| 24 | PREREG.md; output/step4_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[1]; ... 72 matches in output/ |
-| 26, | post date (front matter; section D); output/testD/testD_d_members.csv:bioguide[292] (text); output/testD/testD_d_members.csv:d_years[391]; output/testD/testD_predictors.csv:bioguide[4774] (text); ... 16 matches in output/ |
-| 28 | PREREG.md; output/lockdown/lockdown_results.json.law.n_events_law_leaders; output/testD/testD_d_members.csv:d_years[568]; output/testD/testD_predictors.csv:bioguide[259] (text); ... 20 matches in output/ |
-| 30 | PREREG.md; output/testD/testD_d_members.csv:bioguide[194] (text); output/testD/testD_d_members.csv:bioguide[518] (text); output/testD/testD_predictors.csv:bioguide[9347] (text); ... 24 matches in output/ |
-| 30, | PREREG.md; output/testD/testD_d_members.csv:bioguide[194] (text); output/testD/testD_d_members.csv:bioguide[518] (text); output/testD/testD_predictors.csv:bioguide[9347] (text); ... 24 matches in output/ |
+| 3 | PREREG.md; output/exploratory/expl_law_results.json.econ_phd_wilson[0].k; output/exploratory/expl_law_results.json.econ_phd_wilson[1].k; output/lockdown/lockdown_A5_col1.csv:term[23] (text); ... 207 matches in output/ |
+| 4 | CLASS occupation value labels: Lawyer codes [np.int32(1), np.int32(2), np.int32(3), np.int32(4)]; PREREG.md; output/exploratory/expl_law_results.json.Senate.occ_not_degree; output/exploratory/expl_law_units.csv:analysis[0] (text); output/exploratory/expl_law_units.csv:analysis[1] (text); ... 369 matches in output/ |
+| 5 | output/lockdown/lockdown_A5_col1.csv:term[25] (text); output/lockdown/lockdown_law.csv:term[26] (text); output/lockdown/lockdown_rel_invariance.csv:term[21] (text); ... 426 matches in output/ |
+| 6 | cross-reference to deviation list item 6 (points to Which σ_α: OK); output/lockdown/lockdown_A5_col1.csv:term[26] (text); output/lockdown/lockdown_law.csv:term[27] (text); output/lockdown/lockdown_rel_invariance.csv:term[22] (text); ... 422 matches in output/ |
+| 7 | PREREG.md; output/lockdown/lockdown_A5_col1.csv:term[27] (text); output/lockdown/lockdown_law.csv:term[28] (text); output/lockdown/lockdown_rel_invariance.csv:term[23] (text); ... 302 matches in output/ |
+| 8 | output/exploratory/expl_law_results.json.Senate.degree_not_occ; output/lockdown/lockdown_A5_col1.csv:term[28] (text); output/lockdown/lockdown_convergence.csv:settings[0] (text); ... 340 matches in output/ |
+| 9 | output/exploratory/expl_law_results.json.House.occ_not_degree; output/lockdown/lockdown_A5_col1.csv:term[29] (text); output/lockdown/lockdown_law.csv:term[30] (text); ... 273 matches in output/ |
+| 10 | code/step4_skill_source.py MIN_HOLDERS (deviation D3); PREREG.md; output/lockdown/lockdown_A5_col1.csv:term[30] (text); output/lockdown/lockdown_law.csv:term[31] (text); output/lockdown/lockdown_rel_invariance.csv:term[26] (text); ... 327 matches in output/ |
+| 12 | output/lockdown/lockdown_convergence.csv:settings[1] (text); output/testB/testB_adoption_side_by_side.csv:source_url_c2[2] (text); output/testB/testB_adoption_side_by_side.csv:source_url_c2[6] (text); ... 271 matches in output/ |
+| 13 | PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[16]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[17]; output/step4_results.json.class_unique_members_both_chambers.phd_field_blank; ... 155 matches in output/ |
+| 13, | PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[16]; output/sensitivity/step3_person_multi_icpsr.csv:member_terms[17]; output/step4_results.json.class_unique_members_both_chambers.phd_field_blank; ... 155 matches in output/ |
+| 14 | PREREG.md; output/testB/testB_coder1_adoption_revealed.csv:date[7] (text); output/testB/testB_coder1_adoption_revealed.csv:date[8] (text); output/testB/testB_coder2_adoption_returned.csv:date[3] (text); ... 194 matches in output/ |
+| 16 | PREREG.md; output/step4_counts.csv:female[1]; output/step4_linked_counts.csv:female[2]; output/step4_linked_counts.csv:female[3]; ... 74 matches in output/ |
+| 18 | output/sensitivity/step3_person_multi_icpsr.csv:member_terms[21]; output/testB/testB_adoption_side_by_side.csv:source_url_c2[2] (text); output/testB/testB_adoption_side_by_side.csv:source_date_c2[5] (text); ... 80 matches in output/ |
+| 19 | PREREG.md; output/sensitivity/step3_person_results.json.House.persons_with_more_than_one_icpsr; output/testB/testB_coder1_adoption_revealed.csv:date[11] (text); output/testB/testB_coder2_filter_returned.csv:row_id[18] (text); ... 29 matches in output/ |
+| 20 | PREREG.md; output/testB/testB_adoption_side_by_side.csv:source_date_c2[7] (text); output/testB/testB_adoption_side_by_side.csv:source_date_c2[9] (text); output/testB/testB_adoption_side_by_side.csv:source_date_c1[9] (text); ... 80 matches in output/ |
+| 21 | output/testB/testB_adoption_side_by_side.csv:source_date_c1[7] (text); output/testB/testB_adoption_side_by_side.csv:note_c1[7] (text); output/testB/testB_coder1_adoption_revealed.csv:date[9] (text); ... 36 matches in output/ |
+| 22 | output/exploratory/expl_law_results.json.House.degree_not_occ; output/testB/testB_adoption_side_by_side.csv:source_date_c1[0] (text); output/testB/testB_adoption_side_by_side.csv:source_date_c1[1] (text); ... 44 matches in output/ |
+| 24 | PREREG.md; output/step4_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[0]; output/step4_linked_counts.csv:hispanic[1]; ... 79 matches in output/ |
+| 26, | post date (front matter; section D); output/testB/testB_adoption_side_by_side.csv:note_c1[7] (text); output/testB/testB_coder1_adoption_revealed.csv:source_url[4] (text); output/testB/testB_coder1_adoption_revealed.csv:note[17] (text); ... 21 matches in output/ |
+| 28 | PREREG.md; output/lockdown/lockdown_results.json.law.n_events_law_leaders; output/testB/testB_coder1_adoption_revealed.csv:pool_no[6]; output/testB/testB_coder2_filter_returned.csv:row_id[22] (text); ... 25 matches in output/ |
+| 30 | PREREG.md; output/testB/testB_adoption_side_by_side.csv:pool_no[3]; output/testB/testB_adoption_side_by_side.csv:note_c1[1] (text); output/testB/testB_coder1_adoption_revealed.csv:pool_no[7]; ... 40 matches in output/ |
+| 30, | PREREG.md; output/testB/testB_adoption_side_by_side.csv:pool_no[3]; output/testB/testB_adoption_side_by_side.csv:note_c1[1] (text); output/testB/testB_coder1_adoption_revealed.csv:pool_no[7]; ... 40 matches in output/ |
+| 31 | output/testB/testB_adoption_side_by_side.csv:pool_no[4]; output/testB/testB_coder1_adoption_revealed.csv:pool_no[8]; output/testB/testB_coder1_adoption_revealed.csv:date[6] (text); ... 59 matches in output/ |
 | 32 | output/lockdown/lockdown_results.json.law.n_law_leaders; output/testD/testD_d_members.csv:bioguide[297] (text); output/testD/testD_predictors.csv:bioguide[3499] (text); ... 25 matches in output/ |
-| 34 | PREREG.md; output/step5_data_counts.json.class_rows_lawyer_occ_not_degree; output/testD/testD_d_members.csv:bioguide[455] (text); output/testD/testD_predictors.csv:bioguide[4728] (text); ... 25 matches in output/ |
-| 35 | output/lockdown/lockdown_results.json.leaders_cols; output/step4_counts.csv:doctorate_phd_ind[0]; output/step4_linked_counts.csv:doctorate_phd_ind[0]; ... 15 matches in output/ |
+| 34 | PREREG.md; output/step5_data_counts.json.class_rows_lawyer_occ_not_degree; output/testB/testB_coder1_adoption_revealed.csv:pool_no[10]; output/testB/testB_coder2_filter_returned.csv:pool_no[11]; ... 28 matches in output/ |
+| 35 | output/lockdown/lockdown_results.json.leaders_cols; output/step4_counts.csv:doctorate_phd_ind[0]; output/step4_linked_counts.csv:doctorate_phd_ind[0]; ... 27 matches in output/ |
+| 42, | PREREG.md; output/testB/testB_coder1_adoption_revealed.csv:pool_no[12]; output/testB/testB_coder2_filter_returned.csv:pool_no[14]; output/testB/testB_filter_side_by_side.csv:pool_no[14]; ... 5 matches in output/ |
+| 43 | output/testB/testB_adoption_side_by_side.csv:pool_no[5]; output/testB/testB_coder1_adoption_revealed.csv:pool_no[13]; output/testB/testB_coder2_adoption_returned.csv:pool_no[5]; ... 39 matches in output/ |
+| 48 | output/sensitivity/step3_person_results.json.Senate.their_member_terms; output/testB/testB_adoption_side_by_side.csv:pool_no[6]; output/testB/testB_coder1_adoption_revealed.csv:pool_no[14]; ... 11 matches in output/ |
 | 51% | output/exploratory/expl_law_units.csv:ci_hi[19]; output/exploratory/expl_rank_house.json.sig2_eps; output/lockdown/lockdown_A5_col1.csv:p[5]; ... 121 matches in output/ |
-| 52 | output/step4_counts.csv:black[0]; output/step4_linked_counts.csv:black[0]; output/step4_linked_counts.csv:black[1]; ... 24 matches in output/ |
+| 52 | output/step4_counts.csv:black[0]; output/step4_linked_counts.csv:black[0]; output/step4_linked_counts.csv:black[1]; ... 29 matches in output/ |
+| 53 | PREREG.md; output/testB/testB_adoption_side_by_side.csv:pool_no[7]; output/testB/testB_coder1_adoption_revealed.csv:pool_no[17]; output/testB/testB_coder2_adoption_returned.csv:pool_no[7]; ... 46 matches in output/ |
 | 59 | output/lockdown/lockdown_results.json.main_cols; output/testD/billstatus_parse.csv:n_withdrawn[18]; output/testD/testD_d_members.csv:bioguide[84] (text); ... 26 matches in output/ |
-| 60% | output/exploratory/expl_law_units.csv:unit[7] (text); output/exploratory/expl_law_units.csv:unit[13] (text); output/exploratory/expl_law_units.csv:unit[16] (text); ... 204 matches in output/ |
-| 80% | code/explore_law_mixed.py: 80% power (z_0.80); PREREG.md; output/lockdown/lockdown_A5_col1.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_hi[25]; ... 68 matches in output/ |
+| 60% | output/exploratory/expl_law_units.csv:unit[7] (text); output/exploratory/expl_law_units.csv:unit[13] (text); output/exploratory/expl_law_units.csv:unit[16] (text); ... 206 matches in output/ |
+| 69, | PREREG.md; output/testB/testB_coder1_adoption_revealed.csv:pool_no[19]; output/testB/testB_coder2_filter_returned.csv:pool_no[22]; output/testB/testB_filter_side_by_side.csv:pool_no[22]; ... 18 matches in output/ |
+| 77 | PREREG.md; output/sensitivity/step3_person_multi_icpsr.csv:bioguide[19] (text); output/testB/testB_coder1_adoption_revealed.csv:pool_no[20]; output/testB/testB_coder2_filter_returned.csv:pool_no[23]; ... 20 matches in output/ |
+| 80% | code/explore_law_mixed.py: 80% power (z_0.80); PREREG.md; output/lockdown/lockdown_A5_col1.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_lo[6]; output/lockdown/lockdown_law.csv:ci_hi[25]; ... 70 matches in output/ |
 | 83% | output/lockdown/lockdown_A5_col1.csv:p[2]; output/lockdown/lockdown_A5_col1.csv:p[26]; output/lockdown/lockdown_law.csv:p[2]; ... 54 matches in output/ |
-| 85 | output/step4_counts.csv:law_degree[1]; output/step4_results.json.chambers.Senate.counts.law_degree; output/testD/testD_d_members.csv:bioguide[447] (text); ... 14 matches in output/ |
+| 85 | PREREG.md; output/step4_counts.csv:law_degree[1]; output/step4_results.json.chambers.Senate.counts.law_degree; output/testB/testB_adoption_side_by_side.csv:pool_no[8]; ... 21 matches in output/ |
+| 87 | output/testB/testB_adoption_side_by_side.csv:pool_no[9]; output/testB/testB_coder1_adoption_revealed.csv:pool_no[22]; output/testB/testB_coder2_adoption_returned.csv:pool_no[9]; ... 40 matches in output/ |
+| 87% | output/lockdown/lockdown_A5_compare.csv:pub_hi[1]; output/testB/testB_kappa.csv:pct_agree[0]; output/testB/testB_results.json.kappa.policy filter.pct_agree; ... 41 matches in output/ |
 | 93 | PREREG.md; output/step3_kappa.csv:t_min[0]; output/step3_kappa.csv:t_min[1]; output/step3_results.json.bodies.House.t_min; ... 462 matches in output/ |
 | 95% | PREREG.md; output/testD/testD_predictors.csv:a_dist_median[834]; output/testD/testD_predictors.csv:a_dist_median[5583]; output/testD/testD_predictors.csv:a_dist_median[8787]; ... 8 matches in output/ |
 | 96 | output/exploratory/expl_law_results.json.Senate.law_deg; output/step4_counts.csv:female[0]; output/step4_linked_counts.csv:female[0]; ... 499 matches in output/ |
 | 99% | PREREG.md; output/lockdown/lockdown_A5_col1.csv:hr[7]; output/lockdown/lockdown_A5_col1.csv:hr[25]; output/lockdown/lockdown_A5_col1.csv:ci_hi[10]; ... 42 matches in output/ |
+| 100% | output/exploratory/expl_law_units.csv:analysis[12] (text); output/exploratory/expl_law_units.csv:analysis[13] (text); output/exploratory/expl_law_units.csv:analysis[14] (text); ... 463 matches in output/ |
 | 101% | output/lockdown/lockdown_A5_col1.csv:ci_hi[9]; output/lockdown/lockdown_law.csv:ci_hi[9]; output/step3_beta.csv:beta[11]; ... 6 matches in output/ |
 | 106 | CLASS first Congress (data); PREREG.md; output/testD/billstatus_parse.csv:n_files[19]; output/testD/billstatus_parse.csv:n_bills[19]; output/testD/testD_d_members.csv:bioguide[524] (text); ... 495 matches in output/ |
 | 108 | PREREG.md; output/testD/billstatus_match.csv:congress[0] (text); output/testD/billstatus_match.csv:congress[11] (text); output/testD/billstatus_match.csv:congress[22] (text); ... 526 matches in output/ |
-| 109 | PREREG.md; output/testD/billstatus_match.csv:congress[1] (text); output/testD/billstatus_match.csv:congress[12] (text); output/testD/billstatus_match.csv:congress[23] (text); ... 515 matches in output/ |
+| 109 | PREREG.md; output/testB/testB_coder1_adoption_revealed.csv:source_url[18] (text); output/testD/billstatus_match.csv:congress[1] (text); output/testD/billstatus_match.csv:congress[12] (text); ... 516 matches in output/ |
 | 110 | CLASS last Congress (data); PREREG.md; output/testD/billstatus_match.csv:congress[2] (text); output/testD/billstatus_match.csv:congress[13] (text); output/testD/billstatus_match.csv:congress[24] (text); ... 534 matches in output/ |
 | 110, | CLASS last Congress (data); PREREG.md; output/testD/billstatus_match.csv:congress[2] (text); output/testD/billstatus_match.csv:congress[13] (text); output/testD/billstatus_match.csv:congress[24] (text); ... 534 matches in output/ |
-| 112 | output/sensitivity/step3_person_results.json.House.their_member_terms; output/testD/billstatus_match.csv:congress[4] (text); output/testD/billstatus_match.csv:congress[15] (text); ... 467 matches in output/ |
-| 117 | PREREG.md; output/testD/billstatus_match.csv:congress[9] (text); output/testD/billstatus_match.csv:congress[20] (text); output/testD/billstatus_match.csv:congress[31] (text); ... 464 matches in output/ |
-| 118 | PREREG.md; output/step3_kappa.csv:t_max[0]; output/step3_kappa.csv:t_max[1]; output/step3_results.json.bodies.House.t_max; ... 486 matches in output/ |
+| 112 | output/sensitivity/step3_person_results.json.House.their_member_terms; output/testB/testB_coder1_adoption_revealed.csv:source_url[0] (text); output/testD/billstatus_match.csv:congress[4] (text); ... 468 matches in output/ |
+| 117 | PREREG.md; output/testB/testB_coder1_adoption_revealed.csv:source_url[16] (text); output/testD/billstatus_match.csv:congress[9] (text); output/testD/billstatus_match.csv:congress[20] (text); ... 465 matches in output/ |
+| 118 | PREREG.md; output/step3_kappa.csv:t_max[0]; output/step3_kappa.csv:t_max[1]; output/step3_results.json.bodies.House.t_max; ... 488 matches in output/ |
 | 127 | output/step5_data_counts.json.house_rows_no_icpsr; output/testD/billstatus_parse.csv:n_withdrawn[2]; output/testD/testD_d_members.csv:bioguide[614] (text); ... 13 matches in output/ |
 | 146 | output/step4_coefs.csv:n[6]; output/step4_coefs.csv:n[7]; output/step4_coefs.csv:n[8]; ... 24 matches in output/ |
 | 147 | output/step4_counts.csv:class_members[1]; output/step4_results.json.chambers.Senate.counts.class_members; output/testD/billstatus_match.csv:unmatched_house_same_congress[0] (text); ... 23 matches in output/ |
@@ -305,8 +329,8 @@
 | 1,835 | output/testD/testD_power.csv:n_members[0]; output/testD/testD_power.json.results[0].n_members; output/testD/testD_results.csv:n_members[0]; ... 4 matches in output/ |
 | 1989 | output/step3_kappa.csv:t_min[2]; output/step3_results.json.bodies.States.t_min; output/testD/testD_d_members.csv:pol_stateleg1_s[42]; ... 35 matches in output/ |
 | 2,000 | PREREG.md; output/sensitivity/step3_person_results.json.B_r; output/step3_results.json.B_r; output/testD/testD_d_members.csv:pol_stateleg1_s[132]; ... 22 matches in output/ |
-| 2024 | post date (front matter; section D); output/step3_kappa.csv:t_max[2]; output/step3_results.json.bodies.States.t_max |
-| 2026 | post date (front matter; section D); PREREG.md |
+| 2024 | post date (front matter; section D); output/step3_kappa.csv:t_max[2]; output/step3_results.json.bodies.States.t_max; output/testB/testB_adoption_side_by_side.csv:source_url_c2[2] (text); ... 9 matches in output/ |
+| 2026 | post date (front matter; section D); PREREG.md; output/testB/testB_adoption_side_by_side.csv:source_url_c2[8] (text); output/testB/testB_adoption_side_by_side.csv:source_date_c2[8] (text); output/testB/testB_adoption_side_by_side.csv:source_url_c1[8] (text); ... 16 matches in output/ |
 | 2,215 | output/step3_oos.csv:n_pairs[1]; output/step3_results.json.bodies.Senate.oos_n_pairs |
 | 2,222 | output/exploratory/expl_rank_house.json.n_members; output/sensitivity/step3_person_compare.csv:n_units[0]; output/step3_kappa.csv:n_members[0]; ... 4 matches in output/ |
 | 2,635 | output/sensitivity/step3_person_compare.csv:n_rows[2]; output/sensitivity/step3_person_compare.csv:n_rows[3]; output/sensitivity/step3_person_kappa.csv:n_rows[1]; ... 6 matches in output/ |
@@ -326,7 +350,7 @@
 | 100,627 | output/step3_kappa.csv:n_rows[2]; output/step3_results.json.bodies.States.n_rows |
 
 ## C. Key numbers recomputed separately from output/
-- checks: 143; failed: 0
+- checks: 156; failed: 0
 
 | Variable | In post | Recomputed | OK |
 |---|---|---|---|
@@ -473,9 +497,22 @@
 | lockdown.events | 152 | 152 | yes |
 | lockdown.law_n | 32 | 32 | yes |
 | lockdown.law_events | 28 | 28 | yes |
+| testb.k_filter | 0.74 | 0.74 | yes |
+| testb.k_adopt | 0.67 | 0.67 | yes |
+| testb.k_cause | undefined | undefined | yes |
+| testb.n_primary | 14 | 14 | yes |
+| testb.pi_main_any_all | 0.50 | 0.50 | yes |
+| testb.pi_S1_any_all | 0.29 | 0.29 | yes |
+| testb.pi_S2_any_all | 0.43 | 0.43 | yes |
+| testb.pi_S3_any_all | 0.50 | 0.50 | yes |
+| testb.pi_main_any_chg | 0.42 | 0.42 | yes |
+| testb.pi_S1_any_chg | 0.17 | 0.17 | yes |
+| testb.pi_S2_any_chg | 0.33 | 0.33 | yes |
+| testb.pi_S3_any_chg | 0.42 | 0.42 | yes |
+| testb.wilson | no | no | yes |
 
 ## D. Numbers typed by hand in post.qmd (outside shortcodes and front matter)
 
-0, 0,, 0.05, 0.060, 0.10, 0.20, 0.600, 1.0, 1, 1,, 1.9, 2,, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30,, 30, 80%, 95%, 99%, 106, 108, 110, 110,, 117, 118
+0, 0,, 0.05, 0.060, 0.10, 0.20, 0.6, 0.600, 0.80, 1.0, 1, 1,, 1.9, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 20, 30,, 30, 80%, 95%, 99%, 106, 108, 110,, 110, 117, 118
 
 - Front-matter date: 2026-10-26. It is typed by hand, not computed; it is the post's date, not a result.

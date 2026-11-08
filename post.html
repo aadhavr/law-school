@@ -67,6 +67,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#skill-source-does-a-law-degree-predict-skill" id="toc-skill-source-does-a-law-degree-predict-skill" class="nav-link" data-scroll-target="#skill-source-does-a-law-degree-predict-skill">Skill source: Does a law degree predict skill?</a></li>
   <li><a href="#what-the-pre-registered-rule-says" id="toc-what-the-pre-registered-rule-says" class="nav-link" data-scroll-target="#what-the-pre-registered-rule-says">What the pre-registered rule says</a></li>
   <li><a href="#test-d-what-does-skill-α_i-contain" id="toc-test-d-what-does-skill-α_i-contain" class="nav-link" data-scroll-target="#test-d-what-does-skill-α_i-contain">Test D: What does skill (α_i) contain?</a></li>
+  <li><a href="#test-b-are-expert-consensus-answers-unused" id="toc-test-b-are-expert-consensus-answers-unused" class="nav-link" data-scroll-target="#test-b-are-expert-consensus-answers-unused">Test B: Are expert consensus answers unused?</a></li>
   <li><a href="#lockdown-data-do-law-trained-leaders-lock-down-sooner" id="toc-lockdown-data-do-law-trained-leaders-lock-down-sooner" class="nav-link" data-scroll-target="#lockdown-data-do-law-trained-leaders-lock-down-sooner">Lockdown data: Do law-trained leaders lock down sooner?</a></li>
   </ul></li>
   <li><a href="#deviations-from-the-pre-registration" id="toc-deviations-from-the-pre-registration" class="nav-link" data-scroll-target="#deviations-from-the-pre-registration">Deviations from the pre-registration</a></li>
@@ -812,6 +813,223 @@ ul.task-list li input[type="checkbox"] {
 <li>s_z uses the sample standard deviation and is recomputed in every bootstrap draw.</li>
 </ul>
 </section>
+<section id="test-b-are-expert-consensus-answers-unused" class="level2">
+<h2 class="anchored" data-anchor-id="test-b-are-expert-consensus-answers-unused">Test B: Are expert consensus answers unused?</h2>
+<blockquote class="blockquote">
+<p><strong>Descriptive only.</strong> The primary set has 14 policies, fewer than the 20 PREREG needs for a verdict. No confidence interval is reported. The Wilson CI is allowed only for the sensitivity set if it reaches 20 policies, and it has 18.</p>
+</blockquote>
+<p><strong>Pool and policies.</strong> The pool is IGM Forum statements with expert consensus (weighted agree of at least 0.80) dated up to the window cutoff. Coder 1 (Claude Code) found 14 specific US federal policies. Coder 2 coded a random 30 statements for the policy filter, and a random 10 of the 14 policies for adoption. Coder 2 was a separate, fresh Claude Code session, not the person named in the pre-registration (see the deviations list below). Under the counting rule, a policy is in the primary set if coder 1 coded it a policy and coder 2 didn’t code it “no”. Coder 2 agreed on all 14. The sensitivity set adds the 4 statements only coder 2 coded as policies (pool numbers 13, 42, 69, 77), giving 18.</p>
+<p><strong>Do the coders agree?</strong> The samples are very small, so these κ values are imprecise.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Coded item</th>
+<th>Categories</th>
+<th>Rows</th>
+<th>Agreement</th>
+<th>κ_C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>policy filter</td>
+<td>yes/no</td>
+<td>30</td>
+<td>87%</td>
+<td>0.74</td>
+</tr>
+<tr class="even">
+<td>adoption any time</td>
+<td>yes/no/unclear</td>
+<td>10</td>
+<td>80%</td>
+<td>0.67</td>
+</tr>
+<tr class="odd">
+<td>cause code (both coders: not adopted)</td>
+<td>3 PREREG causes</td>
+<td>5</td>
+<td>100%</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<p>The cause-code κ_C is undefined. Both coders gave the same cause, “blocked by interests or veto players”, to every one of the 5 policies they both coded as not adopted. So agreement and chance agreement are both 100%. PREREG reports the cause coding as unreliable when κ_C is below 0.6, and that rule can’t be applied to an undefined value. Status: undefined: PREREG rule cannot be applied. The coders disagreed on adoption for 2 of the 10 policies. In both cases one coder said “unclear”.</p>
+<p><strong>Coder 1’s and coder 2’s adoption codes, side by side</strong> (the 10 policies both coded):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Pool no.</th>
+<th>Any time: coder 1</th>
+<th>Any time: coder 2</th>
+<th>In force: coder 1</th>
+<th>In force: coder 2</th>
+<th>Cause: coder 1</th>
+<th>Cause: coder 2</th>
+<th>Sources</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>4</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>blocked by interests or veto players</td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.congress.gov/bill/115th-congress/house-bill/1">coder 1</a>, <a href="https://www.jmco.com/articles/tax/mortgage-auto-loan-interest/">coder 2</a></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>unclear</td>
+<td>no</td>
+<td>unclear</td>
+<td>no</td>
+<td></td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.congress.gov/bill/115th-congress/house-bill/1">coder 1</a>, <a href="https://taxnews.ey.com/news/2025-1432">coder 2</a></td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>blocked by interests or veto players</td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.everycrsreport.com/files/2021-03-15_IF11791_ac258e149b892b739bdb50267b7353b784b41a7f.html">coder 1</a>, <a href="https://www.everycrsreport.com/changes/2022-07-18_R45472_970bdbde44b3a27e8f715d6bcca885f4d83e5d5c__2024-12-04_R45472_03e0ebfdd8c7480f79dbdd7e544e30028d65640e.html">coder 2</a></td>
+</tr>
+<tr class="even">
+<td>30</td>
+<td>unclear</td>
+<td>unclear</td>
+<td>unclear</td>
+<td>unclear</td>
+<td></td>
+<td></td>
+<td><a href="https://www.sec.gov/news/press-release/2014-143">coder 1</a>, <a href="https://corpgov.law.harvard.edu/2014/08/16/sec-adopts-money-market-fund-reforms">coder 2</a></td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>blocked by interests or veto players</td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.sec.gov/news/press-release/2014-143">coder 1</a>, <a href="https://www.ropesgray.com/en/insights/alerts/2014/08/sec-adopts-reforms-for-money-market-funds">coder 2</a></td>
+</tr>
+<tr class="even">
+<td>43</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td><a href="https://www.congress.gov/bill/114th-congress/house-bill/2029">coder 1</a>, <a href="https://tax.thomsonreuters.com/news/path-act-changes-make-research-credit-creditable-against-other-taxes-for-small-businesses/">coder 2</a></td>
+</tr>
+<tr class="odd">
+<td>48</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>blocked by interests or veto players</td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.congress.gov/bill/118th-congress/house-bill/3746">coder 1</a>, <a href="https://www.everycrsreport.com/files/2025-12-05_IF10292_d868696a8c0ab1e5f1f80a18094d4f083d45a183.html">coder 2</a></td>
+</tr>
+<tr class="even">
+<td>53</td>
+<td>yes</td>
+<td>unclear</td>
+<td>yes</td>
+<td>unclear</td>
+<td></td>
+<td></td>
+<td><a href="https://www.energy.gov/node/4848901">coder 1</a>, <a href="https://www.energy.gov/node/4848901">coder 2</a></td>
+</tr>
+<tr class="odd">
+<td>85</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td></td>
+<td></td>
+<td><a href="https://cossa.org/wp-content/uploads/2026/02/FY-2026-Final-LHHS-Appropriations-Analysis.pdf">coder 1</a>, <a href="https://www.everycrsreport.com/files/2026-03-27_R48616_5d49287524cb446a0d487a0055debacd35ccc92a.html">coder 2</a></td>
+</tr>
+<tr class="even">
+<td>87</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>no</td>
+<td>blocked by interests or veto players</td>
+<td>blocked by interests or veto players</td>
+<td><a href="https://www.congress.gov/bill/116th-congress/house-bill/1865">coder 1</a>, <a href="https://rsmus.com/insights/tax-alerts/2019/congress-repeals-the-acas-cadillac-tax-on-employer-health-plans.html">coder 2</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Share adopted (π).</strong> Primary set (14 policies; 12 change-type, which leaves out the two policies that favor keeping things as they are: LNG exports and BLS funding):</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Adopted any time: all</th>
+<th>Adopted any time: change-type</th>
+<th>Still in force: all</th>
+<th>Still in force: change-type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Main (coder 1; unclear = adopted)</td>
+<td>7/14 (0.50)</td>
+<td>5/12 (0.42)</td>
+<td>7/14 (0.50)</td>
+<td>5/12 (0.42)</td>
+</tr>
+<tr class="even">
+<td>S1 (coder 1; unclear = not adopted)</td>
+<td>4/14 (0.29)</td>
+<td>2/12 (0.17)</td>
+<td>4/14 (0.29)</td>
+<td>2/12 (0.17)</td>
+</tr>
+<tr class="odd">
+<td>S2 (both coders say adopted)</td>
+<td>6/14 (0.43)</td>
+<td>4/12 (0.33)</td>
+<td>6/14 (0.43)</td>
+<td>4/12 (0.33)</td>
+</tr>
+<tr class="even">
+<td>S3 (either coder says adopted)</td>
+<td>7/14 (0.50)</td>
+<td>5/12 (0.42)</td>
+<td>7/14 (0.50)</td>
+<td>5/12 (0.42)</td>
+</tr>
+</tbody>
+</table>
+<p>Under the main rule, 7 of 14 policies were adopted at some point in the window (π = 0.50). Among change-type policies, π is 0.42. Counting “unclear” as not adopted (S1) lowers π to 0.29. In the sensitivity set, adopted any time, all policies: Main 10/18; S1 7/18; S2 9/18; S3 10/18. Coder 1 gave “blocked by interests or veto players” as the cause for all 7 primary-set policies it coded as not adopted. With so few policies, these numbers describe this pool; they don’t test whether consensus answers go unused.</p>
+</section>
 <section id="lockdown-data-do-law-trained-leaders-lock-down-sooner" class="level2">
 <h2 class="anchored" data-anchor-id="lockdown-data-do-law-trained-leaders-lock-down-sooner">Lockdown data: Do law-trained leaders lock down sooner?</h2>
 <blockquote class="blockquote">
@@ -863,7 +1081,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>The scientist-leader term matches. The doctor-health-minister term doesn’t: the HR is −0.0178 off and the upper CI end is −0.0249 off. So the replication <strong>fails</strong> the check. I didn’t change the model to close the gap. The cause is unknown, and the paper’s sample counts weren’t checked against this one.</p>
+<p>The scientist-leader term matches. The doctor-health-minister term doesn’t: the HR is −0.0178 off and the upper CI end is −0.0249 off. So the replication <strong>fails</strong> the check. I didn’t change the model to close the gap. Fitting it again with a much tighter convergence tolerance gives the same log likelihood and hazard ratios to 6 decimal places (same: yes), so the gap isn’t a convergence problem. The cause is unknown, and the paper’s sample counts weren’t checked against this one.</p>
 <p><strong>Law-trained leader.</strong> The indicator is the leaders file’s <code>law</code> (“Leader degree subject - Law”), joined by country code. The leader and health-minister names agree in both files. It is added to column (1), with nothing else changed.</p>
 <table class="caption-top table">
 <colgroup>
@@ -914,9 +1132,10 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Sample.</strong> The law-degree test can use only Congresses 106–110, because that is all CLASS covers.</li>
 <li><strong>What counts as the degree.</strong> <code>law_ind</code> counts any law degree, not only the JD. CLASS’s doctorate flag also counts Ed.D. and Ed.S. degrees.</li>
 <li><strong>Which σ_α.</strong> PREREG says effects are “in units of σ_α” but doesn’t say which σ_α. I added this after seeing the results. Every law effect is now reported in LES points, in units of the full-panel σ̂_α (0.600 in the House) and in units of the sample’s own σ̂_α. The PREREG threshold, and the power at it, use the full-panel σ̂_α.</li>
-<li><strong>Not yet run.</strong> Test B (are expert consensus answers used?) and Test C (which degree leads to policy roles?) aren’t done. Test B’s definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.</li>
+<li><strong>Not yet run.</strong> Test C (which degree leads to policy roles?) isn’t done.</li>
 <li><strong>Linking people, not ID numbers.</strong> The LES panel and CLASS use ICPSR numbers, and a party switcher can have two. The skill-source test above matched them by ICPSR, so three CLASS members were dropped and a few entered twice. The result above is unchanged as the pre-registered one. A re-run that links by person (bioguide ID) gives a House law-degree effect of +0.102σ_α (95% CI −0.014 to +0.218): no evidence for a JD skill premium. The Senate gives +0.116σ_α (−0.147 to +0.367): no evidence for a JD skill premium. Leaving out the one member whose CLASS records disagree on the law degree (Ralph Hall) gives +0.105σ_α in the House: no evidence for a JD skill premium. Test A run with one ID per person (19 House members have more than one ICPSR, covering 112 member-terms) gives a House κ of 0.253 (95% CI 0.201 to 0.328) and r = 0.408: supported as a measurable trait. Exploratory analyses E1, E2 and E4 below now link by person.</li>
 <li><strong>Lockdown replication.</strong> The Table A5 replication misses the pre-set tolerance on the doctor-health-minister term. Under a fallback rule set after the first fit missed the tolerance, but before the final refit and before any law-trained model was fit, the law-trained leader estimate is still reported, labeled “not an exact replication”, next to the gap. One religion dummy is dropped for collinearity, as Stata does.</li>
+<li><strong>Test B coders and late rules.</strong> The pre-registration named a person as coder 2. Coder 2 was instead a fresh Claude Code session, run in a separate folder, so both coders are Claude models. This wasn’t logged until after coder 2 had coded. Two rules were added after both coders had coded but before either set of adoption codes was opened: how disagreements and “unclear” codes count (S1–S3), and the split into change-type and preserve-type policies.</li>
 </ol>
 </section>
 <section id="exploratory-analyses" class="level1">

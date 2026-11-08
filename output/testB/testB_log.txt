@@ -1,0 +1,114 @@
+                              measure      categories  n  pct_agree  p_expected    kappa
+                        policy filter          yes/no 30   0.866667    0.493333 0.736842
+                    adoption any time  yes/no/unclear 10   0.800000    0.400000 0.666667
+cause code (both coders: not adopted) 3 PREREG causes  5   1.000000    1.000000      NaN
+                       set                outcome       scope rule  n_policies  n_adopted       pi  wilson_lo  wilson_hi           status
+                   primary       adopted_any_time         all main          14          7 0.500000        NaN        NaN descriptive only
+                   primary       adopted_any_time         all   S1          14          4 0.285714        NaN        NaN descriptive only
+                   primary       adopted_any_time         all   S2          14          6 0.428571        NaN        NaN descriptive only
+                   primary       adopted_any_time         all   S3          14          7 0.500000        NaN        NaN descriptive only
+                   primary       adopted_any_time change-type main          12          5 0.416667        NaN        NaN descriptive only
+                   primary       adopted_any_time change-type   S1          12          2 0.166667        NaN        NaN descriptive only
+                   primary       adopted_any_time change-type   S2          12          4 0.333333        NaN        NaN descriptive only
+                   primary       adopted_any_time change-type   S3          12          5 0.416667        NaN        NaN descriptive only
+                   primary adopted_still_in_force         all main          14          7 0.500000        NaN        NaN descriptive only
+                   primary adopted_still_in_force         all   S1          14          4 0.285714        NaN        NaN descriptive only
+                   primary adopted_still_in_force         all   S2          14          6 0.428571        NaN        NaN descriptive only
+                   primary adopted_still_in_force         all   S3          14          7 0.500000        NaN        NaN descriptive only
+                   primary adopted_still_in_force change-type main          12          5 0.416667        NaN        NaN descriptive only
+                   primary adopted_still_in_force change-type   S1          12          2 0.166667        NaN        NaN descriptive only
+                   primary adopted_still_in_force change-type   S2          12          4 0.333333        NaN        NaN descriptive only
+                   primary adopted_still_in_force change-type   S3          12          5 0.416667        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time         all main          18         10 0.555556        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time         all   S1          18          7 0.388889        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time         all   S2          18          9 0.500000        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time         all   S3          18         10 0.555556        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time change-type main          16          8 0.500000        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time change-type   S1          16          5 0.312500        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time change-type   S2          16          7 0.437500        NaN        NaN descriptive only
+sensitivity (either coder)       adopted_any_time change-type   S3          16          8 0.500000        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force         all main          18          9 0.500000        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force         all   S1          18          6 0.333333        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force         all   S2          18          8 0.444444        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force         all   S3          18          9 0.500000        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force change-type main          16          7 0.437500        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force change-type   S1          16          4 0.250000        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force change-type   S2          16          6 0.375000        NaN        NaN descriptive only
+sensitivity (either coder) adopted_still_in_force change-type   S3          16          7 0.437500        NaN        NaN descriptive only
+{
+  "kappa": {
+    "policy filter": {
+      "categories": "yes/no",
+      "n": 30,
+      "pct_agree": 0.8666666666666667,
+      "p_expected": 0.4933333333333333,
+      "kappa": 0.736842105263158
+    },
+    "adoption any time": {
+      "categories": "yes/no/unclear",
+      "n": 10,
+      "pct_agree": 0.8,
+      "p_expected": 0.4,
+      "kappa": 0.6666666666666667
+    },
+    "cause code (both coders: not adopted)": {
+      "categories": "3 PREREG causes",
+      "n": 5,
+      "pct_agree": 1.0,
+      "p_expected": 1.0,
+      "kappa": NaN
+    }
+  },
+  "cause_status": "undefined: PREREG rule cannot be applied",
+  "primary_pools": [
+    4,
+    5,
+    8,
+    30,
+    31,
+    33,
+    35,
+    43,
+    48,
+    49,
+    52,
+    53,
+    85,
+    87
+  ],
+  "sensitivity_pools": [
+    4,
+    5,
+    8,
+    13,
+    30,
+    31,
+    33,
+    35,
+    42,
+    43,
+    48,
+    49,
+    52,
+    53,
+    69,
+    77,
+    85,
+    87
+  ],
+  "n_primary": 14,
+  "n_sensitivity": 18,
+  "coder2_added_pools": [
+    13,
+    42,
+    69,
+    77
+  ],
+  "n_change_primary": 12,
+  "coder1_cause_counts_primary_not_adopted": {
+    "knowledge gap": 0,
+    "blocked by interests or veto players": 7,
+    "no actor with the skill to act": 0
+  },
+  "wilson_reported": false
+}

@@ -1,0 +1,33 @@
+set,outcome,scope,rule,n_policies,n_adopted,pi,wilson_lo,wilson_hi,status
+primary,adopted_any_time,all,main,14,7,0.5,,,descriptive only
+primary,adopted_any_time,all,S1,14,4,0.2857142857142857,,,descriptive only
+primary,adopted_any_time,all,S2,14,6,0.42857142857142855,,,descriptive only
+primary,adopted_any_time,all,S3,14,7,0.5,,,descriptive only
+primary,adopted_any_time,change-type,main,12,5,0.4166666666666667,,,descriptive only
+primary,adopted_any_time,change-type,S1,12,2,0.16666666666666666,,,descriptive only
+primary,adopted_any_time,change-type,S2,12,4,0.3333333333333333,,,descriptive only
+primary,adopted_any_time,change-type,S3,12,5,0.4166666666666667,,,descriptive only
+primary,adopted_still_in_force,all,main,14,7,0.5,,,descriptive only
+primary,adopted_still_in_force,all,S1,14,4,0.2857142857142857,,,descriptive only
+primary,adopted_still_in_force,all,S2,14,6,0.42857142857142855,,,descriptive only
+primary,adopted_still_in_force,all,S3,14,7,0.5,,,descriptive only
+primary,adopted_still_in_force,change-type,main,12,5,0.4166666666666667,,,descriptive only
+primary,adopted_still_in_force,change-type,S1,12,2,0.16666666666666666,,,descriptive only
+primary,adopted_still_in_force,change-type,S2,12,4,0.3333333333333333,,,descriptive only
+primary,adopted_still_in_force,change-type,S3,12,5,0.4166666666666667,,,descriptive only
+sensitivity (either coder),adopted_any_time,all,main,18,10,0.5555555555555556,,,descriptive only
+sensitivity (either coder),adopted_any_time,all,S1,18,7,0.3888888888888889,,,descriptive only
+sensitivity (either coder),adopted_any_time,all,S2,18,9,0.5,,,descriptive only
+sensitivity (either coder),adopted_any_time,all,S3,18,10,0.5555555555555556,,,descriptive only
+sensitivity (either coder),adopted_any_time,change-type,main,16,8,0.5,,,descriptive only
+sensitivity (either coder),adopted_any_time,change-type,S1,16,5,0.3125,,,descriptive only
+sensitivity (either coder),adopted_any_time,change-type,S2,16,7,0.4375,,,descriptive only
+sensitivity (either coder),adopted_any_time,change-type,S3,16,8,0.5,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,all,main,18,9,0.5,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,all,S1,18,6,0.3333333333333333,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,all,S2,18,8,0.4444444444444444,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,all,S3,18,9,0.5,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,change-type,main,16,7,0.4375,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,change-type,S1,16,4,0.25,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,change-type,S2,16,6,0.375,,,descriptive only
+sensitivity (either coder),adopted_still_in_force,change-type,S3,16,7,0.4375,,,descriptive only

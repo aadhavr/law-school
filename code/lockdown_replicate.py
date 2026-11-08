@@ -65,18 +65,19 @@ def design(d, extra=(), rel_drop=REL_DROP_MAIN):
     return X[keep], d[keep]
 
 
-def fit(d, extra=(), rel_drop=REL_DROP_MAIN):
+def fit(d, extra=(), rel_drop=REL_DROP_MAIN, fit_kw=None):
     X, dd = design(d, extra, rel_drop)
     m = PHReg(dd["stop"].values, X.values, status=dd["fail"].values, entry=dd["start"].values,
               ties="breslow")
-    r = m.fit()
+    r = m.fit(**(fit_kw or {}))  # default: statsmodels Newton-Raphson, tol 1e-8, maxiter 100
     z = stats.norm.ppf(0.975)
     tab = pd.DataFrame({"term": X.columns, "coef": r.params, "se": r.bse})
     tab["hr"] = np.exp(tab.coef)
     tab["ci_lo"] = np.exp(tab.coef - z * tab.se)
     tab["ci_hi"] = np.exp(tab.coef + z * tab.se)
     tab["p"] = 2 * stats.norm.sf(np.abs(tab.coef / tab.se))
-    info = {"n_records": int(len(dd)), "n_countries": int(dd["country"].nunique()),
+    score = m.score(r.params)
+    info = {"max_abs_score": float(np.max(np.abs(score))), "n_records": int(len(dd)), "n_countries": int(dd["country"].nunique()),
             "n_events": int(dd["fail"].sum()), "loglik": float(r.llf),
             "n_dropped_missing": int(len(d) - len(dd)),
             "countries_with_dropped": int(d.loc[~d.index.isin(dd.index), "country"].nunique()),
@@ -107,6 +108,19 @@ def main():
     ll_match = f"{info['loglik']:.6f}" == f"{info2['loglik']:.6f}"
     print(inv.to_string())
     print("loglik", info["loglik"], info2["loglik"], "match to 6 decimals:", ll_match)
+    # Convergence check (one pass, model unchanged): tighter Newton tolerance and more iterations.
+    TIGHT = {"method": "newton", "tol": 1e-12, "maxiter": 1000}
+    tabt, infot, _ = fit(s, fit_kw=TIGHT)
+    conv = []
+    for lab, t_, i_ in [("default (newton, tol 1e-8, maxiter 100)", tab, info),
+                        ("tight (newton, tol 1e-12, maxiter 1000)", tabt, infot)]:
+        tt_ = t_.set_index("term")
+        conv.append({"settings": lab, "loglik": i_["loglik"], "max_abs_score": i_["max_abs_score"],
+                     **{f"{k}_{c}": tt_.loc[k, c] for k in PUBLISHED for c in ("hr", "ci_lo", "ci_hi")}})
+    conv = pd.DataFrame(conv)
+    conv.to_csv(OUT / "lockdown_convergence.csv", index=False)
+    hr_shift = float((tab.set_index("term").hr - tabt.set_index("term").hr).abs().max())
+    print(conv.to_string(index=False)); print("max |HR shift| over all terms:", hr_shift)
     cmp = []
     for term, (hr, lo, hi) in PUBLISHED.items():
         row = tab.set_index("term").loc[term]
@@ -122,6 +136,9 @@ def main():
            "invariance": {"rel_drop_check": REL_DROP_CHECK, "loglik_check": info2["loglik"],
                           "loglik_match_6dp": ll_match, "hr_all_match_6sig": bool(inv.match_6sig.all()),
                           "hr_max_abs_diff": float(inv.abs_diff.max())}, "tol_hr": TOL_HR, "tol_ci": TOL_CI,
+           "convergence": {"tight_settings": TIGHT, "loglik_default": info["loglik"], "loglik_tight": infot["loglik"],
+                           "max_abs_score_default": info["max_abs_score"], "max_abs_score_tight": infot["max_abs_score"],
+                           "max_abs_hr_shift": hr_shift},
            "main_rows": int(len(main_df)), "main_cols": int(main_df.shape[1]),
            "leaders_rows": int(len(leaders)), "leaders_cols": int(leaders.shape[1])}
     print(tab.to_string(index=False))

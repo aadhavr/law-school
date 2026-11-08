@@ -196,6 +196,28 @@ A likely reason for the rest of the gap is that the variance is unequal across m
 - (d) is missing, not 0, for a member with no first House Congress in Voteview.
 - s_z uses the sample standard deviation and is recomputed in every bootstrap draw.
 
+## Test B: Are expert consensus answers unused?
+
+> **Descriptive only.** The primary set has {{< var testb.n_primary >}} policies, fewer than the 20 PREREG needs for a verdict. No confidence interval is reported. The Wilson CI is allowed only for the sensitivity set if it reaches 20 policies, and it has {{< var testb.n_sens >}}.
+
+**Pool and policies.** The pool is IGM Forum statements with expert consensus (weighted agree of at least 0.80) dated up to the window cutoff. Coder 1 (Claude Code) found {{< var testb.n_primary >}} specific US federal policies. Coder 2 coded a random 30 statements for the policy filter, and a random 10 of the 14 policies for adoption. Coder 2 was a separate, fresh Claude Code session, not the person named in the pre-registration (see the deviations list below). Under the counting rule, a policy is in the primary set if coder 1 coded it a policy and coder 2 didn't code it "no". Coder 2 agreed on all {{< var testb.n_primary >}}. The sensitivity set adds the {{< var testb.n_added >}} statements only coder 2 coded as policies (pool numbers {{< var testb.added >}}), giving {{< var testb.n_sens >}}.
+
+**Do the coders agree?** The samples are very small, so these κ values are imprecise.
+
+{{< include output/tables/t_testB_kappa.md >}}
+
+The cause-code κ_C is undefined. Both coders gave the same cause, "blocked by interests or veto players", to every one of the {{< var testb.k_cause_n >}} policies they both coded as not adopted. So agreement and chance agreement are both {{< var testb.k_cause_agree >}}. PREREG reports the cause coding as unreliable when κ_C is below 0.6, and that rule can't be applied to an undefined value. Status: {{< var testb.cause_status >}}. The coders disagreed on adoption for {{< var testb.n_adopt_disagree >}} of the 10 policies. In both cases one coder said "unclear".
+
+**Coder 1's and coder 2's adoption codes, side by side** (the 10 policies both coded):
+
+{{< include output/tables/t_testB_reveal.md >}}
+
+**Share adopted (π).** Primary set ({{< var testb.n_primary >}} policies; {{< var testb.n_change >}} change-type, which leaves out the two policies that favor keeping things as they are: LNG exports and BLS funding):
+
+{{< include output/tables/t_testB_pi.md >}}
+
+Under the main rule, {{< var testb.k_main_any_all >}} of {{< var testb.n_primary >}} policies were adopted at some point in the window (π = {{< var testb.pi_main_any_all >}}). Among change-type policies, π is {{< var testb.pi_main_any_chg >}}. Counting "unclear" as not adopted (S1) lowers π to {{< var testb.pi_S1_any_all >}}. In the sensitivity set, adopted any time, all policies: {{< var testb.sens_any_all >}}. Coder 1 gave "blocked by interests or veto players" as the cause for all {{< var testb.n_blocked >}} primary-set policies it coded as not adopted. With so few policies, these numbers describe this pool; they don't test whether consensus answers go unused.
+
 ## Lockdown data: Do law-trained leaders lock down sooner?
 
 > **{{< var lockdown.label >}}.** The replication below misses the pre-set tolerance on one term, so the law-trained result is reported next to the gap and should be read with it.
@@ -210,7 +232,7 @@ The five religion dummies sum to one in every country, so together they duplicat
 
 {{< include output/tables/t_lockdown_replication.md >}}
 
-The scientist-leader term matches. The doctor-health-minister term doesn't: the HR is {{< var lockdown.doc_d_hr >}} off and the upper CI end is {{< var lockdown.doc_d_hi >}} off. So the replication **{{< var lockdown.pass >}}** the check. I didn't change the model to close the gap. The cause is unknown, and the paper's sample counts weren't checked against this one.
+The scientist-leader term matches. The doctor-health-minister term doesn't: the HR is {{< var lockdown.doc_d_hr >}} off and the upper CI end is {{< var lockdown.doc_d_hi >}} off. So the replication **{{< var lockdown.pass >}}** the check. I didn't change the model to close the gap. Fitting it again with a much tighter convergence tolerance gives the same log likelihood and hazard ratios to 6 decimal places (same: {{< var lockdown.conv_same >}}), so the gap isn't a convergence problem. The cause is unknown, and the paper's sample counts weren't checked against this one.
 
 **Law-trained leader.** The indicator is the leaders file's `law` ("Leader degree subject - Law"), joined by country code. The leader and health-minister names agree in both files. It is added to column (1), with nothing else changed.
 
@@ -228,9 +250,10 @@ Each item is listed in full in [`ANALYSIS_LOG.md`](ANALYSIS_LOG.md).
 4. **Sample.** The law-degree test can use only Congresses 106–110, because that is all CLASS covers.
 5. **What counts as the degree.** `law_ind` counts any law degree, not only the JD. CLASS's doctorate flag also counts Ed.D. and Ed.S. degrees.
 6. **Which σ_α.** PREREG says effects are "in units of σ_α" but doesn't say which σ_α. I added this after seeing the results. Every law effect is now reported in LES points, in units of the full-panel σ̂_α ({{< var house.sigma_alpha >}} in the House) and in units of the sample's own σ̂_α. The PREREG threshold, and the power at it, use the full-panel σ̂_α.
-7. **Not yet run.** Test B (are expert consensus answers used?) and Test C (which degree leads to policy roles?) aren't done. Test B's definitions are now fixed in PREREG Amendment 2, but no statement has been coded for adoption yet.
+7. **Not yet run.** Test C (which degree leads to policy roles?) isn't done.
 8. **Linking people, not ID numbers.** The LES panel and CLASS use ICPSR numbers, and a party switcher can have two. The skill-source test above matched them by ICPSR, so three CLASS members were dropped and a few entered twice. The result above is unchanged as the pre-registered one. A re-run that links by person (bioguide ID) gives a House law-degree effect of {{< var link.s4lc_house >}}σ_α (95% CI {{< var link.s4lc_house_lo >}} to {{< var link.s4lc_house_hi >}}): {{< var link.s4lc_house_verdict >}}. The Senate gives {{< var link.s4lc_senate >}}σ_α ({{< var link.s4lc_senate_lo >}} to {{< var link.s4lc_senate_hi >}}): {{< var link.s4lc_senate_verdict >}}. Leaving out the one member whose CLASS records disagree on the law degree (Ralph Hall) gives {{< var link.s4nh_house >}}σ_α in the House: {{< var link.s4nh_house_verdict >}}. Test A run with one ID per person ({{< var link.pa_house_multi >}} House members have more than one ICPSR, covering {{< var link.pa_house_multi_rows >}} member-terms) gives a House κ of {{< var link.pa_house_kappa >}} (95% CI {{< var link.pa_house_lo >}} to {{< var link.pa_house_hi >}}) and r = {{< var link.pa_house_r >}}: {{< var link.pa_house_verdict >}}. Exploratory analyses E1, E2 and E4 below now link by person.
 9. **Lockdown replication.** The Table A5 replication misses the pre-set tolerance on the doctor-health-minister term. Under a fallback rule set after the first fit missed the tolerance, but before the final refit and before any law-trained model was fit, the law-trained leader estimate is still reported, labeled "{{< var lockdown.label >}}", next to the gap. One religion dummy is dropped for collinearity, as Stata does.
+10. **Test B coders and late rules.** The pre-registration named a person as coder 2. Coder 2 was instead a fresh Claude Code session, run in a separate folder, so both coders are Claude models. This wasn't logged until after coder 2 had coded. Two rules were added after both coders had coded but before either set of adoption codes was opened: how disagreements and "unclear" codes count (S1–S3), and the split into change-type and preserve-type policies.
 
 # Exploratory analyses
 

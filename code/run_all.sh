@@ -27,6 +27,8 @@ $PY -I code/testB_policy_filter.py > /dev/null
 $PY -I code/testB_coder2_sheets.py
 mkdir -p output/lockdown
 $PY -I code/lockdown_replicate.py > output/lockdown/lockdown_log.txt 2>&1
+mkdir -p output/testB
+$PY -I code/testB_results.py > output/testB/testB_log.txt 2>&1
 $PY -I code/step5_figures.py
 $PY -I code/step5_numbers.py
 quarto render post.qmd

@@ -1,0 +1,4 @@
+measure,categories,n,pct_agree,p_expected,kappa
+policy filter,yes/no,30,0.8666666666666667,0.4933333333333333,0.736842105263158
+adoption any time,yes/no/unclear,10,0.8,0.4,0.6666666666666667
+cause code (both coders: not adopted),3 PREREG causes,5,1.0,1.0,

@@ -297,7 +297,9 @@ def main():
          "law_hr": f3(lw["hr"]), "law_lo": f3(lw["ci_lo"]), "law_hi": f3(lw["ci_hi"]),
          "law_n": n(lw["n_law_leaders"]), "law_events": n(lw["n_events_law_leaders"]),
          "law_sci_overlap": n(lw["sciencesmedicine_law_overlap"]),
-         "law_missing_file": n(lw["n_law_missing_leaders_file"])}
+         "law_missing_file": n(lw["n_law_missing_leaders_file"]),
+         "conv_same": "yes" if lj["convergence"]["max_abs_hr_shift"] < 5e-7
+                      and f"{lj['convergence']['loglik_default']:.6f}" == f"{lj['convergence']['loglik_tight']:.6f}" else "no"}
     rows = []
     for term, key, lab in [("sciencesmedicine", "sci", "Scientist leader"), ("medicine_hm2", "doc", "Doctor health minister")]:
         r = lc.loc[term]
@@ -316,6 +318,57 @@ def main():
         [["Law-trained leader", f3(lw["hr"]), ci3(lw["ci_lo"], lw["ci_hi"]), n(lw["n_law_leaders"]),
           n(lw["n_events_law_leaders"]), n(lw["n_countries"]), n(lw["n_events"]), lj["law_label"]]]))
     V["lockdown"] = K
+
+    # ---- Test B (PREREG; Amendments 2, 2a, 2b, 2c; D17, D19, D21–D23) ----
+    TB = OUT / "testB"
+    bj = json.loads((TB / "testB_results.json").read_text())
+    kp = pd.read_csv(TB / "testB_kappa.csv").set_index("measure")
+    bp_ = pd.read_csv(TB / "testB_pi.csv")
+    sb = pd.read_csv(TB / "testB_adoption_side_by_side.csv")
+    def pct(x): return f"{100 * x:.0f}%"
+    def kfmt(x): return "undefined" if pd.isna(x) else f2(x)
+    Bv = {"n_primary": n(bj["n_primary"]), "n_sens": n(bj["n_sensitivity"]), "n_change": n(bj["n_change_primary"]),
+          "added": ", ".join(str(p) for p in bj["coder2_added_pools"]), "n_added": n(len(bj["coder2_added_pools"])),
+          "cause_status": bj["cause_status"], "wilson": "yes" if bj["wilson_reported"] else "no",
+          "n_blocked": n(bj["coder1_cause_counts_primary_not_adopted"]["blocked by interests or veto players"]),
+          "n_adopt_disagree": n((sb.adopted_any_time_c1 != sb.adopted_any_time_c2).sum())}
+    krows = []
+    for meas, key in [("policy filter", "filter"), ("adoption any time", "adopt"),
+                      ("cause code (both coders: not adopted)", "cause")]:
+        r = kp.loc[meas]
+        Bv.update({f"k_{key}": kfmt(r.kappa), f"k_{key}_n": n(r.n), f"k_{key}_agree": pct(r.pct_agree)})
+        krows.append([meas, r.categories, n(r.n), pct(r.pct_agree), kfmt(r.kappa)])
+    (TAB / "t_testB_kappa.md").write_text(md_table(["Coded item", "Categories", "Rows", "Agreement", "κ_C"], krows))
+    prow = []
+    rule_lab = {"main": "Main (coder 1; unclear = adopted)", "S1": "S1 (coder 1; unclear = not adopted)",
+                "S2": "S2 (both coders say adopted)", "S3": "S3 (either coder says adopted)"}
+    for rule in ["main", "S1", "S2", "S3"]:
+        cells = [rule_lab[rule]]
+        for outcome in ["adopted_any_time", "adopted_still_in_force"]:
+            for scope in ["all", "change-type"]:
+                r = bp_[(bp_.set == "primary") & (bp_.outcome == outcome) & (bp_.scope == scope) & (bp_.rule == rule)].iloc[0]
+                cells.append(f"{int(r.n_adopted)}/{int(r.n_policies)} ({f2(r.pi)})")
+                tag = f"{rule}_{'any' if outcome == 'adopted_any_time' else 'force'}_{'all' if scope == 'all' else 'chg'}"
+                Bv.update({f"pi_{tag}": f2(r.pi), f"k_{tag}": n(r.n_adopted)})
+        prow.append(cells)
+    (TAB / "t_testB_pi.md").write_text(md_table(
+        ["Rule", "Adopted any time: all", "Adopted any time: change-type", "Still in force: all",
+         "Still in force: change-type"], prow))
+    srow = []
+    for rule in ["main", "S1", "S2", "S3"]:
+        r = bp_[(bp_.set != "primary") & (bp_.outcome == "adopted_any_time") & (bp_.scope == "all") & (bp_.rule == rule)].iloc[0]
+        srow.append(f"{rule_lab[rule].split(' (')[0]} {int(r.n_adopted)}/{int(r.n_policies)}")
+    Bv["sens_any_all"] = "; ".join(srow)
+    rv = []
+    for _, r in sb.sort_values("pool_no").iterrows():
+        c = lambda x: "" if pd.isna(x) else x
+        rv.append([str(int(r.pool_no)), r.adopted_any_time_c1, r.adopted_any_time_c2,
+                   r.adopted_still_in_force_c1, r.adopted_still_in_force_c2, c(r.cause_code_c1), c(r.cause_code_c2),
+                   f"[coder 1]({r.source_url_c1}), [coder 2]({r.source_url_c2})"])
+    (TAB / "t_testB_reveal.md").write_text(md_table(
+        ["Pool no.", "Any time: coder 1", "Any time: coder 2", "In force: coder 1", "In force: coder 2",
+         "Cause: coder 1", "Cause: coder 2", "Sources"], rv))
+    V["testb"] = Bv
     write_yaml(V, ROOT / "_variables.yml")
     print(sum(len(v) for v in V.values()), "variables;", sorted(p.name for p in TAB.glob("*.md")))
 
